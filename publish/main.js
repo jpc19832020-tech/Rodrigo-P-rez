@@ -1,76 +1,174 @@
-// Function to copy phone number to clipboard
-function copyPhone() {
-    const phoneNumber = '+51 937 375 605';
-    navigator.clipboard.writeText(phoneNumber).then(() => {
-        showToast('Teléfono copiado');
-    }).catch(err => {
-        console.error('Error al copiar el teléfono: ', err);
-    });
-}
+// ============================================
+// FOTON Business Card - Enhanced JavaScript
+// ============================================
 
-// Function to show toast notification
-function showToast(message) {
+// Global state
+let currentSlide = 0;
+let slideInterval;
+let isCarouselPaused = false;
+
+// ============================================
+// UTILITY FUNCTIONS
+// ============================================
+
+/**
+ * Show toast notification with animation
+ */
+function showToast(message, duration = 3000) {
+    // Remove any existing toasts
+    const existingToast = document.querySelector('.toast');
+    if (existingToast) {
+        existingToast.remove();
+    }
+    
+    // Create new toast
     const toast = document.createElement('div');
     toast.className = 'toast';
     toast.textContent = message;
     document.body.appendChild(toast);
     
-    // Show the toast
-    setTimeout(() => {
-        toast.classList.add('show');
-    }, 100);
+    // Trigger animation
+    requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+            toast.classList.add('show');
+        });
+    });
     
-    // Remove the toast after 3 seconds
+    // Remove toast after duration
     setTimeout(() => {
         toast.classList.remove('show');
         setTimeout(() => {
-            document.body.removeChild(toast);
+            if (toast.parentNode) {
+                toast.parentNode.removeChild(toast);
+            }
         }, 300);
-    }, 3000);
+    }, duration);
 }
 
-// Function to handle card sharing
-function shareCard() {
+/**
+ * Copy text to clipboard with fallback
+ */
+async function copyToClipboard(text) {
+    try {
+        if (navigator.clipboard && window.isSecureContext) {
+            await navigator.clipboard.writeText(text);
+            return true;
+        } else {
+            // Fallback for older browsers
+            const textArea = document.createElement('textarea');
+            textArea.value = text;
+            textArea.style.position = 'fixed';
+            textArea.style.left = '-999999px';
+            textArea.style.top = '-999999px';
+            document.body.appendChild(textArea);
+            textArea.focus();
+            textArea.select();
+            
+            try {
+                document.execCommand('copy');
+                textArea.remove();
+                return true;
+            } catch (err) {
+                console.error('Fallback: Could not copy text', err);
+                textArea.remove();
+                return false;
+            }
+        }
+    } catch (err) {
+        console.error('Failed to copy text', err);
+        return false;
+    }
+}
+
+// ============================================
+// PHONE COPY FUNCTIONALITY
+// ============================================
+
+/**
+ * Copy phone number to clipboard
+ */
+async function copyPhone() {
+    const phoneNumber = '+51 937 375 605';
+    const success = await copyToClipboard(phoneNumber);
+    
+    if (success) {
+        showToast('📱 Teléfono copiado');
+        
+        // Add visual feedback to button
+        const phoneBtn = document.querySelector('.btn-phone');
+        if (phoneBtn) {
+            phoneBtn.style.transform = 'scale(0.95)';
+            setTimeout(() => {
+                phoneBtn.style.transform = '';
+            }, 150);
+        }
+    } else {
+        showToast('❌ No se pudo copiar el teléfono');
+    }
+}
+
+// ============================================
+// SHARE FUNCTIONALITY
+// ============================================
+
+/**
+ * Share card using Web Share API or fallback modal
+ */
+async function shareCard() {
     const shareData = {
         title: 'Tarjeta de Jhon Carlos Pérez Cubas',
         text: 'Contacto y enlaces de Jhon en FOTON',
         url: window.location.href
     };
 
-    if (navigator.share) {
-        navigator.share(shareData)
-            .then(() => console.log('Compartido exitosamente'))
-            .catch((error) => console.log('Error al compartir:', error));
+    // Try Web Share API first
+    if (navigator.share && navigator.canShare && navigator.canShare(shareData)) {
+        try {
+            await navigator.share(shareData);
+            console.log('Shared successfully');
+        } catch (err) {
+            if (err.name !== 'AbortError') {
+                console.log('Error sharing:', err);
+                showShareModal();
+            }
+        }
     } else {
-        // Fallback: Show modal with QR code and link
+        // Fallback to modal
         showShareModal();
     }
 }
 
-// Function to show the share modal
+/**
+ * Show share modal with QR code
+ */
 function showShareModal() {
-    // Close any existing modals
+    // Remove any existing modal
     const existingModal = document.querySelector('.modal');
     if (existingModal) {
-        document.body.removeChild(existingModal);
+        existingModal.remove();
     }
     
     // Create modal
     const modal = document.createElement('div');
-    modal.className = 'modal active';
+    modal.className = 'modal';
     
     modal.innerHTML = `
         <div class="modal-content">
-            <button class="close-btn">&times;</button>
+            <button class="close-btn" aria-label="Cerrar">&times;</button>
             <div class="modal-header">
-                <h2>Compartir</h2>
+                <h2>Compartir tarjeta</h2>
             </div>
             <div class="modal-body">
                 <p>Escanea el QR o copia el enlace</p>
                 <div id="qrcode" class="qr-container"></div>
                 <div class="link-container">
                     <input type="text" id="share-link" value="${window.location.href}" readonly>
-                    <button class="copy-link-btn" onclick="copyLink()">Copiar enlace</button>
+                    <button class="copy-link-btn">
+                        <svg style="width: 16px; height: 16px; display: inline-block; vertical-align: middle; margin-right: 4px;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/>
+                        </svg>
+                        Copiar enlace
+                    </button>
                 </div>
             </div>
         </div>
@@ -78,142 +176,215 @@ function showShareModal() {
     
     document.body.appendChild(modal);
     
-    // Add close functionality
-    modal.querySelector('.close-btn').addEventListener('click', () => {
-        modal.remove();
+    // Trigger animation
+    requestAnimationFrame(() => {
+        modal.classList.add('active');
     });
     
-    // Add QR code (we'll create a simple QR using canvas)
+    // Add event listeners
+    const closeBtn = modal.querySelector('.close-btn');
+    const copyBtn = modal.querySelector('.copy-link-btn');
+    
+    closeBtn.addEventListener('click', () => closeModal(modal));
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) {
+            closeModal(modal);
+        }
+    });
+    
+    copyBtn.addEventListener('click', async () => {
+        const success = await copyToClipboard(window.location.href);
+        if (success) {
+            showToast('🔗 Enlace copiado');
+            copyBtn.textContent = '✓ Copiado';
+            setTimeout(() => {
+                copyBtn.innerHTML = `
+                    <svg style="width: 16px; height: 16px; display: inline-block; vertical-align: middle; margin-right: 4px;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/>
+                    </svg>
+                    Copiar enlace
+                `;
+            }, 2000);
+        }
+    });
+    
+    // Generate QR code
     generateQRCode('qrcode', window.location.href);
+    
+    // Prevent body scroll
+    document.body.style.overflow = 'hidden';
 }
 
-// Function to generate QR code using canvas
+/**
+ * Close modal with animation
+ */
+function closeModal(modal) {
+    modal.classList.remove('active');
+    setTimeout(() => {
+        if (modal.parentNode) {
+            modal.parentNode.removeChild(modal);
+        }
+        document.body.style.overflow = '';
+    }, 300);
+}
+
+/**
+ * Generate QR code using canvas
+ */
 function generateQRCode(containerId, text) {
     const container = document.getElementById(containerId);
+    if (!container) return;
     
-    // Create canvas element
     const canvas = document.createElement('canvas');
-    canvas.width = 200;
-    canvas.height = 200;
+    const size = 200;
+    canvas.width = size;
+    canvas.height = size;
     container.appendChild(canvas);
     
     const ctx = canvas.getContext('2d');
     
-    // Clear canvas
+    // Background
     ctx.fillStyle = '#ffffff';
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    ctx.fillRect(0, 0, size, size);
     
-    // Simple QR-like pattern (not an actual QR, but visual representation)
+    // Create QR-like pattern
     ctx.fillStyle = '#000000';
-    
-    // Draw a simple grid pattern to simulate a QR code
     const blockSize = 10;
-    const blocks = canvas.width / blockSize;
+    const blocks = size / blockSize;
+    
+    // Generate pattern based on URL
+    const hash = text.split('').reduce((acc, char) => {
+        return char.charCodeAt(0) + ((acc << 5) - acc);
+    }, 0);
     
     for (let x = 0; x < blocks; x++) {
         for (let y = 0; y < blocks; y++) {
-            // Create a pattern similar to QR codes
-            if ((x + y) % 3 === 0) {
-                ctx.fillStyle = '#000';
-            } else if ((x + y) % 4 === 0) {
-                ctx.fillStyle = '#0D58A3';
-            } else {
-                ctx.fillStyle = '#fff';
-            }
+            const seed = (x * blocks + y + hash) % 100;
             
-            // Add some randomness to make it look more like a QR code
-            if (Math.random() > 0.7) {
-                ctx.fillRect(x * blockSize, y * blockSize, blockSize, blockSize);
+            // Create pattern
+            if (seed % 3 === 0 || (x < 4 && y < 4) || (x > blocks - 5 && y < 4) || (x < 4 && y > blocks - 5)) {
+                ctx.fillStyle = seed % 5 === 0 ? '#0D58A3' : '#000000';
+                ctx.fillRect(x * blockSize, y * blockSize, blockSize - 1, blockSize - 1);
             }
         }
     }
     
-    // Draw border squares to look more like a QR code
-    ctx.fillStyle = '#000';
-    ctx.fillRect(0, 0, 40, 40); // Top left
-    ctx.fillRect(canvas.width - 40, 0, 40, 40); // Top right
-    ctx.fillRect(0, canvas.height - 40, 40, 40); // Bottom left
+    // Corner markers
+    const drawCorner = (x, y) => {
+        ctx.fillStyle = '#000000';
+        ctx.fillRect(x, y, 50, 50);
+        ctx.fillStyle = '#ffffff';
+        ctx.fillRect(x + 10, y + 10, 30, 30);
+        ctx.fillStyle = '#0D58A3';
+        ctx.fillRect(x + 15, y + 15, 20, 20);
+    };
     
-    // Add center pattern
-    ctx.fillStyle = '#fff';
-    ctx.fillRect(80, 80, 40, 40);
-    ctx.fillStyle = '#000';
-    ctx.fillRect(90, 90, 20, 20);
+    drawCorner(0, 0);
+    drawCorner(size - 50, 0);
+    drawCorner(0, size - 50);
 }
 
-// Function to copy the share link
-function copyLink() {
-    const shareLink = document.getElementById('share-link');
-    shareLink.select();
-    document.execCommand('copy');
-    
-    // Show toast
-    showToast('Enlace copiado');
-}
+// ============================================
+// CAROUSEL FUNCTIONALITY
+// ============================================
 
-// Function to build mailto links for email buttons
-function buildMailto() {
-    // Both email buttons should use the same mailto link
-    const emailButtons = document.querySelectorAll('a[href^="mailto:"]');
-    
-    emailButtons.forEach(button => {
-        const href = button.getAttribute('href');
-        if (href.includes('subject=Consulta%20–%20Tarjeta%20FOTON')) {
-            // This is already properly formatted
-            return;
-        }
-        
-        // Update the href to use the correct mailto format
-        button.setAttribute('href', 'mailto:jhoncarlosperezcubas@gmail.com?subject=Consulta%20–%20Tarjeta%20FOTON&body=Hola%20Jhon,');
-    });
-}
-
-// Carousel functionality
-let currentSlide = 0;
-let slideInterval;
-const slides = document.querySelectorAll('.carousel-item');
-const indicators = document.querySelectorAll('.indicator');
-
+/**
+ * Initialize carousel with auto-play and swipe support
+ */
 function initCarousel(options = { interval: 5000 }) {
-    if (slides.length === 0) return;
+    const slides = document.querySelectorAll('.carousel-item');
+    const carousel = document.querySelector('.carousel');
+    const carouselContainer = document.querySelector('.carousel-container');
     
-    // Update indicators
-    updateIndicators();
+    if (!slides.length || !carousel || !carouselContainer) return;
     
-    // Start auto-rotation
+    // Create indicators
+    createIndicators(slides.length);
+    
+    // Update initial state
+    updateCarousel();
+    
+    // Start auto-play
     startCarousel(options.interval);
     
-    // Pause on hover or touch
-    const carouselContainer = document.querySelector('.carousel-container');
-    if (carouselContainer) {
-        carouselContainer.addEventListener('mouseenter', pauseCarousel);
-        carouselContainer.addEventListener('mouseleave', () => startCarousel(options.interval));
-    }
+    // Pause on hover
+    carouselContainer.addEventListener('mouseenter', pauseCarousel);
+    carouselContainer.addEventListener('mouseleave', () => {
+        if (!isCarouselPaused) {
+            startCarousel(options.interval);
+        }
+    });
     
-    // Touch events for swipe
-    let startX = 0;
-    let endX = 0;
+    // Touch/swipe support
+    let touchStartX = 0;
+    let touchEndX = 0;
+    let touchStartY = 0;
+    let touchEndY = 0;
     
     carouselContainer.addEventListener('touchstart', (e) => {
-        startX = e.touches[0].clientX;
+        touchStartX = e.touches[0].clientX;
+        touchStartY = e.touches[0].clientY;
         pauseCarousel();
+    }, { passive: true });
+    
+    carouselContainer.addEventListener('touchmove', (e) => {
+        touchEndX = e.touches[0].clientX;
+        touchEndY = e.touches[0].clientY;
+    }, { passive: true });
+    
+    carouselContainer.addEventListener('touchend', () => {
+        handleSwipe(touchStartX, touchEndX, touchStartY, touchEndY);
+        if (!isCarouselPaused) {
+            startCarousel(options.interval);
+        }
     });
     
-    carouselContainer.addEventListener('touchend', (e) => {
-        endX = e.changedTouches[0].clientX;
-        handleSwipe();
-        startCarousel(options.interval);
+    // Keyboard navigation
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowLeft') {
+            prevSlide();
+        } else if (e.key === 'ArrowRight') {
+            nextSlide();
+        }
     });
 }
 
-function updateSlide() {
-    const carousel = document.querySelector('.carousel');
-    carousel.style.transform = `translateX(-${currentSlide * 100}%)`;
-    updateIndicators();
+/**
+ * Create indicator dots
+ */
+function createIndicators(count) {
+    const indicatorsContainer = document.querySelector('.carousel-indicators');
+    if (!indicatorsContainer) return;
+    
+    indicatorsContainer.innerHTML = '';
+    
+    for (let i = 0; i < count; i++) {
+        const indicator = document.createElement('button');
+        indicator.className = 'indicator';
+        indicator.setAttribute('aria-label', `Ir a imagen ${i + 1}`);
+        indicator.addEventListener('click', () => goToSlide(i));
+        
+        if (i === 0) {
+            indicator.classList.add('active');
+        }
+        
+        indicatorsContainer.appendChild(indicator);
+    }
 }
 
-function updateIndicators() {
-    // Update active indicator
+/**
+ * Update carousel position and indicators
+ */
+function updateCarousel() {
+    const carousel = document.querySelector('.carousel');
+    const indicators = document.querySelectorAll('.indicator');
+    
+    if (!carousel) return;
+    
+    // Update carousel position with smooth animation
+    carousel.style.transform = `translateX(-${currentSlide * 100}%)`;
+    
+    // Update indicators
     indicators.forEach((indicator, index) => {
         if (index === currentSlide) {
             indicator.classList.add('active');
@@ -223,56 +394,147 @@ function updateIndicators() {
     });
 }
 
+/**
+ * Go to next slide
+ */
 function nextSlide() {
+    const slides = document.querySelectorAll('.carousel-item');
     currentSlide = (currentSlide + 1) % slides.length;
-    updateSlide();
+    updateCarousel();
 }
 
+/**
+ * Go to previous slide
+ */
 function prevSlide() {
+    const slides = document.querySelectorAll('.carousel-item');
     currentSlide = (currentSlide - 1 + slides.length) % slides.length;
-    updateSlide();
+    updateCarousel();
 }
 
-function goToSlide(slideIndex) {
-    currentSlide = slideIndex;
-    updateSlide();
+/**
+ * Go to specific slide
+ */
+function goToSlide(index) {
+    currentSlide = index;
+    updateCarousel();
+    pauseCarousel();
+    isCarouselPaused = true;
+    
+    // Resume after 3 seconds
+    setTimeout(() => {
+        isCarouselPaused = false;
+        startCarousel(5000);
+    }, 3000);
 }
 
+/**
+ * Start carousel auto-play
+ */
 function startCarousel(interval) {
+    stopCarousel();
     slideInterval = setInterval(nextSlide, interval);
 }
 
+/**
+ * Pause carousel
+ */
 function pauseCarousel() {
-    clearInterval(slideInterval);
+    stopCarousel();
 }
 
-function handleSwipe() {
+/**
+ * Stop carousel
+ */
+function stopCarousel() {
+    if (slideInterval) {
+        clearInterval(slideInterval);
+        slideInterval = null;
+    }
+}
+
+/**
+ * Handle swipe gesture
+ */
+function handleSwipe(startX, endX, startY, endY) {
     const minSwipeDistance = 50;
-    const swipeDistance = startX - endX;
+    const swipeDistanceX = startX - endX;
+    const swipeDistanceY = Math.abs(startY - endY);
     
-    if (Math.abs(swipeDistance) > minSwipeDistance) {
-        if (swipeDistance > 0) {
-            nextSlide(); // Swipe left - next
+    // Only process horizontal swipes
+    if (swipeDistanceY < 100 && Math.abs(swipeDistanceX) > minSwipeDistance) {
+        if (swipeDistanceX > 0) {
+            nextSlide();
         } else {
-            prevSlide(); // Swipe right - prev
+            prevSlide();
         }
     }
 }
 
-// Initialize the carousel when the page loads
+// ============================================
+// INITIALIZATION
+// ============================================
+
+/**
+ * Initialize all functionality when DOM is ready
+ */
 document.addEventListener('DOMContentLoaded', function() {
-    // Set up phone copy button if it exists
-    const phoneButton = document.querySelector('a[href^="tel:"]');
-    if (phoneButton) {
-        phoneButton.addEventListener('click', function(e) {
-            e.preventDefault();
-            copyPhone();
-        });
-    }
+    console.log('🚀 FOTON Business Card initialized');
     
     // Initialize carousel
     initCarousel({ interval: 5000 });
     
-    // Initialize email buttons
-    buildMailto();
+    // Add smooth scroll behavior
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        });
+    });
+    
+    // Add intersection observer for fade-in animations
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
+            }
+        });
+    }, observerOptions);
+    
+    // Observe all fade-in elements
+    document.querySelectorAll('.fade-in').forEach(el => {
+        observer.observe(el);
+    });
+    
+    // Log performance metrics
+    if (window.performance && window.performance.timing) {
+        window.addEventListener('load', () => {
+            const perfData = window.performance.timing;
+            const pageLoadTime = perfData.loadEventEnd - perfData.navigationStart;
+            console.log(`⚡ Page loaded in ${pageLoadTime}ms`);
+        });
+    }
 });
+
+// ============================================
+// EXPORT FUNCTIONS FOR INLINE HANDLERS
+// ============================================
+
+// Make functions available globally for inline onclick handlers
+window.copyPhone = copyPhone;
+window.shareCard = shareCard;
+window.nextSlide = nextSlide;
+window.prevSlide = prevSlide;
+window.goToSlide = goToSlide;
