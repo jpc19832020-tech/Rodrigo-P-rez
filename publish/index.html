@@ -37,7 +37,7 @@
             <!-- Header Card -->
             <header class="header-card fade-in">
                 <div class="profile-section">
-                    <div class="profile-img-wrapper">
+                    <div class="profile-img-wrapper" onclick="openLightbox('assets/img/JP.1.png', 'Foto de perfil de Jhon Carlos Pérez Cubas')" style="cursor: pointer;" title="Click para ampliar">
                         <img src="assets/img/JP.1.png" alt="Foto de perfil de Jhon Carlos Pérez Cubas" class="profile-img">
                         <div class="profile-ring"></div>
                     </div>
@@ -159,7 +159,7 @@
                 </div>
                 
                 <div class="carousel-wrapper">
-                    <div class="carousel-container">
+                    <div class="carousel-container" onclick="openGalleryLightbox()" style="cursor: pointer;" title="Click para ampliar">
                         <div class="carousel">
                             <div class="carousel-item">
                                 <img src="assets/img/F1.jpeg" alt="Camionetas FOTON en ruta andina – imagen 1">
@@ -253,6 +253,64 @@
                 <p class="footer-copyright">© FOTON · Perú</p>
                 <p class="footer-note">Para actualizaciones de esta tarjeta, contáctame por WhatsApp.</p>
             </footer>
+        </div>
+    </div>
+
+    <!-- Lightbox Modal -->
+    <div id="lightbox" class="lightbox">
+        <button class="lightbox-close" onclick="closeLightbox()" aria-label="Cerrar">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+            </svg>
+        </button>
+        <div class="lightbox-content">
+            <img id="lightbox-img" src="" alt="" class="lightbox-image">
+        </div>
+    </div>
+
+    <!-- Gallery Lightbox Modal -->
+    <div id="gallery-lightbox" class="lightbox">
+        <button class="lightbox-close" onclick="closeGalleryLightbox()" aria-label="Cerrar">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+            </svg>
+        </button>
+        <div class="lightbox-content">
+            <div class="lightbox-carousel-container">
+                <div class="lightbox-carousel">
+                    <div class="lightbox-carousel-item">
+                        <img src="assets/img/F1.jpeg" alt="Camionetas FOTON en ruta andina – imagen 1">
+                    </div>
+                    <div class="lightbox-carousel-item">
+                        <img src="assets/img/F2.jpg" alt="Camionetas FOTON en ruta andina – imagen 2">
+                    </div>
+                    <div class="lightbox-carousel-item">
+                        <img src="assets/img/F3.jpg" alt="Camionetas FOTON en ruta andina – imagen 3">
+                    </div>
+                </div>
+                
+                <a href="vision-720/" target="_blank" class="lightbox-vision-badge" onclick="event.stopPropagation()">
+                    <svg class="badge-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+                    </svg>
+                    Probar vista 360°
+                </a>
+            </div>
+            
+            <div class="lightbox-carousel-controls">
+                <button class="lightbox-carousel-btn prev" onclick="prevLightboxSlide(event)" aria-label="Anterior">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+                    </svg>
+                </button>
+                <div class="lightbox-carousel-indicators"></div>
+                <button class="lightbox-carousel-btn next" onclick="nextLightboxSlide(event)" aria-label="Siguiente">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                    </svg>
+                </button>
+            </div>
         </div>
     </div>
 

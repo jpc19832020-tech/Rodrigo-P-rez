@@ -529,6 +529,216 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 // ============================================
+// LIGHTBOX FUNCTIONALITY
+// ============================================
+
+let currentLightboxSlide = 0;
+
+/**
+ * Open lightbox with single image
+ */
+function openLightbox(imageSrc, imageAlt) {
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+    
+    if (!lightbox || !lightboxImg) return;
+    
+    lightboxImg.src = imageSrc;
+    lightboxImg.alt = imageAlt;
+    
+    lightbox.classList.add('active');
+    document.body.style.overflow = 'hidden';
+    
+    // Close on ESC key
+    const handleEsc = (e) => {
+        if (e.key === 'Escape') {
+            closeLightbox();
+            document.removeEventListener('keydown', handleEsc);
+        }
+    };
+    document.addEventListener('keydown', handleEsc);
+    
+    // Close on background click
+    lightbox.addEventListener('click', (e) => {
+        if (e.target === lightbox) {
+            closeLightbox();
+        }
+    });
+}
+
+/**
+ * Close single image lightbox
+ */
+function closeLightbox() {
+    const lightbox = document.getElementById('lightbox');
+    if (!lightbox) return;
+    
+    lightbox.classList.remove('active');
+    document.body.style.overflow = '';
+}
+
+/**
+ * Open gallery lightbox
+ */
+function openGalleryLightbox() {
+    const galleryLightbox = document.getElementById('gallery-lightbox');
+    if (!galleryLightbox) return;
+    
+    // Set current slide to match main carousel
+    currentLightboxSlide = currentSlide;
+    
+    // Create indicators for lightbox carousel
+    createLightboxIndicators(3);
+    
+    // Update lightbox carousel
+    updateLightboxCarousel();
+    
+    galleryLightbox.classList.add('active');
+    document.body.style.overflow = 'hidden';
+    
+    // Close on ESC key
+    const handleEsc = (e) => {
+        if (e.key === 'Escape') {
+            closeGalleryLightbox();
+            document.removeEventListener('keydown', handleEsc);
+        }
+    };
+    document.addEventListener('keydown', handleEsc);
+    
+    // Close on background click
+    galleryLightbox.addEventListener('click', (e) => {
+        if (e.target === galleryLightbox) {
+            closeGalleryLightbox();
+        }
+    });
+    
+    // Add swipe support for lightbox
+    let touchStartX = 0;
+    let touchEndX = 0;
+    let touchStartY = 0;
+    let touchEndY = 0;
+    
+    const lightboxCarouselContainer = galleryLightbox.querySelector('.lightbox-carousel-container');
+    
+    lightboxCarouselContainer.addEventListener('touchstart', (e) => {
+        touchStartX = e.touches[0].clientX;
+        touchStartY = e.touches[0].clientY;
+    }, { passive: true });
+    
+    lightboxCarouselContainer.addEventListener('touchmove', (e) => {
+        touchEndX = e.touches[0].clientX;
+        touchEndY = e.touches[0].clientY;
+    }, { passive: true });
+    
+    lightboxCarouselContainer.addEventListener('touchend', () => {
+        handleLightboxSwipe(touchStartX, touchEndX, touchStartY, touchEndY);
+    });
+}
+
+/**
+ * Close gallery lightbox
+ */
+function closeGalleryLightbox() {
+    const galleryLightbox = document.getElementById('gallery-lightbox');
+    if (!galleryLightbox) return;
+    
+    galleryLightbox.classList.remove('active');
+    document.body.style.overflow = '';
+}
+
+/**
+ * Create indicators for lightbox carousel
+ */
+function createLightboxIndicators(count) {
+    const indicatorsContainer = document.querySelector('.lightbox-carousel-indicators');
+    if (!indicatorsContainer) return;
+    
+    indicatorsContainer.innerHTML = '';
+    
+    for (let i = 0; i < count; i++) {
+        const indicator = document.createElement('button');
+        indicator.className = 'indicator';
+        indicator.setAttribute('aria-label', `Ir a imagen ${i + 1}`);
+        indicator.addEventListener('click', (e) => {
+            e.stopPropagation();
+            goToLightboxSlide(i);
+        });
+        
+        if (i === currentLightboxSlide) {
+            indicator.classList.add('active');
+        }
+        
+        indicatorsContainer.appendChild(indicator);
+    }
+}
+
+/**
+ * Update lightbox carousel position
+ */
+function updateLightboxCarousel() {
+    const lightboxCarousel = document.querySelector('.lightbox-carousel');
+    const indicators = document.querySelectorAll('.lightbox-carousel-indicators .indicator');
+    
+    if (!lightboxCarousel) return;
+    
+    lightboxCarousel.style.transform = `translateX(-${currentLightboxSlide * 100}%)`;
+    
+    // Update indicators
+    indicators.forEach((indicator, index) => {
+        if (index === currentLightboxSlide) {
+            indicator.classList.add('active');
+        } else {
+            indicator.classList.remove('active');
+        }
+    });
+}
+
+/**
+ * Next slide in lightbox
+ */
+function nextLightboxSlide(event) {
+    if (event) event.stopPropagation();
+    const slides = document.querySelectorAll('.lightbox-carousel-item');
+    currentLightboxSlide = (currentLightboxSlide + 1) % slides.length;
+    updateLightboxCarousel();
+}
+
+/**
+ * Previous slide in lightbox
+ */
+function prevLightboxSlide(event) {
+    if (event) event.stopPropagation();
+    const slides = document.querySelectorAll('.lightbox-carousel-item');
+    currentLightboxSlide = (currentLightboxSlide - 1 + slides.length) % slides.length;
+    updateLightboxCarousel();
+}
+
+/**
+ * Go to specific slide in lightbox
+ */
+function goToLightboxSlide(index) {
+    currentLightboxSlide = index;
+    updateLightboxCarousel();
+}
+
+/**
+ * Handle swipe in lightbox
+ */
+function handleLightboxSwipe(startX, endX, startY, endY) {
+    const minSwipeDistance = 50;
+    const swipeDistanceX = startX - endX;
+    const swipeDistanceY = Math.abs(startY - endY);
+    
+    if (swipeDistanceY < 100 && Math.abs(swipeDistanceX) > minSwipeDistance) {
+        if (swipeDistanceX > 0) {
+            nextLightboxSlide();
+        } else {
+            prevLightboxSlide();
+        }
+    }
+}
+
+// ============================================
 // EXPORT FUNCTIONS FOR INLINE HANDLERS
 // ============================================
 
@@ -538,3 +748,9 @@ window.shareCard = shareCard;
 window.nextSlide = nextSlide;
 window.prevSlide = prevSlide;
 window.goToSlide = goToSlide;
+window.openLightbox = openLightbox;
+window.closeLightbox = closeLightbox;
+window.openGalleryLightbox = openGalleryLightbox;
+window.closeGalleryLightbox = closeGalleryLightbox;
+window.nextLightboxSlide = nextLightboxSlide;
+window.prevLightboxSlide = prevLightboxSlide;
