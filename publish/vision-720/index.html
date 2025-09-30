@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jhon Pérez | Foton | Perú</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="top-bar">
+        <div class="header-content">
+            <h1>Jhon Pérez | Foton | Perú</h1>
+            <div class="header-icons">
+                <a href="https://wa.me/51937375605?text=Hola%20Jhon,%20te%20contacto%20desde%20tu%20tarjeta%20web." target="_blank" aria-label="Contactar por WhatsApp">
+                    <img src="../assets/img/whatsapp-icon.png" alt="WhatsApp" class="icon">
+                </a>
+                <a href="mailto:jhoncarlosperezcubas@gmail.com?subject=Consulta%20–%20Tarjeta%20FOTON&body=Hola%20Jhon," target="_blank" aria-label="Contactar por correo">
+                    <img src="../assets/img/gmail-icon.png" alt="Gmail" class="icon">
+                </a>
+            </div>
+        </div>
+    </header>
+    
+    <main class="main-content">
+        <div class="iframe-container">
+            <iframe 
+                src="https://www.fotonmotor.com/digital360/index.html#:~:text=TRUCK%E2%89%AB" 
+                frameborder="0" 
+                allowfullscreen
+                allow="xr-spatial-tracking"
+                id="main-iframe"
+            ></iframe>
+            <div class="error-container" id="error-container" style="display: none;">
+                <div class="error-content">
+                    <h2>Contenido no disponible</h2>
+                    <p>El contenido no se puede visualizar embebido.</p>
+                    <button class="btn btn-primary" id="open-official">Abrir en sitio oficial</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>

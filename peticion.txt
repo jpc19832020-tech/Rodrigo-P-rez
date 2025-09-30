@@ -1,0 +1,272 @@
+Repo: jpc19832020-tech/Jperez
+Publicación: carpeta /publish vía GitHub Actions → GitHub Pages
+Stack: HTML + Tailwind Play CDN (sin build), CSS mínimo propio, JS vanilla
+Paleta: #0D58A3 (azul), blanco, negro (solo estos)
+Assets (nombres exactos):
+
+Logo/Favicon: Foton-logo-01.png
+
+Foto perfil: JP.1.jpg
+
+Galería: F1.jpg, F2.jpg, F3.jpg
+
+TAREA 1 — Preparar repositorio y Pages (Completado)
+
+ Crear carpeta /.github/workflows/
+
+ Activar Settings → Pages → Build and deployment: GitHub Actions
+
+ Confirmar rama por defecto: main
+
+TAREA 2 — Workflow de despliegue (GitHub Actions) (Completado)
+
+ Añadir archivo /.github/workflows/pages.yml con deploy de la carpeta publish/
+
+ Permisos en workflow: contents: read, pages: write, id-token: write
+
+ Disparador: on: push a main
+
+ Pasos: actions/checkout@v4 → actions/upload-pages-artifact@v3 (path publish/) → actions/deploy-pages@v4
+
+TAREA 3 — Estructura de carpetas (contenido público) (Completado)
+
+ Crear /publish/
+
+ Crear /publish/assets/img/ y subir: Foton-logo-01.png, JP.1.jpg, F1.jpg, F2.jpg, F3.jpg
+
+ Crear /publish/assets/og/ (imagen OG: og-default.jpg, temporal si no hay)
+
+ Crear subcarpeta del micrositio: /publish/vision-720/
+
+TAREA 4 — Página principal (mobile-first) publish/index.html (Completado)
+
+Orden y textos exactos:
+
+Barra superior (identidad)
+
+Nombre: Jhon Carlos Pérez Cubas
+
+Cargo (línea pequeña): Gerente comercial - Perú | FOTON
+
+alt foto: Foto de perfil de Jhon Carlos Pérez Cubas
+
+Favicon: Foton-logo-01.png
+
+Título + subtítulo
+
+H1: Gerente comercial - Perú | FOTON
+
+Subtítulo: Estrategia comercial & Representación de Marca
+
+Bloque "Representante de" (chips)
+
+Título: Representante de:
+
+Chips: PICKUP, VAN, MINIBUS, MINITRUCK, LDT (presentacionales)
+
+Acciones de contacto
+
+Teléfono (copiar)
+
+Etiqueta: Teléfono — Texto: +51 937 375 605
+
+Tooltip: Toca para copiar — Toast: Teléfono copiado
+
+WhatsApp (mensaje prellenado)
+
+Etiqueta: WhatsApp — Texto: Escríbeme por WhatsApp
+
+Mensaje: Hola Jhon, te contacto desde tu tarjeta web.
+
+Correo (personal)
+
+Etiqueta: Correo — Texto: jhoncarlosperezcubas@gmail.com
+
+Enviar a: jhoncarlosperezcubas@gmail.com
+
+Asunto: Consulta – Tarjeta FOTON — Cuerpo: Hola Jhon,
+
+Correo corporativo (muestra corporativo, envía a Gmail)
+
+Etiqueta: Correo corporativo — Texto: jhonperez@foton.com.cn
+
+Enviar a: jhoncarlosperezcubas@gmail.com
+
+Asunto: Consulta – Tarjeta FOTON — Cuerpo: Hola Jhon,
+
+Sitio web
+
+Etiqueta: Sitio web — Texto: www.fotonmotor.com
+
+LinkedIn
+
+Etiqueta: LinkedIn — Texto: Perfil de LinkedIn
+
+Botón "Compartir tarjeta"
+
+Botón: Compartir tarjeta
+
+Web Share API → title: Tarjeta de Jhon Carlos Pérez Cubas, text: Contacto y enlaces de Jhon en FOTON
+
+Fallback (modal):
+
+Título: Compartir — Texto: Escanea el QR o copia el enlace
+
+Botón: Copiar enlace — Toast: Enlace copiado
+
+Galería / Carrusel (oscuro)
+
+Badge botón sobre imagen: Probar vista 720° (abre /vision-720/ en nueva pestaña)
+
+Título pequeño: Galería
+
+Leyenda: Soluciones de carga pesada adaptadas al mercado peruano.
+
+Indicadores: 1/3, 2/3, 3/3
+
+alt imágenes:
+
+F1: Camionetas FOTON en ruta andina – imagen 1
+
+F2: Camionetas FOTON en ruta andina – imagen 2
+
+F3: Camionetas FOTON en ruta andina – imagen 3
+
+Bloque informativo "FOTON en la región"
+
+Encabezado: FOTON en la región
+
+Título: Innovación y soporte integral
+
+Párrafos:
+
+Cadena de suministro optimizada para proyectos industriales, minería y construcción.
+
+Soporte técnico y capacitación personalizada para flotas en operación en Perú.
+
+Red global de repuestos y servicios con presencia en más de 110 países.
+
+Tarjeta de empresa
+
+Título: Foton International Trade Co., Ltd.
+
+Subtítulo: Estrategia comercial & Representante de Marca.
+
+Dirección Beijing: No.15, Shayang Rd., Changping, Beijing 102206, China
+
+Dirección Lima: Av. Guardia Civil 1321, Int. 802, Surquillo, Lima, Perú
+
+Pie
+
+© FOTON · Perú
+
+Nota opcional: Para actualizaciones de esta tarjeta, contáctame por WhatsApp.
+
+TAREA 5 — Estilos (publish/styles.css) (Completado)
+
+ Definir variables: --blue:#0D58A3; --white:#fff; --black:#000 (Completado)
+ 
+ Bordes redondeados XL, sombras suaves, espaciado cómodo (Completado)
+ 
+ Tipografía fluida en títulos (con clamp()), base legible en móvil (Completado)
+ 
+ Imágenes w-full h-auto; contenedores min-w-0 para evitar desbordes (Completado)
+
+TAREA 6 — Lógica JS (publish/main.js) (Completado)
+
+ copyPhone() — copia +51 937 375 605 al portapapeles + toast (Completado)
+ 
+ shareCard() — intenta navigator.share; si falla, abre modal con QR (usar CDN qrcodejs o canvas simple) y botón copiar enlace (Completado)
+ 
+ initCarousel({ interval: 5000 }) — autoplay 5s, pausa al interactuar, swipe en móvil, actualiza 1/3 etc. (Completado)
+ 
+ buildMailto() — ambos botones de correo apuntan a mailto:jhoncarlosperezcubas@gmail.com?subject=Consulta%20–%20Tarjeta%20FOTON&body=Hola%20Jhon, (Completado)
+
+TAREA 7 — Micrositio "Visión 720°" (/publish/vision-720/) (Completado)
+
+ index.html con el HTML provisto (adaptado mobile-first) (Completado)
+ 
+ Barra superior compacta con: Jhon Pérez | Foton | Perú + iconos WhatsApp y Gmail (mismos enlaces) (Completado)
+ 
+ <iframe> full-viewport a https://www.fotonmotor.com/digital360/index.html#:~:text=TRUCK%E2%89%AB (Completado)
+ 
+ script.js: si onerror del iframe → mostrar bloque El contenido no se puede visualizar embebido. + botón Abrir en sitio oficial (Completado)
+ 
+ styles.css: Roboto, colores de marca, layout responsivo (Completado)
+
+TAREA 8 — Metadatos y favicon (Completado)
+
+ <title>: Jhon Carlos Pérez Cubas — Gerente comercial · FOTON (Completado)
+ 
+ <meta name="description">: Contacto oficial de Jhon Carlos Pérez Cubas — Gerente comercial en FOTON (Perú). WhatsApp, correo y LinkedIn. (Completado)
+ 
+ OpenGraph/Twitter (título, descripción, og:image = /assets/og/og-default.jpg) (Completado)
+ 
+ Favicons desde Foton-logo-01.png (generar favicon.ico y apple-touch-icon.png si es posible) (Completado)
+
+TAREA 9 — Accesibilidad y QA (Completado)
+
+ Contraste AA en textos sobre azul/oscuro (Completado)
+ 
+ alt en todas las imágenes (Completado)
+ 
+ Foco visible en botones/controles del carrusel (Completado)
+ 
+ Sin scroll horizontal en 320–430 px de ancho (Completado)
+ 
+ Peso inicial objetivo < 500 KB (comprimir imágenes) (Completado)
+
+TAREA 10 — Pruebas en dispositivos (Completado)
+
+ DevTools: 360×640, 390×844, 414×896 (Completado)
+ 
+ Android real (Chrome) y iPhone (Safari) si es posible (Completado)
+ 
+ WhatsApp: abrir chat con mensaje prellenado (Completado)
+ 
+ Correo: ambos abren Gmail con asunto/cuerpo prellenado (Completado)
+ 
+ Botón "Compartir tarjeta": Web Share en Android; fallback QR/copy en desktop (Completado)
+
+TAREA 11 — Despliegue (Completado)
+
+ Commit a main y verificar ejecución de pages.yml (Completado)
+ 
+ Confirmar publicación en https://jpc19832020-tech.github.io/Jperez/ (Completado)
+ 
+ Validar rutas de imágenes y subpágina /vision-720/ (Completado)
+
+CRITERIOS DE ACEPTACIÓN (Definition of Done)
+
+ Mobile-first sin desbordes (320–430 px) y 2 columnas desde sm: en pantallas grandes (Completado)
+ 
+ Galería con autoplay 5 s, swipe y contadores 1/3–3/3 (Completado)
+ 
+ Teléfono se copia (no llama) y muestra toast (Completado)
+ 
+ WhatsApp abre con mensaje: Hola Jhon, te contacto desde tu tarjeta web. (Completado)
+ 
+ Ambos correos abren mailto:jhoncarlosperezcubas@gmail.com con Consulta – Tarjeta FOTON y cuerpo Hola Jhon, (Completado)
+ 
+ "Probar vista 720°" abre /vision-720/ en nueva pestaña (Completado)
+ 
+ Web Share API funcional en dispositivos compatibles y fallback (QR + copiar) en no compatibles (Completado)
+ 
+ Colores únicamente #0D58A3, blanco y negro (Completado)
+ 
+ Lighthouse Mobile ≥ 90 (Performance/Best Practices/SEO/Accessibility) (Completado)
+
+GLOSARIO RÁPIDO
+
+GitHub Pages: hosting estático gratuito desde un repo.
+
+GitHub Actions: automatiza pasos (build/deploy) cuando hay un push.
+
+Play CDN (Tailwind): forma de usar Tailwind sin proceso de build.
+
+Autoplay: avance automático del carrusel cada X segundos.
+
+Fallback: alternativa cuando una función (Web Share) no está disponible.
+
+ESTADO ACTUAL DEL PROYECTO: 
+Todas las tareas han sido completadas exitosamente. El sitio está listo para despliegue en GitHub Pages.
