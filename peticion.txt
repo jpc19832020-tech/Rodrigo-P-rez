@@ -270,3 +270,11 @@ Fallback: alternativa cuando una función (Web Share) no está disponible.
 
 ESTADO ACTUAL DEL PROYECTO: 
 Todas las tareas han sido completadas exitosamente. El sitio está listo para despliegue en GitHub Pages.
+
+NOTA IMPORTANTE PARA ACTIVAR GITHUB PAGES:
+1. Ir al repositorio: https://github.com/jpc19832020-tech/Jperez
+2. Ir a la pestaña "Settings"
+3. En el menú izquierdo, seleccionar "Pages"
+4. En la sección "Build and deployment", asegurarse de que "Source" esté configurado como "GitHub Actions"
+5. El sitio estará disponible en: https://jpc19832020-tech.github.io/Jperez/
+6. El micrositio "Visión 720°" estará en: https://jpc19832020-tech.github.io/Jperez/vision-720/
