@@ -1075,9 +1075,11 @@ body {
   max-width: 90vw;
   max-height: 90vh;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   position: relative;
+  gap: var(--spacing-lg);
 }
 
 .lightbox-image {
@@ -1155,7 +1157,7 @@ body {
   align-items: center;
   justify-content: center;
   gap: var(--spacing-lg);
-  margin-top: var(--spacing-lg);
+  margin-top: 0;
 }
 
 .lightbox-carousel-btn {
