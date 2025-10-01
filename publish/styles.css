@@ -733,16 +733,27 @@ body {
   box-shadow: var(--shadow-xl);
 }
 
-.footer-cta-logo {
-  width: 60px;
-  height: 60px;
+.footer-cta-button-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-md);
+  flex-wrap: wrap;
+}
+
+.footer-cta-logo-inline {
+  width: 50px;
+  height: 50px;
   object-fit: contain;
-  margin: 0 auto var(--spacing-md);
-  display: block;
   border-radius: var(--radius-md);
   background: var(--white);
   padding: var(--spacing-xs);
   box-shadow: var(--shadow-md);
+  transition: transform var(--transition-base);
+}
+
+.footer-cta-logo-inline:hover {
+  transform: scale(1.05);
 }
 
 .footer-cta-text {
