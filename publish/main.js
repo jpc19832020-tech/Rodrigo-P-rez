@@ -144,7 +144,7 @@ async function copyWeChatID() {
 async function shareCard() {
     const shareData = {
         title: 'Tarjeta de Alex (Wang Wu)',
-        text: 'Contacto y enlaces de Jhon en FOTON',
+        text: 'Contacto y enlaces de Alex en FOTON',
         url: window.location.href
     };
 
