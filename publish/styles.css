@@ -414,6 +414,11 @@ body {
   color: var(--white);
 }
 
+.btn-facebook {
+  background: linear-gradient(135deg, #1877f2 0%, #0c5ec7 100%);
+  color: var(--white);
+}
+
 .btn-location {
   background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
   color: var(--white);

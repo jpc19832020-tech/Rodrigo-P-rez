@@ -108,6 +108,33 @@ async function copyPhone() {
 }
 
 // ============================================
+// WECHAT ID COPY FUNCTIONALITY
+// ============================================
+
+/**
+ * Copy WeChat ID to clipboard
+ */
+async function copyWeChatID() {
+    const wechatID = 'JPFoton2026';
+    const success = await copyToClipboard(wechatID);
+    
+    if (success) {
+        showToast('💬 WeChat ID copiado');
+        
+        // Add visual feedback to button
+        const wechatBtn = document.querySelector('.btn-wechat');
+        if (wechatBtn) {
+            wechatBtn.style.transform = 'scale(0.95)';
+            setTimeout(() => {
+                wechatBtn.style.transform = '';
+            }, 150);
+        }
+    } else {
+        showToast('❌ No se pudo copiar el WeChat ID');
+    }
+}
+
+// ============================================
 // SHARE FUNCTIONALITY
 // ============================================
 
@@ -744,6 +771,7 @@ function handleLightboxSwipe(startX, endX, startY, endY) {
 
 // Make functions available globally for inline onclick handlers
 window.copyPhone = copyPhone;
+window.copyWeChatID = copyWeChatID;
 window.shareCard = shareCard;
 window.nextSlide = nextSlide;
 window.prevSlide = prevSlide;
