@@ -1,10 +1,10 @@
-# Jhon Carlos Pérez Cubas - vCard
+# Alex (Wang Wu) - vCard
 
-Tarjeta digital profesional de Jhon Carlos Pérez Cubas, Gerente comercial - Perú | FOTON.
+Tarjeta digital profesional de Alex (Wang Wu), Country Manager - Perú | FOTON.
 
 ## Descripción
 
-Este proyecto es una tarjeta digital (vCard) personalizada para Jhon Carlos Pérez Cubas, que incluye información de contacto, galería de imágenes, enlaces a redes sociales y funcionalidades interactivas.
+Este proyecto es una tarjeta digital (vCard) personalizada para Alex (Wang Wu), que incluye información de contacto, galería de imágenes, enlaces a redes sociales y funcionalidades interactivas.
 
 ## Características
 
@@ -59,7 +59,7 @@ publish/
 
 ## Autor
 
-Jhon Carlos Pérez Cubas - Gerente comercial - Perú | FOTON
+Alex (Wang Wu) - Country Manager - Perú | FOTON
 
 ## Licencia
 

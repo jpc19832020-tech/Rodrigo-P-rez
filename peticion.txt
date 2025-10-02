@@ -44,17 +44,17 @@ Orden y textos exactos:
 
 Barra superior (identidad)
 
-Nombre: Jhon Carlos Pérez Cubas
+Nombre: Alex (Wang Wu)
 
-Cargo (línea pequeña): Gerente comercial - Perú | FOTON
+Cargo (línea pequeña): Country Manager - Perú | FOTON
 
-alt foto: Foto de perfil de Jhon Carlos Pérez Cubas
+alt foto: Foto de perfil de Alex (Wang Wu)
 
 Favicon: Foton-logo-01.png
 
 Título + subtítulo
 
-H1: Gerente comercial - Perú | FOTON
+H1: Country Manager - Perú | FOTON
 
 Subtítulo: Estrategia comercial & Representación de Marca
 
@@ -106,7 +106,7 @@ Botón "Compartir tarjeta"
 
 Botón: Compartir tarjeta
 
-Web Share API → title: Tarjeta de Jhon Carlos Pérez Cubas, text: Contacto y enlaces de Jhon en FOTON
+Web Share API → title: Tarjeta de Alex (Wang Wu), text: Contacto y enlaces de Jhon en FOTON
 
 Fallback (modal):
 
@@ -196,9 +196,9 @@ TAREA 7 — Micrositio "Visión 720°" (/publish/vision-720/) (Completado)
 
 TAREA 8 — Metadatos y favicon (Completado)
 
- <title>: Jhon Carlos Pérez Cubas — Gerente comercial · FOTON (Completado)
+ <title>: Alex (Wang Wu) — Country Manager · FOTON (Completado)
  
- <meta name="description">: Contacto oficial de Jhon Carlos Pérez Cubas — Gerente comercial en FOTON (Perú). WhatsApp, correo y LinkedIn. (Completado)
+ <meta name="description">: Contacto oficial de Alex (Wang Wu) — Country Manager en FOTON (Perú). WhatsApp, correo y LinkedIn. (Completado)
  
  OpenGraph/Twitter (título, descripción, og:image = /assets/og/og-default.jpg) (Completado)
  
