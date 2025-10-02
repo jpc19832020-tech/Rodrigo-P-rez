@@ -88,11 +88,11 @@ async function copyToClipboard(text) {
  * Copy phone number to clipboard
  */
 async function copyPhone() {
-    const phoneNumber = '+51 937 375 605';
+    const phoneNumber = '+8613693053554';
     const success = await copyToClipboard(phoneNumber);
     
     if (success) {
-        showToast('📱 Teléfono copiado');
+        showToast('📱 Teléfono copiado / Phone copied');
         
         // Add visual feedback to button
         const phoneBtn = document.querySelector('.btn-phone');
@@ -143,7 +143,7 @@ async function copyWeChatID() {
  */
 async function shareCard() {
     const shareData = {
-        title: 'Tarjeta de Jhon Carlos Pérez Cubas',
+        title: 'Tarjeta de Alex (Wang Wu)',
         text: 'Contacto y enlaces de Jhon en FOTON',
         url: window.location.href
     };
@@ -782,3 +782,223 @@ window.openGalleryLightbox = openGalleryLightbox;
 window.closeGalleryLightbox = closeGalleryLightbox;
 window.nextLightboxSlide = nextLightboxSlide;
 window.prevLightboxSlide = prevLightboxSlide;
+
+// ============================================
+// LANGUAGE SWITCHING FUNCTIONALITY
+// ============================================
+
+let currentLanguage = 'es'; // Default language is Spanish
+
+const translations = {
+    es: {
+        phone: 'Teléfono',
+        whatsapp: 'WhatsApp',
+        whatsappText: 'Escríbeme por WhatsApp',
+        email: 'Correo',
+        emailCorp: 'Correo corporativo',
+        website: 'Sitio web',
+        wechat: 'WeChat ID',
+        facebook: 'Facebook',
+        facebookText: 'Perfil de Facebook',
+        location: 'Oficina Lima',
+        shareCard: 'Compartir tarjeta',
+        gallery: 'Galería',
+        gallerySubtitle: 'Soluciones de carga pesada adaptadas al mercado peruano.',
+        vision360: 'Probar vista 360°',
+        representative: 'Representante de:',
+        contact: 'Contacto',
+        regionTitle: 'FOTON en la región',
+        regionSubtitle: 'Innovación y soporte integral',
+        info1: 'Cadena de suministro optimizada para proyectos industriales, minería y construcción.',
+        info2: 'Soporte técnico y capacitación personalizada para flotas en operación en Perú.',
+        info3: 'Red global de repuestos y servicios con presencia en más de 110 países.',
+        phoneCopied: '📱 Teléfono copiado',
+        wechatCopied: '💬 WeChat ID copiado',
+        linkCopied: '🔗 Enlace copiado',
+        shareTitle: 'Compartir tarjeta',
+        shareText: 'Escanea el QR o copia el enlace',
+        copyLink: 'Copiar enlace',
+        copied: '✓ Copiado'
+    },
+    en: {
+        phone: 'Phone',
+        whatsapp: 'WhatsApp',
+        whatsappText: 'Message me on WhatsApp',
+        email: 'Email',
+        emailCorp: 'Corporate Email',
+        website: 'Website',
+        wechat: 'WeChat ID',
+        facebook: 'Facebook',
+        facebookText: 'Facebook Profile',
+        location: 'Lima Office',
+        shareCard: 'Share Card',
+        gallery: 'Gallery',
+        gallerySubtitle: 'Heavy-duty solutions adapted to the Peruvian market.',
+        vision360: 'Try 360° view',
+        representative: 'Representative of:',
+        contact: 'Contact',
+        regionTitle: 'FOTON in the region',
+        regionSubtitle: 'Innovation and comprehensive support',
+        info1: 'Optimized supply chain for industrial projects, mining and construction.',
+        info2: 'Technical support and personalized training for fleets operating in Peru.',
+        info3: 'Global network of spare parts and services with presence in more than 110 countries.',
+        phoneCopied: '📱 Phone copied',
+        wechatCopied: '💬 WeChat ID copied',
+        linkCopied: '🔗 Link copied',
+        shareTitle: 'Share card',
+        shareText: 'Scan the QR or copy the link',
+        copyLink: 'Copy link',
+        copied: '✓ Copied'
+    }
+};
+
+/**
+ * Toggle between Spanish and English
+ */
+function toggleLanguage() {
+    currentLanguage = currentLanguage === 'es' ? 'en' : 'es';
+    updatePageLanguage();
+    
+    // Update button text
+    const langText = document.getElementById('langText');
+    if (langText) {
+        langText.textContent = currentLanguage === 'es' ? 'EN' : 'ES';
+    }
+    
+    // Save preference
+    localStorage.setItem('preferredLanguage', currentLanguage);
+    
+    // Show toast
+    showToast(currentLanguage === 'es' ? '🌐 Idioma: Español' : '🌐 Language: English');
+}
+
+/**
+ * Update all text content based on current language
+ */
+function updatePageLanguage() {
+    const t = translations[currentLanguage];
+    
+    // Update document language
+    document.documentElement.lang = currentLanguage;
+    
+    // Update contact section labels
+    const labels = {
+        'Teléfono': t.phone,
+        'Phone': t.phone,
+        'WhatsApp': t.whatsapp,
+        'Correo': t.email,
+        'Email': t.email,
+        'Correo corporativo': t.emailCorp,
+        'Corporate Email': t.emailCorp,
+        'Sitio web': t.website,
+        'Website': t.website,
+        'WeChat ID': t.wechat,
+        'Facebook': t.facebook,
+        'Oficina Lima': t.location,
+        'Lima Office': t.location
+    };
+    
+    document.querySelectorAll('.btn-label').forEach(label => {
+        const currentText = label.textContent.trim();
+        if (labels[currentText]) {
+            label.textContent = labels[currentText];
+        }
+    });
+    
+    // Update specific button texts
+    const whatsappBtn = document.querySelector('.btn-whatsapp .btn-text');
+    if (whatsappBtn && (whatsappBtn.textContent.includes('Escríbeme') || whatsappBtn.textContent.includes('Message'))) {
+        whatsappBtn.textContent = t.whatsappText;
+    }
+    
+    const facebookBtn = document.querySelector('.btn-facebook .btn-text');
+    if (facebookBtn && (facebookBtn.textContent.includes('Perfil') || facebookBtn.textContent.includes('Profile'))) {
+        facebookBtn.textContent = t.facebookText;
+    }
+    
+    // Update section titles
+    const sectionTitles = document.querySelectorAll('.section-title');
+    sectionTitles.forEach(title => {
+        if (title.textContent.includes('Representante') || title.textContent.includes('Representative')) {
+            title.textContent = t.representative;
+        } else if (title.textContent.includes('Contacto') || title.textContent.includes('Contact')) {
+            title.textContent = t.contact;
+        } else if (title.textContent.includes('Galería') || title.textContent.includes('Gallery')) {
+            title.textContent = t.gallery;
+        }
+    });
+    
+    // Update gallery subtitle
+    const gallerySubtitle = document.querySelector('.gallery-subtitle');
+    if (gallerySubtitle) {
+        gallerySubtitle.textContent = t.gallerySubtitle;
+    }
+    
+    // Update vision badges
+    document.querySelectorAll('.vision-badge, .lightbox-vision-badge').forEach(badge => {
+        const textNode = Array.from(badge.childNodes).find(node => node.nodeType === 3);
+        if (textNode) {
+            textNode.textContent = t.vision360;
+        }
+    });
+    
+    // Update share button
+    const shareButton = document.querySelector('.share-button');
+    if (shareButton) {
+        const textNode = Array.from(shareButton.childNodes).find(node => node.nodeType === 3);
+        if (textNode) {
+            textNode.textContent = t.shareCard;
+        }
+    }
+    
+    // Update region section
+    const regionTitle = document.querySelector('.section-title-large');
+    if (regionTitle) {
+        regionTitle.textContent = t.regionTitle;
+    }
+    
+    const regionSubtitle = document.querySelector('.info-subtitle');
+    if (regionSubtitle) {
+        regionSubtitle.textContent = t.regionSubtitle;
+    }
+    
+    // Update info items
+    const infoItems = document.querySelectorAll('.info-item p');
+    if (infoItems.length >= 3) {
+        infoItems[0].textContent = t.info1;
+        infoItems[1].textContent = t.info2;
+        infoItems[2].textContent = t.info3;
+    }
+}
+
+/**
+ * Initialize language on page load
+ */
+function initLanguage() {
+    // Check for saved preference
+    const savedLang = localStorage.getItem('preferredLanguage');
+    if (savedLang && (savedLang === 'es' || savedLang === 'en')) {
+        currentLanguage = savedLang;
+    }
+    
+    // Update button text
+    const langText = document.getElementById('langText');
+    if (langText) {
+        langText.textContent = currentLanguage === 'es' ? 'EN' : 'ES';
+    }
+    
+    // Apply language if not Spanish (default)
+    if (currentLanguage === 'en') {
+        updatePageLanguage();
+    }
+}
+
+// Make toggleLanguage available globally
+window.toggleLanguage = toggleLanguage;
+
+// Initialize language when DOM is ready
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initLanguage);
+} else {
+    initLanguage();
+}

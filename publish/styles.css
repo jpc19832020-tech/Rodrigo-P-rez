@@ -91,6 +91,66 @@ body {
 }
 
 /* ============================================
+   LANGUAGE SWITCH BUTTON
+   ============================================ */
+
+.lang-switch {
+  position: fixed;
+  top: var(--spacing-lg);
+  right: var(--spacing-lg);
+  width: 56px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--blue) 0%, var(--blue-light) 100%);
+  color: var(--white);
+  border: none;
+  border-radius: var(--radius-full);
+  font-size: 0.875rem;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: var(--shadow-lg);
+  z-index: 1000;
+  transition: all var(--transition-base);
+  font-family: inherit;
+  letter-spacing: 0.5px;
+}
+
+.lang-switch:hover {
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: var(--shadow-xl);
+  background: linear-gradient(135deg, var(--blue-light) 0%, var(--blue) 100%);
+}
+
+.lang-switch:active {
+  transform: translateY(0) scale(0.98);
+}
+
+.lang-switch:focus {
+  outline: 3px solid var(--blue);
+  outline-offset: 3px;
+}
+
+@media (max-width: 768px) {
+  .lang-switch {
+    width: 48px;
+    height: 48px;
+    top: var(--spacing-md);
+    right: var(--spacing-md);
+    font-size: 0.8125rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .lang-switch {
+    width: 44px;
+    height: 44px;
+    font-size: 0.75rem;
+  }
+}
+
+/* ============================================
    LAYOUT
    ============================================ */
 
