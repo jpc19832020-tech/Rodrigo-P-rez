@@ -1,10 +1,10 @@
-# Alex (Wang Wu) - vCard
+# Miexy Marcani Benites - vCard
 
-Tarjeta digital profesional de Alex (Wang Wu), Country Manager - Perú | FOTON.
+Tarjeta digital profesional de Miexy Marcani Benites, Country Manager - Perú | FOTON.
 
 ## Descripción
 
-Este proyecto es una tarjeta digital (vCard) personalizada para Alex (Wang Wu), que incluye información de contacto, galería de imágenes, enlaces a redes sociales y funcionalidades interactivas.
+Este proyecto es una tarjeta digital (vCard) personalizada para Miexy Marcani Benites, que incluye información de contacto, galería de imágenes, enlaces a redes sociales y funcionalidades interactivas.
 
 ## Características
 
@@ -59,7 +59,7 @@ publish/
 
 ## Autor
 
-Alex (Wang Wu) - Country Manager - Perú | FOTON
+Miexy Marcani Benites - Country Manager - Perú | FOTON
 
 ## Licencia
 

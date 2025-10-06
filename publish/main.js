@@ -143,7 +143,7 @@ async function copyWeChatID() {
  */
 async function shareCard() {
     const shareData = {
-        title: 'Tarjeta de Alex (Wang Wu)',
+        title: 'Tarjeta de Miexy Marcani Benites',
         text: 'Contacto y enlaces de Alex en FOTON',
         url: window.location.href
     };
