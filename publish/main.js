@@ -819,7 +819,8 @@ const translations = {
         shareText: 'Escanea el QR o copia el enlace',
         copyLink: 'Copiar enlace',
         copied: '✓ Copiado',
-        companyDescription: 'Costamar Corporate Travel es la división especializada en viajes de negocios y MICE del Grupo Costamar. Ofrecemos soluciones integrales para la gestión de viajes corporativos, reuniones, congresos, ferias y viajes de incentivo, asegurando eficiencia, ahorro y experiencias memorables para nuestros clientes empresariales.'
+        companyDescription: 'Costamar Corporate Travel es la división especializada en viajes de negocios y MICE del Grupo Costamar. Ofrecemos soluciones integrales para la gestión de viajes corporativos, reuniones, congresos, ferias y viajes de incentivo, asegurando eficiencia, ahorro y experiencias memorables para nuestros clientes empresariales.',
+        footerCTAText: 'Haz de tu presentación una experiencia digital. Obtén tu SmartCard ahora.'
     },
     en: {
         phone: 'Phone',
@@ -850,7 +851,8 @@ const translations = {
         shareText: 'Scan the QR or copy the link',
         copyLink: 'Copy link',
         copied: '✓ Copied',
-        companyDescription: 'Costamar Corporate Travel is the specialized division in business travel and MICE of the Costamar Group. We offer comprehensive solutions for corporate travel management, meetings, congresses, fairs and incentive trips, ensuring efficiency, savings and memorable experiences for our business clients.'
+        companyDescription: 'Costamar Corporate Travel is the specialized division in business travel and MICE of the Costamar Group. We offer comprehensive solutions for corporate travel management, meetings, congresses, fairs and incentive trips, ensuring efficiency, savings and memorable experiences for our business clients.',
+        footerCTAText: 'Make your presentation a digital experience. Get your SmartCard now.'
     }
 };
 
@@ -947,9 +949,19 @@ function updatePageLanguage() {
     // Update share button
     const shareButton = document.querySelector('.share-button');
     if (shareButton) {
-        const textNode = Array.from(shareButton.childNodes).find(node => node.nodeType === 3);
+        // Find the text node more specifically and replace it
+        const textNode = Array.from(shareButton.childNodes).find(node =>
+            node.nodeType === 3 && node.textContent.trim() !== ''
+        );
         if (textNode) {
             textNode.textContent = t.shareCard;
+        } else {
+            // If no text node found, add one after the SVG
+            const svg = shareButton.querySelector('svg');
+            if (svg) {
+                const textNode = document.createTextNode(t.shareCard);
+                svg.parentNode.insertBefore(textNode, svg.nextSibling);
+            }
         }
     }
     
@@ -976,6 +988,12 @@ function updatePageLanguage() {
     const companyDescription = document.querySelector('.company-description p');
     if (companyDescription) {
         companyDescription.textContent = t.companyDescription;
+    }
+    
+    // Update footer CTA text
+    const footerCTAText = document.querySelector('.footer-cta-text');
+    if (footerCTAText) {
+        footerCTAText.textContent = t.footerCTAText;
     }
 }
 
