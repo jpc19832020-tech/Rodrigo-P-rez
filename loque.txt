@@ -1,6 +1,0 @@
-agrega un link para WeChat en el contact actions:https://u.wechat.com/kLoeu0k7pYa62s_a86zOCH4?s=2
-el cuadro de contact CTA section ponlo debajo de:
-<p class="footer-copyright">© FOTON · Perú</p>
-                <p class="footer-note">Para actualizaciones de esta tarjeta, contáctame por WhatsApp.</p>
-
-y en ese cuadro de contact CTA section tambien incluye mi logo, se llama:"EXO.jpeg" (no debe ser tal grande)
