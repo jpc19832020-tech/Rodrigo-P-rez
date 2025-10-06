@@ -1,10 +1,10 @@
 # Miexy Marcani Benites - vCard
 
-Tarjeta digital profesional de Miexy Marcani Benites, Country Manager - Perú | FOTON.
+Tarjeta digital profesional de Miexy Marcani Benites, Supervisora de Viajes MICE | División Corporativo & MICE - Costamar Corporate Travel.
 
 ## Descripción
 
-Este proyecto es una tarjeta digital (vCard) personalizada para Miexy Marcani Benites, que incluye información de contacto, galería de imágenes, enlaces a redes sociales y funcionalidades interactivas.
+Este proyecto es una tarjeta digital (vCard) personalizada para Miexy Marcani Benites, que incluye información de contacto, galería de imágenes, descripción de la empresa Costamar Corporate Travel y funcionalidades interactivas.
 
 ## Características
 
@@ -14,7 +14,7 @@ Este proyecto es una tarjeta digital (vCard) personalizada para Miexy Marcani Be
   - Compartir tarjeta usando Web Share API (con fallback)
   - Carrusel automático con controles manuales
   - Enlaces preconfigurados para WhatsApp y correo electrónico
-- **Micrositio 720°**: Acceso directo a la vista 360° de FOTON
+- **Información corporativa**: Descripción detallada de Costamar Corporate Travel
 - **SEO y OpenGraph**: Metadatos optimizados para redes sociales
 
 ## Tecnologías utilizadas
@@ -51,15 +51,15 @@ publish/
 
 ## Funcionalidades implementadas
 
-1. **Contacto**: Botones para llamar, WhatsApp, correo personal y corporativo
-2. **Galería**: Carrusel con imágenes de productos FOTON
-3. **Compartir**: Funcionalidad de compartir nativa o con modal fallback
-4. **Micrositio**: Acceso a la vista 360° de productos FOTON
+1. **Contacto**: Botones para llamar, WhatsApp, correo electrónico y ubicación
+2. **Galería**: Carrusel con imágenes de productos y eventos
+3. **Información corporativa**: Descripción completa de Costamar Corporate Travel
+4. **Compartir**: Funcionalidad de compartir nativa o con modal fallback
 5. **Accesibilidad**: Soporte completo para lectores de pantalla y navegación por teclado
 
 ## Autor
 
-Miexy Marcani Benites - Country Manager - Perú | FOTON
+Miexy Marcani Benites - Supervisora de Viajes MICE | División Corporativo & MICE - Costamar Corporate Travel
 
 ## Licencia
 
