@@ -818,7 +818,8 @@ const translations = {
         shareTitle: 'Compartir tarjeta',
         shareText: 'Escanea el QR o copia el enlace',
         copyLink: 'Copiar enlace',
-        copied: '✓ Copiado'
+        copied: '✓ Copiado',
+        companyDescription: 'Costamar Corporate Travel es la división especializada en viajes de negocios y MICE del Grupo Costamar. Ofrecemos soluciones integrales para la gestión de viajes corporativos, reuniones, congresos, ferias y viajes de incentivo, asegurando eficiencia, ahorro y experiencias memorables para nuestros clientes empresariales.'
     },
     en: {
         phone: 'Phone',
@@ -848,7 +849,8 @@ const translations = {
         shareTitle: 'Share card',
         shareText: 'Scan the QR or copy the link',
         copyLink: 'Copy link',
-        copied: '✓ Copied'
+        copied: '✓ Copied',
+        companyDescription: 'Costamar Corporate Travel is the specialized division in business travel and MICE of the Costamar Group. We offer comprehensive solutions for corporate travel management, meetings, congresses, fairs and incentive trips, ensuring efficiency, savings and memorable experiences for our business clients.'
     }
 };
 
@@ -968,6 +970,12 @@ function updatePageLanguage() {
         infoItems[0].textContent = t.info1;
         infoItems[1].textContent = t.info2;
         infoItems[2].textContent = t.info3;
+    }
+    
+    // Update company description
+    const companyDescription = document.querySelector('.company-description p');
+    if (companyDescription) {
+        companyDescription.textContent = t.companyDescription;
     }
 }
 
