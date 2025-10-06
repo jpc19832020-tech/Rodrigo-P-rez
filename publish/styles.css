@@ -734,44 +734,24 @@ body {
   color: var(--gray-600);
 }
 
-.company-addresses {
-  display: flex;
-  flex-direction: column;
-  gap: var(--spacing-md);
-}
-
-.address-item {
-  display: flex;
-  gap: var(--spacing-md);
-  align-items: flex-start;
+.company-description {
   padding: var(--spacing-md);
   background: var(--gray-50);
   border-radius: var(--radius-md);
   transition: all var(--transition-base);
 }
 
-.address-item:hover {
+.company-description:hover {
   background: var(--gray-100);
-  transform: translateX(4px);
+  transform: translateY(-2px);
 }
 
-.address-icon {
-  width: 20px;
-  height: 20px;
-  color: var(--blue);
-  flex-shrink: 0;
-  margin-top: 2px;
-}
-
-.address-item div {
+.company-description p {
   font-size: 0.875rem;
   color: var(--gray-700);
-  line-height: 1.5;
-}
-
-.address-item strong {
-  color: var(--gray-900);
-  font-weight: 600;
+  line-height: 1.6;
+  margin: 0;
+  text-align: justify;
 }
 
 /* ============================================
@@ -889,6 +869,23 @@ body {
   .footer-whatsapp-btn .whatsapp-icon {
     width: 20px;
     height: 20px;
+  }
+  
+  /* Responsive Company Description */
+  .company-description {
+    padding: var(--spacing-sm);
+  }
+  
+  .company-description p {
+    font-size: 0.8125rem;
+    line-height: 1.5;
+  }
+}
+
+@media (max-width: 360px) {
+  .company-description p {
+    font-size: 0.75rem;
+    line-height: 1.4;
   }
 }
 
