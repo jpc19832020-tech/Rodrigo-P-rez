@@ -845,7 +845,10 @@ const translations = {
         copyLink: 'Copiar enlace',
         copied: '✓ Copiado',
         companyDescription: 'Costamar Corporate Travel es la división especializada en viajes de negocios y MICE del Grupo Costamar. Ofrecemos soluciones integrales para la gestión de viajes corporativos, reuniones, congresos, ferias y viajes de incentivo, asegurando eficiencia, ahorro y experiencias memorables para nuestros clientes empresariales.',
-        footerCTAText: 'Haz de tu presentación una experiencia digital. Obtén tu SmartCard ahora.'
+        footerCTAText: 'Haz de tu presentación una experiencia digital. Obtén tu SmartCard ahora.',
+        whatsappMessage: 'Hola%20Miexy,%20te%20contacto%20desde%20tu%20tarjeta%20web.',
+        emailSubject: 'Consulta%20%E2%80%93%20Tarjeta%20FOTON',
+        emailBody: 'Hola%20Miexy,'
     },
     en: {
         phone: 'Phone',
@@ -878,7 +881,10 @@ const translations = {
         copyLink: 'Copy link',
         copied: '✓ Copied',
         companyDescription: 'Costamar Corporate Travel is the specialized division in business travel and MICE of the Costamar Group. We offer comprehensive solutions for corporate travel management, meetings, congresses, fairs and incentive trips, ensuring efficiency, savings and memorable experiences for our business clients.',
-        footerCTAText: 'Make your presentation a digital experience. Get your SmartCard now.'
+        footerCTAText: 'Make your presentation a digital experience. Get your SmartCard now.',
+        whatsappMessage: 'Hello%20Miexy,%20I%27m%20contacting%20you%20from%20your%20web%20card.',
+        emailSubject: 'Inquiry%20%E2%80%93%20FOTON%20Card',
+        emailBody: 'Hello%20Miexy,'
     }
 };
 
@@ -1022,6 +1028,27 @@ function updatePageLanguage() {
     const footerCTAText = document.querySelector('.footer-cta-text');
     if (footerCTAText) {
         footerCTAText.textContent = t.footerCTAText;
+    }
+    
+    // Update WhatsApp link
+    const whatsappLink = document.querySelector('.btn-whatsapp');
+    if (whatsappLink) {
+        const phoneNumber = whatsappLink.href.match(/wa\.me\/(\d+)/)[1];
+        whatsappLink.href = `https://wa.me/${phoneNumber}?text=${t.whatsappMessage}`;
+    }
+    
+    // Update email link
+    const emailLink = document.querySelector('.btn-email');
+    if (emailLink) {
+        const emailAddress = emailLink.href.match(/mailto:([^?]+)/)[1];
+        emailLink.href = `mailto:${emailAddress}?subject=${t.emailSubject}&body=${t.emailBody}`;
+    }
+    
+    // Update footer WhatsApp link
+    const footerWhatsappLink = document.querySelector('.footer-whatsapp-btn');
+    if (footerWhatsappLink) {
+        const phoneNumber = footerWhatsappLink.href.match(/wa\.me\/(\d+)/)[1];
+        footerWhatsappLink.href = `https://wa.me/${phoneNumber}?text=${t.whatsappMessage}`;
     }
 }
 
