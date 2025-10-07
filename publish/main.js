@@ -138,7 +138,7 @@ async function copyOfficePhone() {
  * Copy WeChat ID to clipboard
  */
 async function copyWeChatID() {
-    const wechatID = 'JPFoton2026';
+    const wechatID = '';
     const success = await copyToClipboard(wechatID);
     
     if (success) {
@@ -167,7 +167,7 @@ async function copyWeChatID() {
 async function shareCard() {
     const shareData = {
         title: 'Tarjeta de Miexy Marcani Benites',
-        text: 'Contacto y enlaces de Alex en FOTON',
+        text: 'Contacto y enlaces de Miexy Marcani Benites',
         url: window.location.href
     };
 
@@ -529,7 +529,7 @@ function handleSwipe(startX, endX, startY, endY) {
  * Initialize all functionality when DOM is ready
  */
 document.addEventListener('DOMContentLoaded', function() {
-    console.log('🚀 FOTON Business Card initialized');
+    console.log('🚀 Business Card initialized');
     
     // Initialize carousel
     initCarousel({ interval: 5000 });
@@ -847,7 +847,7 @@ const translations = {
         companyDescription: 'Costamar Corporate Travel es la división especializada en viajes de negocios y MICE del Grupo Costamar. Ofrecemos soluciones integrales para la gestión de viajes corporativos, reuniones, congresos, ferias y viajes de incentivo, asegurando eficiencia, ahorro y experiencias memorables para nuestros clientes empresariales.',
         footerCTAText: 'Haz de tu presentación una experiencia digital. Obtén tu SmartCard ahora.',
         whatsappMessage: 'Hola%20Miexy,%20te%20contacto%20desde%20tu%20tarjeta%20web.',
-        emailSubject: 'Consulta%20%E2%80%93%20Tarjeta%20FOTON',
+        emailSubject: 'Consulta%20%E2%80%93%20Tarjeta%20Web',
         emailBody: 'Hola%20Miexy,'
     },
     en: {
@@ -864,15 +864,13 @@ const translations = {
         location: 'Lima Office',
         shareCard: 'Share Card',
         gallery: 'Gallery',
-        gallerySubtitle: 'Heavy-duty solutions adapted to the Peruvian market.',
-        vision360: 'Try 360° view',
-        representative: 'Representative of:',
+        
+        
+        
         contact: 'Contact',
-        regionTitle: 'FOTON in the region',
+        
         regionSubtitle: 'Innovation and comprehensive support',
-        info1: 'Optimized supply chain for industrial projects, mining and construction.',
-        info2: 'Technical support and personalized training for fleets operating in Peru.',
-        info3: 'Global network of spare parts and services with presence in more than 110 countries.',
+        
         phoneCopied: '📱 Phone copied',
         wechatCopied: '💬 WeChat ID copied',
         linkCopied: '🔗 Link copied',
