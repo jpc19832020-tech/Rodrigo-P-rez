@@ -829,10 +829,10 @@ const translations = {
         shareCard: 'Compartir tarjeta',
         gallery: 'Galería',
         gallerySubtitle: '',
-        vision360: 'Probar vista 360°',
-        representative: 'Representante de:',
+       
+       
         contact: 'Contacto',
-        regionTitle: 'FOTON en la región',
+     
         regionSubtitle: 'Innovación y soporte integral',
         info1: 'Cadena de suministro optimizada para proyectos industriales, minería y construcción.',
         info2: 'Soporte técnico y capacitación personalizada para flotas en operación en Perú.',
