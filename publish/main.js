@@ -88,7 +88,7 @@ async function copyToClipboard(text) {
  * Copy phone number to clipboard
  */
 async function copyPhone() {
-    const phoneNumber = '+51 976 330 377';
+    const phoneNumber = '+51976330377';
     const success = await copyToClipboard(phoneNumber);
     
     if (success) {
