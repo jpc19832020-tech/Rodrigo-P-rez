@@ -883,7 +883,7 @@ const translations = {
         companyDescription: 'Costamar Corporate Travel is the specialized division in business travel and MICE of the Costamar Group. We offer comprehensive solutions for corporate travel management, meetings, congresses, fairs and incentive trips, ensuring efficiency, savings and memorable experiences for our business clients.',
         footerCTAText: 'Make your presentation a digital experience. Get your SmartCard now.',
         whatsappMessage: 'Hello%20Miexy,%20I%27m%20contacting%20you%20from%20your%20web%20card.',
-        emailSubject: 'Inquiry%20%E2%80%93%20FOTON%20Card',
+        emailSubject: 'Inquiry%20%E2%80%93%20%20',
         emailBody: 'Hello%20Miexy,'
     }
 };
