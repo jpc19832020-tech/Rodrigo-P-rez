@@ -107,6 +107,29 @@ async function copyPhone() {
     }
 }
 
+/**
+ * Copy office phone number to clipboard
+ */
+async function copyOfficePhone() {
+    const officePhoneNumber = '(51-1) 616-7610 anexo 5483';
+    const success = await copyToClipboard(officePhoneNumber);
+    
+    if (success) {
+        showToast('📱 Teléfono de oficina copiado / Office phone copied');
+        
+        // Add visual feedback to button
+        const officePhoneBtn = document.querySelector('.btn-phone:nth-child(3)');
+        if (officePhoneBtn) {
+            officePhoneBtn.style.transform = 'scale(0.95)';
+            setTimeout(() => {
+                officePhoneBtn.style.transform = '';
+            }, 150);
+        }
+    } else {
+        showToast('❌ No se pudo copiar el teléfono de oficina');
+    }
+}
+
 // ============================================
 // WECHAT ID COPY FUNCTIONALITY
 // ============================================
@@ -771,6 +794,7 @@ function handleLightboxSwipe(startX, endX, startY, endY) {
 
 // Make functions available globally for inline onclick handlers
 window.copyPhone = copyPhone;
+window.copyOfficePhone = copyOfficePhone;
 window.copyWeChatID = copyWeChatID;
 window.shareCard = shareCard;
 window.nextSlide = nextSlide;
@@ -792,6 +816,7 @@ let currentLanguage = 'es'; // Default language is Spanish
 const translations = {
     es: {
         phone: 'Teléfono',
+        officePhone: 'Teléfono oficina',
         whatsapp: 'WhatsApp',
         whatsappText: 'Escríbeme por WhatsApp',
         email: 'Correo',
@@ -803,7 +828,7 @@ const translations = {
         location: 'Oficina Lima',
         shareCard: 'Compartir tarjeta',
         gallery: 'Galería',
-        gallerySubtitle: 'Soluciones de carga pesada adaptadas al mercado peruano.',
+        gallerySubtitle: '',
         vision360: 'Probar vista 360°',
         representative: 'Representante de:',
         contact: 'Contacto',
@@ -824,6 +849,7 @@ const translations = {
     },
     en: {
         phone: 'Phone',
+        officePhone: 'Office Phone',
         whatsapp: 'WhatsApp',
         whatsappText: 'Message me on WhatsApp',
         email: 'Email',
@@ -889,6 +915,8 @@ function updatePageLanguage() {
     const labels = {
         'Teléfono': t.phone,
         'Phone': t.phone,
+        'Teléfono oficina': t.officePhone,
+        'Office Phone': t.officePhone,
         'WhatsApp': t.whatsapp,
         'Correo': t.email,
         'Email': t.email,
