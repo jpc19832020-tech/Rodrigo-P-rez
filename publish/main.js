@@ -382,17 +382,6 @@ document.addEventListener('DOMContentLoaded', function() {
         observer.observe(el);
     });
     
-    // Add hover effects to social links
-    const socialLinks = document.querySelectorAll('.social-link');
-    socialLinks.forEach(link => {
-        link.addEventListener('mouseenter', function() {
-            this.style.transform = 'translateY(-2px) scale(1.1) rotate(5deg)';
-        });
-        
-        link.addEventListener('mouseleave', function() {
-            this.style.transform = 'translateY(-2px) scale(1.1)';
-        });
-    });
     
     // Log performance metrics
     if (window.performance && window.performance.timing) {
