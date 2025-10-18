@@ -3,9 +3,6 @@
 // ============================================
 
 // Global state
-let currentSlide = 0;
-let slideInterval;
-let isCarouselPaused = false;
 
 // ============================================
 // UTILITY FUNCTIONS
@@ -334,192 +331,6 @@ function generateQRCode(containerId, text) {
     drawCorner(0, size - 50);
 }
 
-// ============================================
-// CAROUSEL FUNCTIONALITY
-// ============================================
-
-/**
- * Initialize carousel with auto-play and swipe support
- */
-function initCarousel(options = { interval: 5000 }) {
-    const slides = document.querySelectorAll('.carousel-item');
-    const carousel = document.querySelector('.carousel');
-    const carouselContainer = document.querySelector('.carousel-container');
-    
-    if (!slides.length || !carousel || !carouselContainer) return;
-    
-    // Create indicators
-    createIndicators(slides.length);
-    
-    // Update initial state
-    updateCarousel();
-    
-    // Start auto-play
-    startCarousel(options.interval);
-    
-    // Pause on hover
-    carouselContainer.addEventListener('mouseenter', pauseCarousel);
-    carouselContainer.addEventListener('mouseleave', () => {
-        if (!isCarouselPaused) {
-            startCarousel(options.interval);
-        }
-    });
-    
-    // Touch/swipe support
-    let touchStartX = 0;
-    let touchEndX = 0;
-    let touchStartY = 0;
-    let touchEndY = 0;
-    
-    carouselContainer.addEventListener('touchstart', (e) => {
-        touchStartX = e.touches[0].clientX;
-        touchStartY = e.touches[0].clientY;
-        pauseCarousel();
-    }, { passive: true });
-    
-    carouselContainer.addEventListener('touchmove', (e) => {
-        touchEndX = e.touches[0].clientX;
-        touchEndY = e.touches[0].clientY;
-    }, { passive: true });
-    
-    carouselContainer.addEventListener('touchend', () => {
-        handleSwipe(touchStartX, touchEndX, touchStartY, touchEndY);
-        if (!isCarouselPaused) {
-            startCarousel(options.interval);
-        }
-    });
-    
-    // Keyboard navigation
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'ArrowLeft') {
-            prevSlide();
-        } else if (e.key === 'ArrowRight') {
-            nextSlide();
-        }
-    });
-}
-
-/**
- * Create indicator dots
- */
-function createIndicators(count) {
-    const indicatorsContainer = document.querySelector('.carousel-indicators');
-    if (!indicatorsContainer) return;
-    
-    indicatorsContainer.innerHTML = '';
-    
-    for (let i = 0; i < count; i++) {
-        const indicator = document.createElement('button');
-        indicator.className = 'indicator';
-        indicator.setAttribute('aria-label', `Ir a imagen ${i + 1}`);
-        indicator.addEventListener('click', () => goToSlide(i));
-        
-        if (i === 0) {
-            indicator.classList.add('active');
-        }
-        
-        indicatorsContainer.appendChild(indicator);
-    }
-}
-
-/**
- * Update carousel position and indicators
- */
-function updateCarousel() {
-    const carousel = document.querySelector('.carousel');
-    const indicators = document.querySelectorAll('.indicator');
-    
-    if (!carousel) return;
-    
-    // Update carousel position with smooth animation
-    carousel.style.transform = `translateX(-${currentSlide * 100}%)`;
-    
-    // Update indicators
-    indicators.forEach((indicator, index) => {
-        if (index === currentSlide) {
-            indicator.classList.add('active');
-        } else {
-            indicator.classList.remove('active');
-        }
-    });
-}
-
-/**
- * Go to next slide
- */
-function nextSlide() {
-    const slides = document.querySelectorAll('.carousel-item');
-    currentSlide = (currentSlide + 1) % slides.length;
-    updateCarousel();
-}
-
-/**
- * Go to previous slide
- */
-function prevSlide() {
-    const slides = document.querySelectorAll('.carousel-item');
-    currentSlide = (currentSlide - 1 + slides.length) % slides.length;
-    updateCarousel();
-}
-
-/**
- * Go to specific slide
- */
-function goToSlide(index) {
-    currentSlide = index;
-    updateCarousel();
-    pauseCarousel();
-    isCarouselPaused = true;
-    
-    // Resume after 3 seconds
-    setTimeout(() => {
-        isCarouselPaused = false;
-        startCarousel(5000);
-    }, 3000);
-}
-
-/**
- * Start carousel auto-play
- */
-function startCarousel(interval) {
-    stopCarousel();
-    slideInterval = setInterval(nextSlide, interval);
-}
-
-/**
- * Pause carousel
- */
-function pauseCarousel() {
-    stopCarousel();
-}
-
-/**
- * Stop carousel
- */
-function stopCarousel() {
-    if (slideInterval) {
-        clearInterval(slideInterval);
-        slideInterval = null;
-    }
-}
-
-/**
- * Handle swipe gesture
- */
-function handleSwipe(startX, endX, startY, endY) {
-    const minSwipeDistance = 50;
-    const swipeDistanceX = startX - endX;
-    const swipeDistanceY = Math.abs(startY - endY);
-    
-    // Only process horizontal swipes
-    if (swipeDistanceY < 100 && Math.abs(swipeDistanceX) > minSwipeDistance) {
-        if (swipeDistanceX > 0) {
-            nextSlide();
-        } else {
-            prevSlide();
-        }
-    }
-}
 
 // ============================================
 // INITIALIZATION
@@ -530,9 +341,6 @@ function handleSwipe(startX, endX, startY, endY) {
  */
 document.addEventListener('DOMContentLoaded', function() {
     console.log('🚀 Business Card initialized');
-    
-    // Initialize carousel
-    initCarousel({ interval: 5000 });
     
     // Add smooth scroll behavior
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -582,8 +390,6 @@ document.addEventListener('DOMContentLoaded', function() {
 // LIGHTBOX FUNCTIONALITY
 // ============================================
 
-let currentLightboxSlide = 0;
-
 /**
  * Open lightbox with single image
  */
@@ -627,167 +433,6 @@ function closeLightbox() {
     document.body.style.overflow = '';
 }
 
-/**
- * Open gallery lightbox
- */
-function openGalleryLightbox() {
-    const galleryLightbox = document.getElementById('gallery-lightbox');
-    if (!galleryLightbox) return;
-    
-    // Set current slide to match main carousel
-    currentLightboxSlide = currentSlide;
-    
-    // Create indicators for lightbox carousel
-    createLightboxIndicators(3);
-    
-    // Update lightbox carousel
-    updateLightboxCarousel();
-    
-    galleryLightbox.classList.add('active');
-    document.body.style.overflow = 'hidden';
-    
-    // Close on ESC key
-    const handleEsc = (e) => {
-        if (e.key === 'Escape') {
-            closeGalleryLightbox();
-            document.removeEventListener('keydown', handleEsc);
-        }
-    };
-    document.addEventListener('keydown', handleEsc);
-    
-    // Close on background click
-    galleryLightbox.addEventListener('click', (e) => {
-        if (e.target === galleryLightbox) {
-            closeGalleryLightbox();
-        }
-    });
-    
-    // Add swipe support for lightbox
-    let touchStartX = 0;
-    let touchEndX = 0;
-    let touchStartY = 0;
-    let touchEndY = 0;
-    
-    const lightboxCarouselContainer = galleryLightbox.querySelector('.lightbox-carousel-container');
-    
-    lightboxCarouselContainer.addEventListener('touchstart', (e) => {
-        touchStartX = e.touches[0].clientX;
-        touchStartY = e.touches[0].clientY;
-    }, { passive: true });
-    
-    lightboxCarouselContainer.addEventListener('touchmove', (e) => {
-        touchEndX = e.touches[0].clientX;
-        touchEndY = e.touches[0].clientY;
-    }, { passive: true });
-    
-    lightboxCarouselContainer.addEventListener('touchend', () => {
-        handleLightboxSwipe(touchStartX, touchEndX, touchStartY, touchEndY);
-    });
-}
-
-/**
- * Close gallery lightbox
- */
-function closeGalleryLightbox() {
-    const galleryLightbox = document.getElementById('gallery-lightbox');
-    if (!galleryLightbox) return;
-    
-    galleryLightbox.classList.remove('active');
-    document.body.style.overflow = '';
-}
-
-/**
- * Create indicators for lightbox carousel
- */
-function createLightboxIndicators(count) {
-    const indicatorsContainer = document.querySelector('.lightbox-carousel-indicators');
-    if (!indicatorsContainer) return;
-    
-    indicatorsContainer.innerHTML = '';
-    
-    for (let i = 0; i < count; i++) {
-        const indicator = document.createElement('button');
-        indicator.className = 'indicator';
-        indicator.setAttribute('aria-label', `Ir a imagen ${i + 1}`);
-        indicator.addEventListener('click', (e) => {
-            e.stopPropagation();
-            goToLightboxSlide(i);
-        });
-        
-        if (i === currentLightboxSlide) {
-            indicator.classList.add('active');
-        }
-        
-        indicatorsContainer.appendChild(indicator);
-    }
-}
-
-/**
- * Update lightbox carousel position
- */
-function updateLightboxCarousel() {
-    const lightboxCarousel = document.querySelector('.lightbox-carousel');
-    const indicators = document.querySelectorAll('.lightbox-carousel-indicators .indicator');
-    
-    if (!lightboxCarousel) return;
-    
-    lightboxCarousel.style.transform = `translateX(-${currentLightboxSlide * 100}%)`;
-    
-    // Update indicators
-    indicators.forEach((indicator, index) => {
-        if (index === currentLightboxSlide) {
-            indicator.classList.add('active');
-        } else {
-            indicator.classList.remove('active');
-        }
-    });
-}
-
-/**
- * Next slide in lightbox
- */
-function nextLightboxSlide(event) {
-    if (event) event.stopPropagation();
-    const slides = document.querySelectorAll('.lightbox-carousel-item');
-    currentLightboxSlide = (currentLightboxSlide + 1) % slides.length;
-    updateLightboxCarousel();
-}
-
-/**
- * Previous slide in lightbox
- */
-function prevLightboxSlide(event) {
-    if (event) event.stopPropagation();
-    const slides = document.querySelectorAll('.lightbox-carousel-item');
-    currentLightboxSlide = (currentLightboxSlide - 1 + slides.length) % slides.length;
-    updateLightboxCarousel();
-}
-
-/**
- * Go to specific slide in lightbox
- */
-function goToLightboxSlide(index) {
-    currentLightboxSlide = index;
-    updateLightboxCarousel();
-}
-
-/**
- * Handle swipe in lightbox
- */
-function handleLightboxSwipe(startX, endX, startY, endY) {
-    const minSwipeDistance = 50;
-    const swipeDistanceX = startX - endX;
-    const swipeDistanceY = Math.abs(startY - endY);
-    
-    if (swipeDistanceY < 100 && Math.abs(swipeDistanceX) > minSwipeDistance) {
-        if (swipeDistanceX > 0) {
-            nextLightboxSlide();
-        } else {
-            prevLightboxSlide();
-        }
-    }
-}
-
 // ============================================
 // EXPORT FUNCTIONS FOR INLINE HANDLERS
 // ============================================
@@ -797,15 +442,8 @@ window.copyPhone = copyPhone;
 window.copyOfficePhone = copyOfficePhone;
 window.copyWeChatID = copyWeChatID;
 window.shareCard = shareCard;
-window.nextSlide = nextSlide;
-window.prevSlide = prevSlide;
-window.goToSlide = goToSlide;
 window.openLightbox = openLightbox;
 window.closeLightbox = closeLightbox;
-window.openGalleryLightbox = openGalleryLightbox;
-window.closeGalleryLightbox = closeGalleryLightbox;
-window.nextLightboxSlide = nextLightboxSlide;
-window.prevLightboxSlide = prevLightboxSlide;
 
 // ============================================
 // LANGUAGE SWITCHING FUNCTIONALITY
@@ -827,12 +465,7 @@ const translations = {
         facebookText: 'Perfil de Facebook',
         location: 'Oficina Lima',
         shareCard: 'Compartir tarjeta',
-        gallery: 'Galería',
-        gallerySubtitle: '',
-       
-       
         contact: 'Contacto',
-     
         regionSubtitle: 'Innovación y soporte integral',
         info1: 'Cadena de suministro optimizada para proyectos industriales, minería y construcción.',
         info2: 'Soporte técnico y capacitación personalizada para flotas en operación en Perú.',
@@ -863,10 +496,6 @@ const translations = {
         facebookText: 'Facebook Profile',
         location: 'Lima Office',
         shareCard: 'Share Card',
-        gallery: 'Gallery',
-        
-        
-        
         contact: 'Contact',
         
         regionSubtitle: 'Innovation and comprehensive support',
@@ -959,16 +588,8 @@ function updatePageLanguage() {
             title.textContent = t.representative;
         } else if (title.textContent.includes('Contacto') || title.textContent.includes('Contact')) {
             title.textContent = t.contact;
-        } else if (title.textContent.includes('Galería') || title.textContent.includes('Gallery')) {
-            title.textContent = t.gallery;
         }
     });
-    
-    // Update gallery subtitle
-    const gallerySubtitle = document.querySelector('.gallery-subtitle');
-    if (gallerySubtitle) {
-        gallerySubtitle.textContent = t.gallerySubtitle;
-    }
     
     // Update vision badges
     document.querySelectorAll('.vision-badge, .lightbox-vision-badge').forEach(badge => {

@@ -224,7 +224,6 @@ body {
 .title-card,
 .chips-card,
 .contact-card,
-.gallery-card,
 .info-card,
 .company-card {
   background: var(--white);
@@ -238,7 +237,6 @@ body {
 .title-card:hover,
 .chips-card:hover,
 .contact-card:hover,
-.gallery-card:hover,
 .info-card:hover,
 .company-card:hover {
   transform: translateY(-2px);
@@ -517,144 +515,6 @@ body {
   height: 20px;
 }
 
-/* ============================================
-   GALLERY SECTION
-   ============================================ */
-
-.gallery-header {
-  margin-bottom: var(--spacing-md);
-}
-
-.gallery-subtitle {
-  font-size: 0.875rem;
-  color: var(--gray-600);
-  margin-top: var(--spacing-xs);
-}
-
-.carousel-wrapper {
-  position: relative;
-}
-
-.carousel-container {
-  position: relative;
-  overflow: hidden;
-  border-radius: var(--radius-lg);
-  background: var(--gray-900);
-}
-
-.carousel {
-  display: flex;
-  transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  will-change: transform;
-}
-
-.carousel-item {
-  min-width: 100%;
-  position: relative;
-  opacity: 1;
-  transition: opacity 0.6s ease-in-out;
-}
-
-.carousel-item img {
-  width: 100%;
-  height: auto;
-  display: block;
-  aspect-ratio: 16/9;
-  object-fit: cover;
-  transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
-
-.carousel-item img:hover {
-  transform: scale(1.02);
-}
-
-.vision-badge {
-  position: absolute;
-  top: var(--spacing-md);
-  right: var(--spacing-md);
-  display: flex;
-  align-items: center;
-  gap: var(--spacing-xs);
-  background: rgba(13, 88, 163, 0.95);
-  backdrop-filter: blur(10px);
-  color: var(--white);
-  padding: var(--spacing-sm) var(--spacing-md);
-  border-radius: var(--radius-md);
-  font-size: 0.875rem;
-  font-weight: 600;
-  text-decoration: none;
-  box-shadow: var(--shadow-lg);
-  transition: all var(--transition-base);
-  z-index: 10;
-}
-
-.vision-badge:hover {
-  background: rgba(13, 88, 163, 1);
-  transform: scale(1.05);
-}
-
-.badge-icon {
-  width: 18px;
-  height: 18px;
-}
-
-.carousel-controls {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: var(--spacing-md);
-  margin-top: var(--spacing-md);
-}
-
-.carousel-btn {
-  width: 40px;
-  height: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: var(--white);
-  border: 2px solid var(--gray-200);
-  border-radius: var(--radius-full);
-  cursor: pointer;
-  transition: all var(--transition-base);
-  box-shadow: var(--shadow-sm);
-}
-
-.carousel-btn:hover {
-  background: var(--blue);
-  border-color: var(--blue);
-  color: var(--white);
-  transform: scale(1.1);
-  box-shadow: var(--shadow-md);
-}
-
-.carousel-btn svg {
-  width: 20px;
-  height: 20px;
-}
-
-.carousel-indicators {
-  display: flex;
-  gap: var(--spacing-sm);
-}
-
-.indicator {
-  width: 8px;
-  height: 8px;
-  border-radius: var(--radius-full);
-  background: var(--gray-300);
-  transition: all var(--transition-base);
-  cursor: pointer;
-}
-
-.indicator.active {
-  background: var(--blue);
-  width: 24px;
-}
-
-.indicator:hover {
-  background: var(--blue-light);
-}
 
 /* ============================================
    INFO SECTION
@@ -1068,7 +928,6 @@ body {
   .title-card,
   .chips-card,
   .contact-card,
-  .gallery-card,
   .info-card,
   .company-card {
     padding: var(--spacing-xl);
@@ -1189,132 +1048,6 @@ body {
   animation: slideIn 0.3s ease-out;
 }
 
-/* Gallery Lightbox Carousel */
-.lightbox-carousel-container {
-  position: relative;
-  width: 90vw;
-  max-width: 1200px;
-  height: 70vh;
-  overflow: hidden;
-  border-radius: var(--radius-xl);
-  background: var(--gray-900);
-}
-
-.lightbox-carousel {
-  display: flex;
-  height: 100%;
-  transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  will-change: transform;
-}
-
-.lightbox-carousel-item {
-  min-width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  opacity: 1;
-  transition: opacity 0.6s ease-in-out;
-}
-
-.lightbox-carousel-item img {
-  max-width: 100%;
-  max-height: 100%;
-  object-fit: contain;
-  transition: transform 0.3s ease-out;
-}
-
-.lightbox-carousel-item img:hover {
-  transform: scale(1.02);
-}
-
-.lightbox-vision-badge {
-  position: absolute;
-  top: var(--spacing-lg);
-  right: var(--spacing-lg);
-  display: flex;
-  align-items: center;
-  gap: var(--spacing-xs);
-  background: rgba(13, 88, 163, 0.95);
-  backdrop-filter: blur(10px);
-  color: var(--white);
-  padding: var(--spacing-md) var(--spacing-lg);
-  border-radius: var(--radius-lg);
-  font-size: 1rem;
-  font-weight: 600;
-  text-decoration: none;
-  box-shadow: var(--shadow-xl);
-  transition: all var(--transition-base);
-  z-index: 10;
-}
-
-.lightbox-vision-badge:hover {
-  background: rgba(13, 88, 163, 1);
-  transform: scale(1.05);
-}
-
-.lightbox-vision-badge .badge-icon {
-  width: 20px;
-  height: 20px;
-}
-
-.lightbox-carousel-controls {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: var(--spacing-lg);
-  margin-top: 0;
-}
-
-.lightbox-carousel-btn {
-  width: 56px;
-  height: 56px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
-  border: 2px solid rgba(255, 255, 255, 0.2);
-  border-radius: var(--radius-full);
-  cursor: pointer;
-  transition: all var(--transition-base);
-  color: var(--white);
-}
-
-.lightbox-carousel-btn:hover {
-  background: var(--blue);
-  border-color: var(--blue);
-  transform: scale(1.1);
-  box-shadow: var(--shadow-blue);
-}
-
-.lightbox-carousel-btn svg {
-  width: 28px;
-  height: 28px;
-}
-
-.lightbox-carousel-indicators {
-  display: flex;
-  gap: var(--spacing-sm);
-}
-
-.lightbox-carousel-indicators .indicator {
-  width: 12px;
-  height: 12px;
-  border-radius: var(--radius-full);
-  background: rgba(255, 255, 255, 0.3);
-  transition: all var(--transition-base);
-  cursor: pointer;
-}
-
-.lightbox-carousel-indicators .indicator.active {
-  background: var(--white);
-  width: 32px;
-}
-
-.lightbox-carousel-indicators .indicator:hover {
-  background: rgba(255, 255, 255, 0.6);
-}
 
 /* Responsive Lightbox */
 @media (max-width: 768px) {
@@ -1329,53 +1062,6 @@ body {
     width: 20px;
     height: 20px;
   }
-  
-  .lightbox-carousel-container {
-    width: 95vw;
-    height: 60vh;
-  }
-  
-  .lightbox-vision-badge {
-    top: var(--spacing-md);
-    right: var(--spacing-md);
-    padding: var(--spacing-sm) var(--spacing-md);
-    font-size: 0.875rem;
-  }
-  
-  .lightbox-carousel-btn {
-    width: 48px;
-    height: 48px;
-  }
-  
-  .lightbox-carousel-btn svg {
-    width: 24px;
-    height: 24px;
-  }
-}
-
-@media (max-width: 480px) {
-  .lightbox-carousel-container {
-    height: 50vh;
-  }
-  
-  .lightbox-vision-badge {
-    font-size: 0.75rem;
-    padding: var(--spacing-xs) var(--spacing-sm);
-  }
-  
-  .lightbox-carousel-controls {
-    gap: var(--spacing-md);
-  }
-  
-  .lightbox-carousel-btn {
-    width: 40px;
-    height: 40px;
-  }
-  
-  .lightbox-carousel-btn svg {
-    width: 20px;
-    height: 20px;
-  }
 }
 
 /* ============================================
@@ -1384,7 +1070,6 @@ body {
 
 @media print {
   .share-button,
-  .carousel-controls,
   .vision-badge,
   .lightbox {
     display: none !important;
@@ -1398,7 +1083,6 @@ body {
   .title-card,
   .chips-card,
   .contact-card,
-  .gallery-card,
   .info-card,
   .company-card {
     box-shadow: none;
