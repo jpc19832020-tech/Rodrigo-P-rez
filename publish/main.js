@@ -186,6 +186,116 @@ async function shareCard() {
 }
 
 /**
+ * Share QR using a professional lightbox
+ */
+async function shareQR() {
+    // Get current language translations
+    const t = translations[currentLanguage];
+    
+    // Remove any existing modal
+    const existingModal = document.querySelector('.modal');
+    if (existingModal) {
+        existingModal.remove();
+    }
+    
+    // Create modal
+    const modal = document.createElement('div');
+    modal.className = 'modal';
+    
+    modal.innerHTML = `
+        <div class="modal-content qr-modal-content">
+            <button class="close-btn" aria-label="${currentLanguage === 'es' ? 'Cerrar' : 'Close'}">&times;</button>
+            <div class="modal-header">
+                <h2>${t.shareQRTitle}</h2>
+            </div>
+            <div class="modal-body qr-modal-body">
+                <div class="qr-image-container">
+                    <img src="assets/img/QR_Costamar.png" alt="QR Costamar" class="qr-image">
+                </div>
+                <p class="qr-description">${t.shareQRText}</p>
+                <div class="qr-actions">
+                    <button class="qr-download-btn">
+                        <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/>
+                        </svg>
+                        ${t.downloadQR}
+                    </button>
+                    <button class="qr-copy-btn">
+                        <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/>
+                        </svg>
+                        ${t.copyLink}
+                    </button>
+                </div>
+            </div>
+        </div>
+    `;
+    
+    document.body.appendChild(modal);
+    
+    // Trigger animation
+    requestAnimationFrame(() => {
+        modal.classList.add('active');
+    });
+    
+    // Add event listeners
+    const closeBtn = modal.querySelector('.close-btn');
+    const downloadBtn = modal.querySelector('.qr-download-btn');
+    const copyBtn = modal.querySelector('.qr-copy-btn');
+    
+    closeBtn.addEventListener('click', () => closeModal(modal));
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) {
+            closeModal(modal);
+        }
+    });
+    
+    // Download QR image
+    downloadBtn.addEventListener('click', () => {
+        const link = document.createElement('a');
+        link.href = 'assets/img/QR_Costamar.png';
+        link.download = 'QR_Costamar.png';
+        link.click();
+        showToast(currentLanguage === 'es' ? '📥 QR descargado' : '📥 QR downloaded');
+    });
+    
+    // Copy link functionality
+    copyBtn.addEventListener('click', async () => {
+        const specificUrl = 'https://jpc19832020-tech.github.io/Miexy-Marcani/';
+        const success = await copyToClipboard(specificUrl);
+        if (success) {
+            showToast(currentLanguage === 'es' ? '🔗 Enlace copiado' : '🔗 Link copied');
+            copyBtn.innerHTML = `
+                <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                </svg>
+                ${currentLanguage === 'es' ? 'Copiado' : 'Copied'}
+            `;
+            setTimeout(() => {
+                copyBtn.innerHTML = `
+                    <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/>
+                    </svg>
+                    Copiar enlace
+                `;
+            }, 2000);
+        }
+    });
+    
+    // Close on ESC key
+    const handleEsc = (e) => {
+        if (e.key === 'Escape') {
+            closeModal(modal);
+            document.removeEventListener('keydown', handleEsc);
+        }
+    };
+    document.addEventListener('keydown', handleEsc);
+    
+    // Prevent body scroll
+    document.body.style.overflow = 'hidden';
+}
+
+/**
  * Show share modal with QR code
  */
 function showShareModal() {
@@ -449,6 +559,7 @@ window.copyPhone = copyPhone;
 window.copyOfficePhone = copyOfficePhone;
 window.copyWeChatID = copyWeChatID;
 window.shareCard = shareCard;
+window.shareQR = shareQR;
 window.openLightbox = openLightbox;
 window.closeLightbox = closeLightbox;
 
@@ -472,6 +583,7 @@ const translations = {
         facebookText: 'Perfil de Facebook',
         location: 'Oficina Lima',
         shareCard: 'Compartir tarjeta',
+        shareQR: 'Compartir QR',
         contact: 'Contacto',
         regionSubtitle: 'Innovación y soporte integral',
         info1: 'Cadena de suministro optimizada para proyectos industriales, minería y construcción.',
@@ -481,8 +593,11 @@ const translations = {
         wechatCopied: '💬 WeChat ID copiado',
         linkCopied: '🔗 Enlace copiado',
         shareTitle: 'Compartir tarjeta',
+        shareQRTitle: 'Compartir QR',
         shareText: 'Escanea el QR o copia el enlace',
+        shareQRText: 'Escanea este código QR para obtener más información',
         copyLink: 'Copiar enlace',
+        downloadQR: 'Descargar QR',
         copied: '✓ Copiado',
         companyDescription: 'Costamar Corporate Travel es la división especializada en viajes de negocios y MICE del Grupo Costamar. Ofrecemos soluciones integrales para la gestión de viajes corporativos, reuniones, congresos, ferias y viajes de incentivo, asegurando eficiencia, ahorro y experiencias memorables para nuestros clientes empresariales.',
         footerCTAText: 'Haz de tu presentación una experiencia digital. Obtén tu SmartCard ahora.',
@@ -503,6 +618,7 @@ const translations = {
         facebookText: 'Facebook Profile',
         location: 'Lima Office',
         shareCard: 'Share Card',
+        shareQR: 'Share QR',
         contact: 'Contact',
         
         regionSubtitle: 'Innovation and comprehensive support',
@@ -511,8 +627,11 @@ const translations = {
         wechatCopied: '💬 WeChat ID copied',
         linkCopied: '🔗 Link copied',
         shareTitle: 'Share card',
+        shareQRTitle: 'Share QR',
         shareText: 'Scan the QR or copy the link',
+        shareQRText: 'Scan this QR code for more information',
         copyLink: 'Copy link',
+        downloadQR: 'Download QR',
         copied: '✓ Copied',
         companyDescription: 'Costamar Corporate Travel is the specialized division in business travel and MICE of the Costamar Group. We offer comprehensive solutions for corporate travel management, meetings, congresses, fairs and incentive trips, ensuring efficiency, savings and memorable experiences for our business clients.',
         footerCTAText: 'Make your presentation a digital experience. Get your SmartCard now.',
@@ -620,6 +739,26 @@ function updatePageLanguage() {
             const svg = shareButton.querySelector('svg');
             if (svg) {
                 const textNode = document.createTextNode(t.shareCard);
+                svg.parentNode.insertBefore(textNode, svg.nextSibling);
+            }
+        }
+    }
+    
+    // Update Share QR button
+    const shareQRButtons = document.querySelectorAll('.share-button');
+    if (shareQRButtons.length > 1) {
+        // The second share button is the QR button
+        const qrButton = shareQRButtons[1];
+        const textNode = Array.from(qrButton.childNodes).find(node =>
+            node.nodeType === 3 && node.textContent.trim() !== ''
+        );
+        if (textNode) {
+            textNode.textContent = t.shareQR;
+        } else {
+            // If no text node found, add one after the SVG
+            const svg = qrButton.querySelector('svg');
+            if (svg) {
+                const textNode = document.createTextNode(t.shareQR);
                 svg.parentNode.insertBefore(textNode, svg.nextSibling);
             }
         }

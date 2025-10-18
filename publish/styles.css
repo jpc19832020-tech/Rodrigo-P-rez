@@ -1024,6 +1024,139 @@ body {
 }
 
 /* ============================================
+   QR MODAL STYLES
+   ============================================ */
+
+.qr-modal-content {
+  max-width: 420px;
+  padding: var(--spacing-xl);
+}
+
+.qr-modal-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-lg);
+}
+
+.qr-image-container {
+  position: relative;
+  padding: var(--spacing-lg);
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  box-shadow:
+    var(--shadow-lg),
+    0 0 0 1px var(--gray-200),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  transition: all var(--transition-base);
+}
+
+.qr-image-container:hover {
+  transform: translateY(-4px);
+  box-shadow:
+    var(--shadow-xl),
+    0 0 0 1px var(--gray-300),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+}
+
+.qr-image {
+  width: 240px;
+  height: 240px;
+  object-fit: contain;
+  border-radius: var(--radius-md);
+  display: block;
+}
+
+.qr-description {
+  font-size: 0.9375rem;
+  color: var(--gray-700);
+  text-align: center;
+  line-height: 1.5;
+  margin: 0;
+  max-width: 320px;
+}
+
+.qr-actions {
+  display: flex;
+  gap: var(--spacing-md);
+  width: 100%;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.qr-download-btn,
+.qr-copy-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  padding: var(--spacing-sm) var(--spacing-md);
+  background: linear-gradient(135deg, var(--blue) 0%, var(--blue-light) 100%);
+  color: var(--white);
+  border: none;
+  border-radius: var(--radius-md);
+  font-weight: 600;
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: all var(--transition-base);
+  box-shadow: var(--shadow-sm);
+  font-family: inherit;
+  white-space: nowrap;
+}
+
+.qr-download-btn:hover,
+.qr-copy-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+  background: linear-gradient(135deg, var(--blue-light) 0%, var(--blue) 100%);
+}
+
+.qr-download-btn:active,
+.qr-copy-btn:active {
+  transform: translateY(0);
+}
+
+/* Responsive QR Modal */
+@media (max-width: 480px) {
+  .qr-modal-content {
+    max-width: 360px;
+    padding: var(--spacing-lg);
+  }
+  
+  .qr-image {
+    width: 200px;
+    height: 200px;
+  }
+  
+  .qr-description {
+    font-size: 0.875rem;
+    max-width: 280px;
+  }
+  
+  .qr-actions {
+    flex-direction: column;
+    width: 100%;
+  }
+  
+  .qr-download-btn,
+  .qr-copy-btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 360px) {
+  .qr-modal-content {
+    max-width: 320px;
+    padding: var(--spacing-md);
+  }
+  
+  .qr-image {
+    width: 180px;
+    height: 180px;
+  }
+}
+
+/* ============================================
    TOAST NOTIFICATION
    ============================================ */
 
