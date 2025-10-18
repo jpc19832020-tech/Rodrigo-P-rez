@@ -342,6 +342,12 @@ function generateQRCode(containerId, text) {
 document.addEventListener('DOMContentLoaded', function() {
     console.log('🚀 Business Card initialized');
     
+    // Set current year in footer
+    const currentYearElement = document.getElementById('current-year');
+    if (currentYearElement) {
+        currentYearElement.textContent = new Date().getFullYear();
+    }
+    
     // Add smooth scroll behavior
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
@@ -374,6 +380,18 @@ document.addEventListener('DOMContentLoaded', function() {
     // Observe all fade-in elements
     document.querySelectorAll('.fade-in').forEach(el => {
         observer.observe(el);
+    });
+    
+    // Add hover effects to social links
+    const socialLinks = document.querySelectorAll('.social-link');
+    socialLinks.forEach(link => {
+        link.addEventListener('mouseenter', function() {
+            this.style.transform = 'translateY(-2px) scale(1.1) rotate(5deg)';
+        });
+        
+        link.addEventListener('mouseleave', function() {
+            this.style.transform = 'translateY(-2px) scale(1.1)';
+        });
     });
     
     // Log performance metrics
