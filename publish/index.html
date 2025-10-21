@@ -3,32 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Miexy Marcani Benites — Supervisora de Viajes MICE | División Corporativo & MICE</title>
+    <title id="page-title">Cargando...</title>
     
     <!-- Metadata -->
-    <meta name="description" content="Contacto oficial de Miexy Marcani Benites — Supervisora de Viajes MICE | División Corporativo & MICE. WhatsApp, correo y LinkedIn.">
+    <meta name="description" id="page-description" content="">
     
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://jpc19832020-tech.github.io/Miexy-Marcani-Benites/">
-    <meta property="og:title" content="Miexy Marcani Benites — Supervisora de Viajes MICE | División Corporativo & MICE">
-    <meta property="og:description" content="Contacto oficial de Miexy Marcani Benites — Supervisora de Viajes MICE | División Corporativo & MICE. WhatsApp, correo y LinkedIn.">
-    <meta property="og:image" content="assets/og/og-default.png">
+    <meta property="og:url" id="og-url" content="">
+    <meta property="og:title" id="og-title" content="">
+    <meta property="og:description" id="og-description" content="">
+    <meta property="og:image" id="og-image" content="">
     
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://jpc19832020-tech.github.io/Miexy-Marcani-Benites/">
-    <meta property="twitter:title" content="Miexy Marcani Benites — Supervisora de Viajes MICE | División Corporativo & MICE">
-    <meta property="twitter:description" content="Contacto oficial de Miexy Marcani Benites — Supervisora de Viajes MICE | División Corporativo & MICE. WhatsApp, correo y LinkedIn.">
-    <meta property="twitter:image" content="assets/og/og-default.png">
+    <meta property="twitter:url" id="twitter-url" content="">
+    <meta property="twitter:title" id="twitter-title" content="">
+    <meta property="twitter:description" id="twitter-description" content="">
+    <meta property="twitter:image" id="twitter-image" content="">
     
     <!-- Favicon -->
-    <link rel="icon" href="assets/img/image.png">
-    <link rel="apple-touch-icon" href="assets/img/image.png">
+    <link rel="icon" id="favicon" href="">
+    <link rel="apple-touch-icon" id="apple-touch-icon" href="">
     
     <!-- Custom styles -->
     <link rel="stylesheet" href="styles.css">
     <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Configuration file -->
+    <script src="config.js"></script>
 </head>
 <body>
     <!-- Language Switch Button -->
@@ -42,21 +45,21 @@
             <!-- Header Card -->
             <header class="header-card fade-in">
                 <div class="profile-section">
-                    <div class="profile-img-wrapper" onclick="openLightbox('assets/img/JP.1.png', 'Foto de perfil de Miexy Marcani Benites')" style="cursor: pointer;" title="Click para ampliar">
-                        <img src="assets/img/JP.1.png" alt="Foto de perfil de Miexy Marcani Benites" class="profile-img">
+                    <div class="profile-img-wrapper" onclick="openLightbox('', '')" style="cursor: pointer;" title="Click para ampliar">
+                        <img id="profile-img" src="" alt="" class="profile-img">
                         <div class="profile-ring"></div>
                     </div>
                     <div class="profile-info">
-                        <h1 class="profile-name">Miexy Marcani Benites</h1>
-                        <p class="profile-title">Supervisora de Viajes MICE | División Corporativo & MICE</p>
+                        <h1 id="profile-name" class="profile-name"></h1>
+                        <p id="profile-title" class="profile-title"></p>
                     </div>
                 </div>
             </header>
 
             <!-- Title Section -->
             <section class="title-card fade-in" style="animation-delay: 0.1s">
-                <h2 class="main-title">Supervisora de Viajes MICE | División Corporativo & MICE</h2>
-                <p class="main-subtitle">Experta profesional en eventos, congresos y viajes corporativos (MICE) con mas de 25 años de experiencia profesional</p>
+                <h2 id="main-title" class="main-title"></h2>
+                <p id="main-subtitle" class="main-subtitle"></p>
             </section>
 
             
@@ -70,8 +73,8 @@
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
                         </svg>
                         <div class="btn-content">
-                            <span class="btn-label">Teléfono</span>
-                            <span class="btn-text">+51976330377</span>
+                            <span id="phone-label" class="btn-label"></span>
+                            <span id="phone-number" class="btn-text"></span>
                         </div>
                     </button>
 
@@ -80,62 +83,56 @@
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
                         </svg>
                         <div class="btn-content">
-                            <span class="btn-label">Teléfono oficina</span>
-                            <span class="btn-text">(51-1) 616-7610 anexo 5483</span>
+                            <span id="office-phone-label" class="btn-label"></span>
+                            <span id="office-phone-number" class="btn-text"></span>
                         </div>
                     </button>
                     
-                    <a href="https://wa.me/51976330377?text=Hola%20Miexy,%20te%20contacto%20desde%20tu%20tarjeta%20web." class="contact-btn btn-whatsapp" target="_blank">
+                    <a id="whatsapp-link" href="" class="contact-btn btn-whatsapp" target="_blank">
                         <svg class="btn-icon" fill="currentColor" viewBox="0 0 24 24">
                             <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
                         </svg>
                         <div class="btn-content">
-                            <span class="btn-label">WhatsApp</span>
-                            <span class="btn-text">Escríbeme por WhatsApp</span>
+                            <span id="whatsapp-label" class="btn-label"></span>
+                            <span id="whatsapp-text" class="btn-text"></span>
                         </div>
                     </a>
 
-                    <a href="https://www.facebook.com/costamar/" target="_blank" class="contact-btn btn-facebook">
+                    <a id="facebook-link" href="" target="_blank" class="contact-btn btn-facebook">
                         <svg class="btn-icon" fill="currentColor" viewBox="0 0 24 24">
                             <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
                         </svg>
                         <div class="btn-content">
-                            <span class="btn-label">Facebook</span>
-                            <span class="btn-text">Perfil de Facebook</span>
+                            <span id="facebook-label" class="btn-label"></span>
+                            <span id="facebook-text" class="btn-text"></span>
                         </div>
                     </a>
 
-                    <a href="mailto:m.marcani@costamarcorp.com?subject=Consulta%20–%20Tarjeta%20Web&body=Hola%20Miexy," class="contact-btn btn-email" target="_blank">
+                    <a id="email-link" href="" class="contact-btn btn-email" target="_blank">
                         <svg class="btn-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
                         </svg>
                         <div class="btn-content">
-                            <span class="btn-label">Correo</span>
-                            <span class="btn-text">m.marcani@costamarcorp.com</span>
+                            <span id="email-label" class="btn-label"></span>
+                            <span id="email-text" class="btn-text"></span>
                         </div>
                     </a>
 
-
-
-     
-
-                    
-
-                    <a href="https://www.google.com/maps/place/Costamar+Travel/@-12.1191404,-77.0338826,3a,75y,165.04h,91.95t/data=!3m7!1e1!3m5!1sFaccT-GejrHvApfGXzS6kA!2e0!6shttps:%2F%2Fstreetviewpixels-pa.googleapis.com%2Fv1%2Fthumbnail%3Fcb_client%3Dmaps_sv.tactile%26w%3D900%26h%3D600%26pitch%3D-1.945596443337152%26panoid%3DFaccT-GejrHvApfGXzS6kA%26yaw%3D165.04055948610977!7i16384!8i8192!4m16!1m9!3m8!1s0x9105c822ad3df4d5:0x25d372b55107b1dd!2sAv.+Jos%C3%A9+Pardo+513,+Miraflores+15074!3b1!8m2!3d-12.1192886!4d-77.033908!10e5!16s%2Fg%2F11xvlxhw28!3m5!1s0x9105c9fc0bf98143:0x57225abaae2576f0!8m2!3d-12.1192779!4d-77.0339071!16s%2Fg%2F11qn6v_1z0?entry=ttu&g_ep=EgoyMDI1MTAwMS4wIKXMDSoASAFQAw%3D%3D" target="_blank" class="contact-btn btn-location">
+                    <a id="location-link" href="" target="_blank" class="contact-btn btn-location">
                         <svg class="btn-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
                         </svg>
                         <div class="btn-content">
-                            <span class="btn-label">Oficina Lima</span>
-                            <span class="btn-text">Av. José Pardo 513, Miraflores</span>
+                            <span id="location-label" class="btn-label"></span>
+                            <span id="location-text" class="btn-text"></span>
                         </div>
                     </a>
                 </div>
             </section>
 
             <!-- Share Button -->
-            <button class="share-button fade-in" style="animation-delay: 0.4s" onclick="shareCard()">
+            <button id="share-button" class="share-button fade-in" style="animation-delay: 0.4s" onclick="shareCard()">
                 <svg class="share-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"/>
                 </svg>
@@ -143,7 +140,7 @@
             </button>
 
             <!-- Share QR Button -->
-            <button class="share-button fade-in" style="animation-delay: 0.45s" onclick="shareQR()">
+            <button id="share-qr-button" class="share-button fade-in" style="animation-delay: 0.45s" onclick="shareQR()">
                 <svg class="share-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v1m6 11h2m-6 0h-2v4m0-11v3m0 0h.01M12 12h4.01M16 20h4M4 12h4m12 0h.01M5 8h2a1 1 0 001-1V5a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1zm12 0h2a1 1 0 001-1V5a1 1 0 00-1-1h-2a1 1 0 00-1 1v2a1 1 0 001 1zM5 20h2a1 1 0 001-1v-2a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1z"/>
                 </svg>
@@ -153,15 +150,15 @@
             <!-- Company Card -->
             <section class="company-card fade-in" style="animation-delay: 0.5s">
                 <div class="company-header">
-                    <img src="assets/img/Foton-logo-01.png" alt="FOTON Logo" class="company-logo">
+                    <img id="company-logo" src="" alt="Company Logo" class="company-logo">
                     <div>
-                        <h3 class="company-name">COSTAMAR CORPORATE TRAVEL</h3>
-                        <p class="company-tagline"></p>
+                        <h3 id="company-name" class="company-name"></h3>
+                        <p id="company-tagline" class="company-tagline"></p>
                     </div>
                 </div>
                 
                 <div class="company-description">
-                    <p>Costamar Corporate Travel es la división especializada en viajes de negocios y MICE del Grupo Costamar. Ofrecemos soluciones integrales para la gestión de viajes corporativos, reuniones, congresos, ferias y viajes de incentivo, asegurando eficiencia, ahorro y experiencias memorables para nuestros clientes empresariales.</p>
+                    <p id="company-description"></p>
                 </div>
             </section>
 
@@ -169,22 +166,22 @@
             <footer class="footer fade-in" style="animation-delay: 0.6s">
                 <!-- Copyright -->
                 <div class="footer-copyright-section">
-                    <p class="footer-copyright">© <span id="current-year">2024</span> Costamar Corporate Travel · Perú</p>
+                    <p id="footer-copyright" class="footer-copyright"></p>
                 </div>
                 
                 <!-- Contact CTA Section -->
                 <div class="footer-cta">
                     <div class="cta-pattern"></div>
-                    <p class="footer-cta-text">Haz de tu presentación una experiencia digital. Obtén tu SmartCard ahora.</p>
+                    <p id="footer-cta-text" class="footer-cta-text"></p>
                     <div class="footer-cta-button-container">
                         <div class="footer-logo-container">
-                            <img src="assets/img/EXO.png" alt="EXO Logo" class="footer-cta-logo-inline">
+                            <img id="footer-logo" src="" alt="EXO Logo" class="footer-cta-logo-inline">
                         </div>
-                        <a href="https://wa.me/51925475680?text=Hola,%20quiero%20obtener%20mi%20SmartCard" class="footer-whatsapp-btn" target="_blank">
+                        <a id="footer-whatsapp-link" href="" class="footer-whatsapp-btn" target="_blank">
                             <svg class="whatsapp-icon" fill="currentColor" viewBox="0 0 24 24">
                                 <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
                             </svg>
-                            <span>+51 929 000 881</span>
+                            <span id="footer-whatsapp-number"></span>
                         </a>
                     </div>
                 </div>
@@ -206,5 +203,103 @@
 
     <!-- Include our custom JavaScript -->
     <script src="main.js"></script>
+    
+    <!-- Initialize page with config data -->
+    <script>
+        // Esperar a que el DOM esté cargado y la configuración disponible
+        document.addEventListener('DOMContentLoaded', function() {
+            // Esperar un poco para asegurar que config.js está cargado
+            setTimeout(function() {
+                if (window.appConfig) {
+                    initializePage();
+                } else {
+                    console.error('Configuración no encontrada');
+                }
+            }, 100);
+        });
+
+        function initializePage() {
+            const config = window.appConfig;
+            
+            // Actualizar metadatos
+            document.getElementById('page-title').textContent = config.seo.title;
+            document.getElementById('page-description').content = config.seo.description;
+            document.getElementById('og-url').content = config.urls.website;
+            document.getElementById('og-title').content = config.seo.title;
+            document.getElementById('og-description').content = config.seo.description;
+            document.getElementById('og-image').content = config.images.ogImage;
+            document.getElementById('twitter-url').content = config.urls.website;
+            document.getElementById('twitter-title').content = config.seo.title;
+            document.getElementById('twitter-description').content = config.seo.description;
+            document.getElementById('twitter-image').content = config.images.ogImage;
+            document.getElementById('favicon').href = config.images.favicon;
+            document.getElementById('apple-touch-icon').href = config.images.favicon;
+            
+            // Actualizar información personal
+            document.getElementById('profile-name').textContent = config.personalInfo.name;
+            document.getElementById('profile-title').textContent = config.personalInfo.title;
+            document.getElementById('main-title').textContent = config.personalInfo.title;
+            document.getElementById('main-subtitle').textContent = config.personalInfo.subtitle;
+            
+            // Actualizar imagen de perfil
+            const profileImg = document.getElementById('profile-img');
+            profileImg.src = config.images.profile;
+            profileImg.alt = `Foto de perfil de ${config.personalInfo.name}`;
+            const profileWrapper = profileImg.parentElement;
+            profileWrapper.setAttribute('onclick', `openLightbox('${config.images.profile}', 'Foto de perfil de ${config.personalInfo.name}')`);
+            
+            // Actualizar información de contacto
+            document.getElementById('phone-label').textContent = config.uiTexts.phoneLabel;
+            document.getElementById('phone-number').textContent = config.contactInfo.phone;
+            document.getElementById('office-phone-label').textContent = config.uiTexts.officePhoneLabel;
+            document.getElementById('office-phone-number').textContent = config.contactInfo.officePhone;
+            document.getElementById('whatsapp-label').textContent = config.uiTexts.whatsappLabel;
+            document.getElementById('whatsapp-text').textContent = config.uiTexts.whatsappButton;
+            document.getElementById('email-label').textContent = config.uiTexts.emailLabel;
+            document.getElementById('email-text').textContent = config.contactInfo.email;
+            document.getElementById('facebook-label').textContent = config.uiTexts.facebookLabel;
+            document.getElementById('facebook-text').textContent = config.uiTexts.facebookText;
+            document.getElementById('location-label').textContent = config.uiTexts.locationLabel;
+            document.getElementById('location-text').textContent = config.contactInfo.location;
+            
+            // Actualizar enlaces
+            document.getElementById('whatsapp-link').href = `https://wa.me/${config.contactInfo.whatsapp.replace('+', '')}?text=${config.messages.whatsapp}`;
+            document.getElementById('facebook-link').href = config.contactInfo.facebook;
+            document.getElementById('email-link').href = `mailto:${config.contactInfo.email}?subject=${config.messages.emailSubject}&body=${config.messages.emailBody}`;
+            document.getElementById('location-link').href = config.contactInfo.mapsUrl;
+            
+            // Actualizar botones de compartir
+            document.getElementById('share-button').innerHTML = `
+                <svg class="share-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"/>
+                </svg>
+                ${config.uiTexts.shareButton}
+            `;
+            
+            document.getElementById('share-qr-button').innerHTML = `
+                <svg class="share-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v1m6 11h2m-6 0h-2v4m0-11v3m0 0h.01M12 12h4.01M16 20h4M4 12h4m12 0h.01M5 8h2a1 1 0 001-1V5a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1zm12 0h2a1 1 0 001-1V5a1 1 0 00-1-1h-2a1 1 0 00-1 1v2a1 1 0 001 1zM5 20h2a1 1 0 001-1v-2a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1z"/>
+                </svg>
+                ${config.uiTexts.shareQRButton}
+            `;
+            
+            // Actualizar información de la empresa
+            document.getElementById('company-logo').src = config.images.companyLogo;
+            document.getElementById('company-logo').alt = `${config.companyInfo.name} Logo`;
+            document.getElementById('company-name').textContent = config.companyInfo.name;
+            document.getElementById('company-tagline').textContent = config.companyInfo.tagline;
+            document.getElementById('company-description').textContent = config.companyInfo.description;
+            
+            // Actualizar footer
+            document.getElementById('footer-copyright').textContent = config.config.copyright;
+            document.getElementById('footer-cta-text').textContent = config.uiTexts.footerCTA;
+            document.getElementById('footer-logo').src = config.images.footerLogo;
+            document.getElementById('footer-logo').alt = 'EXO Logo';
+            document.getElementById('footer-whatsapp-link').href = `https://wa.me/${config.urls.smartcardWhatsApp.replace('+', '').replace(' ', '')}?text=${config.messages.smartcardWhatsApp}`;
+            document.getElementById('footer-whatsapp-number').textContent = config.urls.smartcardWhatsApp;
+            
+            console.log('✅ Página inicializada con configuración');
+        }
+    </script>
 </body>
 </html>

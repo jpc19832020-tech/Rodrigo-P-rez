@@ -85,11 +85,12 @@ async function copyToClipboard(text) {
  * Copy phone number to clipboard
  */
 async function copyPhone() {
-    const phoneNumber = '+51976330377';
+    const phoneNumber = window.appConfig ? window.appConfig.contactInfo.phone : '+51976330377';
     const success = await copyToClipboard(phoneNumber);
     
     if (success) {
-        showToast('📱 Teléfono copiado / Phone copied');
+        const t = currentLanguage === 'en' ? '📱 Phone copied' : '📱 Teléfono copiado';
+        showToast(t);
         
         // Add visual feedback to button
         const phoneBtn = document.querySelector('.btn-phone');
@@ -100,7 +101,8 @@ async function copyPhone() {
             }, 150);
         }
     } else {
-        showToast('❌ No se pudo copiar el teléfono');
+        const t = currentLanguage === 'en' ? '❌ Could not copy phone' : '❌ No se pudo copiar el teléfono';
+        showToast(t);
     }
 }
 
@@ -108,14 +110,15 @@ async function copyPhone() {
  * Copy office phone number to clipboard
  */
 async function copyOfficePhone() {
-    const officePhoneNumber = '(51-1) 616-7610 anexo 5483';
+    const officePhoneNumber = window.appConfig ? window.appConfig.contactInfo.officePhone : '(51-1) 616-7610 anexo 5483';
     const success = await copyToClipboard(officePhoneNumber);
     
     if (success) {
-        showToast('📱 Teléfono de oficina copiado / Office phone copied');
+        const t = currentLanguage === 'en' ? '📱 Office phone copied' : '📱 Teléfono de oficina copiado';
+        showToast(t);
         
         // Add visual feedback to button
-        const officePhoneBtn = document.querySelector('.btn-phone:nth-child(3)');
+        const officePhoneBtn = document.querySelector('.btn-phone:nth-child(2)');
         if (officePhoneBtn) {
             officePhoneBtn.style.transform = 'scale(0.95)';
             setTimeout(() => {
@@ -123,7 +126,8 @@ async function copyOfficePhone() {
             }, 150);
         }
     } else {
-        showToast('❌ No se pudo copiar el teléfono de oficina');
+        const t = currentLanguage === 'en' ? '❌ Could not copy office phone' : '❌ No se pudo copiar el teléfono de oficina';
+        showToast(t);
     }
 }
 
@@ -162,10 +166,11 @@ async function copyWeChatID() {
  * Share card using Web Share API or fallback modal
  */
 async function shareCard() {
+    const config = window.appConfig;
     const shareData = {
-        title: 'Tarjeta de Miexy Marcani Benites',
-        text: 'Contacto y enlaces de Miexy Marcani Benites',
-        url: window.location.href
+        title: config ? config.seo.title : 'Tarjeta de Miexy Marcani Benites',
+        text: config ? `Contacto y enlaces de ${config.personalInfo.name}` : 'Contacto y enlaces de Miexy Marcani Benites',
+        url: config ? config.urls.website : window.location.href
     };
 
     // Try Web Share API first
@@ -210,7 +215,7 @@ async function shareQR() {
             </div>
             <div class="modal-body qr-modal-body">
                 <div class="qr-image-container">
-                    <img src="assets/img/QR_Costamar.png" alt="QR Costamar" class="qr-image">
+                    <img src="${window.appConfig ? window.appConfig.images.qrCode : 'assets/img/QR_Costamar.png'}" alt="QR Costamar" class="qr-image">
                 </div>
                 <p class="qr-description">${t.shareQRText}</p>
                 <div class="qr-actions">
@@ -252,31 +257,43 @@ async function shareQR() {
     
     // Download QR image
     downloadBtn.addEventListener('click', () => {
+        const config = window.appConfig;
+        const qrSrc = config ? config.images.qrCode : 'assets/img/QR_Costamar.png';
+        const qrName = config ? 'QR_Costamar.png' : 'QR_Costamar.png';
+        
         const link = document.createElement('a');
-        link.href = 'assets/img/QR_Costamar.png';
-        link.download = 'QR_Costamar.png';
+        link.href = qrSrc;
+        link.download = qrName;
         link.click();
-        showToast(currentLanguage === 'es' ? '📥 QR descargado' : '📥 QR downloaded');
+        
+        const t = currentLanguage === 'es' ? '📥 QR descargado' : '📥 QR downloaded';
+        showToast(t);
     });
     
     // Copy link functionality
     copyBtn.addEventListener('click', async () => {
-        const specificUrl = 'https://jpc19832020-tech.github.io/Miexy-Marcani/';
+        const config = window.appConfig;
+        const specificUrl = config ? config.urls.shareUrl : 'https://jpc19832020-tech.github.io/Miexy-Marcani/';
         const success = await copyToClipboard(specificUrl);
         if (success) {
-            showToast(currentLanguage === 'es' ? '🔗 Enlace copiado' : '🔗 Link copied');
+            const t = currentLanguage === 'es' ? '🔗 Enlace copiado' : '🔗 Link copied';
+            showToast(t);
+            
+            const copiedText = currentLanguage === 'es' ? 'Copiado' : 'Copied';
+            const copyText = currentLanguage === 'es' ? 'Copiar enlace' : 'Copy link';
+            
             copyBtn.innerHTML = `
                 <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
                 </svg>
-                ${currentLanguage === 'es' ? 'Copiado' : 'Copied'}
+                ${copiedText}
             `;
             setTimeout(() => {
                 copyBtn.innerHTML = `
                     <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/>
                     </svg>
-                    Copiar enlace
+                    ${copyText}
                 `;
             }, 2000);
         }
@@ -350,23 +367,37 @@ function showShareModal() {
     });
     
     copyBtn.addEventListener('click', async () => {
-        const success = await copyToClipboard(window.location.href);
+        const config = window.appConfig;
+        const url = config ? config.urls.website : window.location.href;
+        const success = await copyToClipboard(url);
         if (success) {
-            showToast('🔗 Enlace copiado');
-            copyBtn.textContent = '✓ Copiado';
+            const t = currentLanguage === 'es' ? '🔗 Enlace copiado' : '🔗 Link copied';
+            showToast(t);
+            
+            const copiedText = currentLanguage === 'es' ? '✓ Copiado' : '✓ Copied';
+            const copyText = currentLanguage === 'es' ? 'Copiar enlace' : 'Copy link';
+            
+            copyBtn.innerHTML = `
+                <svg style="width: 16px; height: 16px; display: inline-block; vertical-align: middle; margin-right: 4px;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                </svg>
+                ${copiedText}
+            `;
             setTimeout(() => {
                 copyBtn.innerHTML = `
                     <svg style="width: 16px; height: 16px; display: inline-block; vertical-align: middle; margin-right: 4px;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/>
                     </svg>
-                    Copiar enlace
+                    ${copyText}
                 `;
             }, 2000);
         }
     });
     
     // Generate QR code
-    generateQRCode('qrcode', window.location.href);
+    const config = window.appConfig;
+    const qrUrl = config ? config.urls.website : window.location.href;
+    generateQRCode('qrcode', qrUrl);
     
     // Prevent body scroll
     document.body.style.overflow = 'hidden';
@@ -452,11 +483,8 @@ function generateQRCode(containerId, text) {
 document.addEventListener('DOMContentLoaded', function() {
     console.log('🚀 Business Card initialized');
     
-    // Set current year in footer
-    const currentYearElement = document.getElementById('current-year');
-    if (currentYearElement) {
-        currentYearElement.textContent = new Date().getFullYear();
-    }
+    // Set current year in footer (config already handles this)
+    // This is now handled by the config initialization
     
     // Add smooth scroll behavior
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -569,77 +597,151 @@ window.closeLightbox = closeLightbox;
 
 let currentLanguage = 'es'; // Default language is Spanish
 
-const translations = {
-    es: {
-        phone: 'Teléfono',
-        officePhone: 'Teléfono oficina',
-        whatsapp: 'WhatsApp',
-        whatsappText: 'Escríbeme por WhatsApp',
-        email: 'Correo',
-        emailCorp: 'Correo corporativo',
-        website: 'Sitio web',
-        wechat: 'WeChat ID',
-        facebook: 'Facebook',
-        facebookText: 'Perfil de Facebook',
-        location: 'Oficina Lima',
-        shareCard: 'Compartir tarjeta',
-        shareQR: 'Compartir QR',
-        contact: 'Contacto',
-        regionSubtitle: 'Innovación y soporte integral',
-        info1: 'Cadena de suministro optimizada para proyectos industriales, minería y construcción.',
-        info2: 'Soporte técnico y capacitación personalizada para flotas en operación en Perú.',
-        info3: 'Red global de repuestos y servicios con presencia en más de 110 países.',
-        phoneCopied: '📱 Teléfono copiado',
-        wechatCopied: '💬 WeChat ID copiado',
-        linkCopied: '🔗 Enlace copiado',
-        shareTitle: 'Compartir tarjeta',
-        shareQRTitle: 'Compartir QR',
-        shareText: 'Escanea el QR o copia el enlace',
-        shareQRText: 'Escanea este código QR para obtener más información',
-        copyLink: 'Copiar enlace',
-        downloadQR: 'Descargar QR',
-        copied: '✓ Copiado',
-        companyDescription: 'Costamar Corporate Travel es la división especializada en viajes de negocios y MICE del Grupo Costamar. Ofrecemos soluciones integrales para la gestión de viajes corporativos, reuniones, congresos, ferias y viajes de incentivo, asegurando eficiencia, ahorro y experiencias memorables para nuestros clientes empresariales.',
-        footerCTAText: 'Haz de tu presentación una experiencia digital. Obtén tu SmartCard ahora.',
-        whatsappMessage: 'Hola%20Miexy,%20te%20contacto%20desde%20tu%20tarjeta%20web.',
-        emailSubject: 'Consulta%20%E2%80%93%20Tarjeta%20Web',
-        emailBody: 'Hola%20Miexy,'
-    },
-    en: {
-        phone: 'Phone',
-        officePhone: 'Office Phone',
-        whatsapp: 'WhatsApp',
-        whatsappText: 'Message me on WhatsApp',
-        email: 'Email',
-        emailCorp: 'Corporate Email',
-        website: 'Website',
-        wechat: 'WeChat ID',
-        facebook: 'Facebook',
-        facebookText: 'Facebook Profile',
-        location: 'Lima Office',
-        shareCard: 'Share Card',
-        shareQR: 'Share QR',
-        contact: 'Contact',
-        
-        regionSubtitle: 'Innovation and comprehensive support',
-        
-        phoneCopied: '📱 Phone copied',
-        wechatCopied: '💬 WeChat ID copied',
-        linkCopied: '🔗 Link copied',
-        shareTitle: 'Share card',
-        shareQRTitle: 'Share QR',
-        shareText: 'Scan the QR or copy the link',
-        shareQRText: 'Scan this QR code for more information',
-        copyLink: 'Copy link',
-        downloadQR: 'Download QR',
-        copied: '✓ Copied',
-        companyDescription: 'Costamar Corporate Travel is the specialized division in business travel and MICE of the Costamar Group. We offer comprehensive solutions for corporate travel management, meetings, congresses, fairs and incentive trips, ensuring efficiency, savings and memorable experiences for our business clients.',
-        footerCTAText: 'Make your presentation a digital experience. Get your SmartCard now.',
-        whatsappMessage: 'Hello%20Miexy,%20I%27m%20contacting%20you%20from%20your%20web%20card.',
-        emailSubject: 'Inquiry%20%E2%80%93%20%20',
-        emailBody: 'Hello%20Miexy,'
+// Load translations from config if available, otherwise use defaults
+const getTranslations = () => {
+    if (window.appConfig && window.appConfig.uiTexts) {
+        const config = window.appConfig;
+        return {
+            es: {
+                phone: config.uiTexts.phoneLabel || 'Teléfono',
+                officePhone: config.uiTexts.officePhoneLabel || 'Teléfono oficina',
+                whatsapp: config.uiTexts.whatsappLabel || 'WhatsApp',
+                whatsappText: config.uiTexts.whatsappButton || 'Escríbeme por WhatsApp',
+                email: config.uiTexts.emailLabel || 'Correo',
+                emailCorp: 'Correo corporativo',
+                website: 'Sitio web',
+                wechat: 'WeChat ID',
+                facebook: config.uiTexts.facebookLabel || 'Facebook',
+                facebookText: config.uiTexts.facebookText || 'Perfil de Facebook',
+                location: config.uiTexts.locationLabel || 'Oficina Lima',
+                shareCard: config.uiTexts.shareButton || 'Compartir tarjeta',
+                shareQR: config.uiTexts.shareQRButton || 'Compartir QR',
+                contact: 'Contacto',
+                regionSubtitle: 'Innovación y soporte integral',
+                info1: 'Cadena de suministro optimizada para proyectos industriales, minería y construcción.',
+                info2: 'Soporte técnico y capacitación personalizada para flotas en operación en Perú.',
+                info3: 'Red global de repuestos y servicios con presencia en más de 110 países.',
+                phoneCopied: '📱 Teléfono copiado',
+                wechatCopied: '💬 WeChat ID copiado',
+                linkCopied: '🔗 Enlace copiado',
+                shareTitle: 'Compartir tarjeta',
+                shareQRTitle: 'Compartir QR',
+                shareText: 'Escanea el QR o copia el enlace',
+                shareQRText: 'Escanea este código QR para obtener más información',
+                copyLink: 'Copiar enlace',
+                downloadQR: 'Descargar QR',
+                copied: '✓ Copiado',
+                companyDescription: config.companyInfo.description || '',
+                footerCTAText: config.uiTexts.footerCTA || '',
+                whatsappMessage: config.messages.whatsapp || '',
+                emailSubject: config.messages.emailSubject || '',
+                emailBody: config.messages.emailBody || ''
+            },
+            en: {
+                phone: 'Phone',
+                officePhone: 'Office Phone',
+                whatsapp: 'WhatsApp',
+                whatsappText: 'Message me on WhatsApp',
+                email: 'Email',
+                emailCorp: 'Corporate Email',
+                website: 'Website',
+                wechat: 'WeChat ID',
+                facebook: 'Facebook',
+                facebookText: 'Facebook Profile',
+                location: 'Lima Office',
+                shareCard: 'Share Card',
+                shareQR: 'Share QR',
+                contact: 'Contact',
+                regionSubtitle: 'Innovation and comprehensive support',
+                phoneCopied: '📱 Phone copied',
+                wechatCopied: '💬 WeChat ID copied',
+                linkCopied: '🔗 Link copied',
+                shareTitle: 'Share card',
+                shareQRTitle: 'Share QR',
+                shareText: 'Scan the QR or copy the link',
+                shareQRText: 'Scan this QR code for more information',
+                copyLink: 'Copy link',
+                downloadQR: 'Download QR',
+                copied: '✓ Copied',
+                companyDescription: config.companyInfo.description || '',
+                footerCTAText: config.uiTexts.footerCTA || '',
+                whatsappMessage: config.messages.whatsapp || '',
+                emailSubject: config.messages.emailSubject || '',
+                emailBody: config.messages.emailBody || ''
+            }
+        };
     }
-};
+    
+    // Fallback translations
+    return {
+        es: {
+            phone: 'Teléfono',
+            officePhone: 'Teléfono oficina',
+            whatsapp: 'WhatsApp',
+            whatsappText: 'Escríbeme por WhatsApp',
+            email: 'Correo',
+            emailCorp: 'Correo corporativo',
+            website: 'Sitio web',
+            wechat: 'WeChat ID',
+            facebook: 'Facebook',
+            facebookText: 'Perfil de Facebook',
+            location: 'Oficina Lima',
+            shareCard: 'Compartir tarjeta',
+            shareQR: 'Compartir QR',
+            contact: 'Contacto',
+            regionSubtitle: 'Innovación y soporte integral',
+            info1: 'Cadena de suministro optimizada para proyectos industriales, minería y construcción.',
+            info2: 'Soporte técnico y capacitación personalizada para flotas en operación en Perú.',
+            info3: 'Red global de repuestos y servicios con presencia en más de 110 países.',
+            phoneCopied: '📱 Teléfono copiado',
+            wechatCopied: '💬 WeChat ID copiado',
+            linkCopied: '🔗 Enlace copiado',
+            shareTitle: 'Compartir tarjeta',
+            shareQRTitle: 'Compartir QR',
+            shareText: 'Escanea el QR o copia el enlace',
+            shareQRText: 'Escanea este código QR para obtener más información',
+            copyLink: 'Copiar enlace',
+            downloadQR: 'Descargar QR',
+            copied: '✓ Copiado',
+            companyDescription: 'Costamar Corporate Travel es la división especializada en viajes de negocios y MICE del Grupo Costamar. Ofrecemos soluciones integrales para la gestión de viajes corporativos, reuniones, congresos, ferias y viajes de incentivo, asegurando eficiencia, ahorro y experiencias memorables para nuestros clientes empresariales.',
+            footerCTAText: 'Haz de tu presentación una experiencia digital. Obtén tu SmartCard ahora.',
+            whatsappMessage: 'Hola%20Miexy,%20te%20contacto%20desde%20tu%20tarjeta%20web.',
+            emailSubject: 'Consulta%20%E2%80%93%20Tarjeta%20Web',
+            emailBody: 'Hola%20Miexy,'
+        },
+        en: {
+            phone: 'Phone',
+            officePhone: 'Office Phone',
+            whatsapp: 'WhatsApp',
+            whatsappText: 'Message me on WhatsApp',
+            email: 'Email',
+            emailCorp: 'Corporate Email',
+            website: 'Website',
+            wechat: 'WeChat ID',
+            facebook: 'Facebook',
+            facebookText: 'Facebook Profile',
+            location: 'Lima Office',
+            shareCard: 'Share Card',
+            shareQR: 'Share QR',
+            contact: 'Contact',
+            regionSubtitle: 'Innovation and comprehensive support',
+            phoneCopied: '📱 Phone copied',
+            wechatCopied: '💬 WeChat ID copied',
+            linkCopied: '🔗 Link copied',
+            shareTitle: 'Share card',
+            shareQRTitle: 'Share QR',
+            shareText: 'Scan the QR or copy the link',
+            shareQRText: 'Scan this QR code for more information',
+            copyLink: 'Copy link',
+            downloadQR: 'Download QR',
+            copied: '✓ Copied',
+            companyDescription: 'Costamar Corporate Travel is the specialized division in business travel and MICE of the Costamar Group. We offer comprehensive solutions for corporate travel management, meetings, congresses, fairs and incentive trips, ensuring efficiency, savings and memorable experiences for our business clients.',
+            footerCTAText: 'Make your presentation a digital experience. Get your SmartCard now.',
+            whatsappMessage: 'Hello%20Miexy,%20I%27m%20contacting%20you%20from%20your%20web%20card.',
+            emailSubject: 'Inquiry%20%E2%80%93%20%20',
+            emailBody: 'Hello%20Miexy,'
+        }
+    };
 
 /**
  * Toggle between Spanish and English
