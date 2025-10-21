@@ -6,9 +6,9 @@
 
 // Información personal principal
 const personalInfo = {
-    name: "Miexy Marcani Benites",
-    title: "Supervisora de Viajes MICE | División Corporativo & MICE",
-    subtitle: "Experta profesional en eventos, congresos y viajes corporativos (MICE) con mas de 25 años de experiencia profesional",
+    name: "Rodrigo Pérez",
+    title: "CEO | EXO Digital Studio",
+    subtitle: "Creador de nuestras herramientas y productos digitales.",
     profileImage: "assets/img/JP.1.png"
 };
 
@@ -25,7 +25,7 @@ const contactInfo = {
 
 // Información de la empresa
 const companyInfo = {
-    name: "COSTAMAR CORPORATE TRAVEL",
+    name: "EXO Digital Studio",
     tagline: "",
     logo: "assets/img/Foton-logo-01.png",
     description: "Costamar Corporate Travel es la división especializada en viajes de negocios y MICE del Grupo Costamar. Ofrecemos soluciones integrales para la gestión de viajes corporativos, reuniones, congresos, ferias y viajes de incentivo, asegurando eficiencia, ahorro y experiencias memorables para nuestros clientes empresariales."
@@ -33,15 +33,15 @@ const companyInfo = {
 
 // URLs y enlaces
 const urls = {
-    website: "https://jpc19832020-tech.github.io/Miexy-Marcani-Benites/",
-    shareUrl: "https://jpc19832020-tech.github.io/Miexy-Marcani/",
-    smartcardWhatsApp: "+51 929 000 881"
+    website: "https://jpc19832020-tech.github.io/Rodrigo-Perez/",
+    shareUrl: "https://jpc19832020-tech.github.io/Rodrigo-Perez/",
+    smartcardWhatsApp: "+51 925 475 680"
 };
 
 // Metadatos SEO
 const seo = {
-    title: "Miexy Marcani Benites — Supervisora de Viajes MICE | División Corporativo & MICE",
-    description: "Contacto oficial de Miexy Marcani Benites — Supervisora de Viajes MICE | División Corporativo & MICE. WhatsApp, correo y LinkedIn.",
+    title: "Rodrigo Pérez — CEO | EXO Digital Studio",
+    description: "Contacto oficial de Rodrigo Pérez — CEO | EXO Digital Studio",
     favicon: "assets/img/image.png",
     ogImage: "assets/og/og-default.png"
 };
@@ -82,16 +82,16 @@ const brandColors = {
 
 // Mensajes predefinidos
 const messages = {
-    whatsapp: "Hola%20Miexy,%20te%20contacto%20desde%20tu%20tarjeta%20web.",
+    whatsapp: "Hola%20Rodrigo,%20te%20contacto%20desde%20tu%20tarjeta%20web.",
     emailSubject: "Consulta%20%E2%80%93%20Tarjeta%20Web",
-    emailBody: "Hola%20Miexy,",
+    emailBody: "Hola%20Rodrigo,",
     smartcardWhatsApp: "Hola,%20quiero%20obtener%20mi%20SmartCard"
 };
 
 // Configuración adicional
 const config = {
     currentYear: new Date().getFullYear(),
-    copyright: `© ${new Date().getFullYear()} Costamar Corporate Travel · Perú`,
+    copyright: `© ${new Date().getFullYear()} EXO Digital Studio`,
     language: "es", // idioma por defecto
     enableAnimations: true,
     enableAnalytics: false

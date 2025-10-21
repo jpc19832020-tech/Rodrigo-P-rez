@@ -168,8 +168,8 @@ async function copyWeChatID() {
 async function shareCard() {
     const config = window.appConfig;
     const shareData = {
-        title: config ? config.seo.title : 'Tarjeta de Miexy Marcani Benites',
-        text: config ? `Contacto y enlaces de ${config.personalInfo.name}` : 'Contacto y enlaces de Miexy Marcani Benites',
+        title: config ? config.seo.title : 'Tarjeta de Rodrigo Pérez',
+        text: config ? `Contacto y enlaces de ${config.personalInfo.name}` : 'Contacto y enlaces de Rodrigo Pérez',
         url: config ? config.urls.website : window.location.href
     };
 
@@ -273,7 +273,7 @@ async function shareQR() {
     // Copy link functionality
     copyBtn.addEventListener('click', async () => {
         const config = window.appConfig;
-        const specificUrl = config ? config.urls.shareUrl : 'https://jpc19832020-tech.github.io/Miexy-Marcani/';
+        const specificUrl = config ? config.urls.shareUrl : 'https://jpc19832020-tech.github.io/Rodrigo-Perez/';
         const success = await copyToClipboard(specificUrl);
         if (success) {
             const t = currentLanguage === 'es' ? '🔗 Enlace copiado' : '🔗 Link copied';
@@ -705,9 +705,9 @@ const getTranslations = () => {
             copied: '✓ Copiado',
             companyDescription: 'Costamar Corporate Travel es la división especializada en viajes de negocios y MICE del Grupo Costamar. Ofrecemos soluciones integrales para la gestión de viajes corporativos, reuniones, congresos, ferias y viajes de incentivo, asegurando eficiencia, ahorro y experiencias memorables para nuestros clientes empresariales.',
             footerCTAText: 'Haz de tu presentación una experiencia digital. Obtén tu SmartCard ahora.',
-            whatsappMessage: 'Hola%20Miexy,%20te%20contacto%20desde%20tu%20tarjeta%20web.',
+            whatsappMessage: 'Hola%20Rodrigo,%20te%20contacto%20desde%20tu%20tarjeta%20web.',
             emailSubject: 'Consulta%20%E2%80%93%20Tarjeta%20Web',
-            emailBody: 'Hola%20Miexy,'
+            emailBody: 'Hola%20Rodrigo,'
         },
         en: {
             phone: 'Phone',
@@ -737,9 +737,9 @@ const getTranslations = () => {
             copied: '✓ Copied',
             companyDescription: 'Costamar Corporate Travel is the specialized division in business travel and MICE of the Costamar Group. We offer comprehensive solutions for corporate travel management, meetings, congresses, fairs and incentive trips, ensuring efficiency, savings and memorable experiences for our business clients.',
             footerCTAText: 'Make your presentation a digital experience. Get your SmartCard now.',
-            whatsappMessage: 'Hello%20Miexy,%20I%27m%20contacting%20you%20from%20your%20web%20card.',
+            whatsappMessage: 'Hello%20Rodrigo,%20I%27m%20contacting%20you%20from%20your%20web%20card.',
             emailSubject: 'Inquiry%20%E2%80%93%20%20',
-            emailBody: 'Hello%20Miexy,'
+            emailBody: 'Hello%20Rodrigo,'
         }
     };
 };
