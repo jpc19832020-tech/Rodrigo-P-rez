@@ -32,6 +32,9 @@
     
     <!-- Configuration file -->
     <script src="config.js"></script>
+    
+    <!-- Futuristic animations -->
+    <script src="animations.js"></script>
 </head>
 <body>
     <!-- Language Switch Button -->
@@ -41,6 +44,15 @@
     
     <!-- Main Container -->
     <div class="page-wrapper">
+        <!-- Animated Background Elements -->
+        <div class="floating-shapes">
+            <div class="shape shape-1"></div>
+            <div class="shape shape-2"></div>
+            <div class="shape shape-3"></div>
+            <div class="shape shape-4"></div>
+            <div class="shape shape-5"></div>
+        </div>
+        
         <div class="container">
             <!-- Header Card -->
             <header class="header-card fade-in">
@@ -58,11 +70,12 @@
 
             <!-- Title Section -->
             <section class="title-card fade-in" style="animation-delay: 0.1s">
-                <h2 id="main-title" class="main-title"></h2>
-                <p id="main-subtitle" class="main-subtitle"></p>
+                <div class="title-content">
+                    <h2 id="main-title" class="main-title"></h2>
+                    <p id="main-subtitle" class="main-subtitle"></p>
+                </div>
+                <div class="title-decoration"></div>
             </section>
-
-            
 
             <!-- Contact Actions -->
             <section class="contact-card fade-in" style="animation-delay: 0.3s">
@@ -132,19 +145,25 @@
             </section>
 
             <!-- Share Button -->
-            <button id="share-button" class="share-button fade-in" style="animation-delay: 0.4s" onclick="shareCard()">
-                <svg class="share-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"/>
-                </svg>
-                Compartir tarjeta
+            <button id="share-button" class="share-button fade-in futuristic-button" style="animation-delay: 0.4s" onclick="shareCard()">
+                <div class="button-content">
+                    <svg class="share-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"/>
+                    </svg>
+                    <span>Compartir tarjeta</span>
+                </div>
+                <div class="button-glow"></div>
             </button>
 
             <!-- Share QR Button -->
-            <button id="share-qr-button" class="share-button fade-in" style="animation-delay: 0.45s" onclick="shareQR()">
-                <svg class="share-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v1m6 11h2m-6 0h-2v4m0-11v3m0 0h.01M12 12h4.01M16 20h4M4 12h4m12 0h.01M5 8h2a1 1 0 001-1V5a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1zm12 0h2a1 1 0 001-1V5a1 1 0 00-1-1h-2a1 1 0 00-1 1v2a1 1 0 001 1zM5 20h2a1 1 0 001-1v-2a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1z"/>
-                </svg>
-                Compartir QR
+            <button id="share-qr-button" class="share-button fade-in futuristic-button" style="animation-delay: 0.45s" onclick="shareQR()">
+                <div class="button-content">
+                    <svg class="share-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v1m6 11h2m-6 0h-2v4m0-11v3m0 0h.01M12 12h4.01M16 20h4M4 12h4m12 0h.01M5 8h2a1 1 0 001-1V5a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1zm12 0h2a1 1 0 001-1V5a1 1 0 00-1-1h-2a1 1 0 00-1 1v2a1 1 0 001 1zM5 20h2a1 1 0 001-1v-2a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1z"/>
+                    </svg>
+                    <span>Compartir QR</span>
+                </div>
+                <div class="button-glow"></div>
             </button>
 
             <!-- Company Card -->
