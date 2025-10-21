@@ -742,6 +742,10 @@ const getTranslations = () => {
             emailBody: 'Hello%20Miexy,'
         }
     };
+};
+
+// Initialize translations
+const translations = getTranslations();
 
 /**
  * Toggle between Spanish and English
