@@ -49,9 +49,9 @@ const seo = {
 // Recursos de imágenes
 const images = {
     profile: "assets/img/JP.1.png",
-    companyLogo: "assets/img/EXO.png",
+    companyLogo: "assets/img/EXO.favicon",
     qrCode: "assets/img/QR_Costamar.png",
-    favicon: "assets/img/EXO.png",
+    favicon: "assets/img/EXO.favicon",
     footerLogo: "assets/img/EXO.png",
     ogImage: "assets/og/og-default.png"
 };
