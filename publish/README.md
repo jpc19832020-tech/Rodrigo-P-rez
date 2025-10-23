@@ -52,7 +52,7 @@ const contactInfo = {
     officePhone: "(51-1) 616-7610 anexo 5483",
     email: "m.marcani@costamarcorp.com",
     whatsapp: "+51976330377",
-    facebook: "https://www.facebook.com/costamar/",
+    facebook: "https://www.facebook.com/people/Exo-DigitalStudio/pfbid02VmWVzYQYBbfZBpnxF9qDHCajhkcay9eQ1v3ANrRWfikMM44uMHaLqS5TzVoDo26Hl/",
     location: "Av. José Pardo 513, Miraflores",
     mapsUrl: "https://www.google.com/maps/..."
 };
@@ -62,7 +62,7 @@ const contactInfo = {
 ```javascript
 const companyInfo = {
     name: "COSTAMAR CORPORATE TRAVEL",
-    logo: "assets/img/Foton-logo-01.png",
+    logo: "assets/img/EXO.png",
     description: "Costamar Corporate Travel es la división..."
 };
 ```

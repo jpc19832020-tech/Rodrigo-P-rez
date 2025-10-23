@@ -106,30 +106,6 @@ async function copyPhone() {
     }
 }
 
-/**
- * Copy office phone number to clipboard
- */
-async function copyOfficePhone() {
-    const officePhoneNumber = window.appConfig ? window.appConfig.contactInfo.officePhone : '(51-1) 616-7610 anexo 5483';
-    const success = await copyToClipboard(officePhoneNumber);
-    
-    if (success) {
-        const t = currentLanguage === 'en' ? '📱 Office phone copied' : '📱 Teléfono de oficina copiado';
-        showToast(t);
-        
-        // Add visual feedback to button
-        const officePhoneBtn = document.querySelector('.btn-phone:nth-child(2)');
-        if (officePhoneBtn) {
-            officePhoneBtn.style.transform = 'scale(0.95)';
-            setTimeout(() => {
-                officePhoneBtn.style.transform = '';
-            }, 150);
-        }
-    } else {
-        const t = currentLanguage === 'en' ? '❌ Could not copy office phone' : '❌ No se pudo copiar el teléfono de oficina';
-        showToast(t);
-    }
-}
 
 // ============================================
 // WECHAT ID COPY FUNCTIONALITY
@@ -584,7 +560,6 @@ function closeLightbox() {
 
 // Make functions available globally for inline onclick handlers
 window.copyPhone = copyPhone;
-window.copyOfficePhone = copyOfficePhone;
 window.copyWeChatID = copyWeChatID;
 window.shareCard = shareCard;
 window.shareQR = shareQR;
@@ -604,16 +579,19 @@ const getTranslations = () => {
         return {
             es: {
                 phone: config.uiTexts.phoneLabel || 'Teléfono',
-                officePhone: config.uiTexts.officePhoneLabel || 'Teléfono oficina',
                 whatsapp: config.uiTexts.whatsappLabel || 'WhatsApp',
                 whatsappText: config.uiTexts.whatsappButton || 'Escríbeme por WhatsApp',
                 email: config.uiTexts.emailLabel || 'Correo',
                 emailCorp: 'Correo corporativo',
-                website: 'Sitio web',
+                website: config.uiTexts.websiteLabel || 'Sitio web',
+                websiteText: config.uiTexts.websiteText || 'Visitar mi sitio web',
                 wechat: 'WeChat ID',
                 facebook: config.uiTexts.facebookLabel || 'Facebook',
                 facebookText: config.uiTexts.facebookText || 'Perfil de Facebook',
-                location: config.uiTexts.locationLabel || 'Oficina Lima',
+                instagram: config.uiTexts.instagramLabel || 'Instagram',
+                instagramText: config.uiTexts.instagramText || 'Sígueme en Instagram',
+                tiktok: config.uiTexts.tiktokLabel || 'TikTok',
+                tiktokText: config.uiTexts.tiktokText || 'Sígueme en TikTok',
                 shareCard: config.uiTexts.shareButton || 'Compartir tarjeta',
                 shareQR: config.uiTexts.shareQRButton || 'Compartir QR',
                 contact: 'Contacto',
@@ -639,16 +617,19 @@ const getTranslations = () => {
             },
             en: {
                 phone: 'Phone',
-                officePhone: 'Office Phone',
                 whatsapp: 'WhatsApp',
                 whatsappText: 'Message me on WhatsApp',
                 email: 'Email',
                 emailCorp: 'Corporate Email',
-                website: 'Website',
+                website: config.uiTexts.websiteLabel || 'Website',
+                websiteText: config.uiTexts.websiteText || 'Visit my website',
                 wechat: 'WeChat ID',
                 facebook: 'Facebook',
                 facebookText: 'Facebook Profile',
-                location: 'Lima Office',
+                instagram: config.uiTexts.instagramLabel || 'Instagram',
+                instagramText: config.uiTexts.instagramText || 'Follow me on Instagram',
+                tiktok: config.uiTexts.tiktokLabel || 'TikTok',
+                tiktokText: config.uiTexts.tiktokText || 'Follow me on TikTok',
                 shareCard: 'Share Card',
                 shareQR: 'Share QR',
                 contact: 'Contact',
@@ -676,16 +657,19 @@ const getTranslations = () => {
     return {
         es: {
             phone: 'Teléfono',
-            officePhone: 'Teléfono oficina',
             whatsapp: 'WhatsApp',
             whatsappText: 'Escríbeme por WhatsApp',
             email: 'Correo',
             emailCorp: 'Correo corporativo',
             website: 'Sitio web',
+            websiteText: 'Visitar mi sitio web',
             wechat: 'WeChat ID',
             facebook: 'Facebook',
             facebookText: 'Perfil de Facebook',
-            location: 'Oficina Lima',
+            instagram: 'Instagram',
+            instagramText: 'Sígueme en Instagram',
+            tiktok: 'TikTok',
+            tiktokText: 'Sígueme en TikTok',
             shareCard: 'Compartir tarjeta',
             shareQR: 'Compartir QR',
             contact: 'Contacto',
@@ -711,16 +695,19 @@ const getTranslations = () => {
         },
         en: {
             phone: 'Phone',
-            officePhone: 'Office Phone',
             whatsapp: 'WhatsApp',
             whatsappText: 'Message me on WhatsApp',
             email: 'Email',
             emailCorp: 'Corporate Email',
             website: 'Website',
+            websiteText: 'Visit my website',
             wechat: 'WeChat ID',
             facebook: 'Facebook',
             facebookText: 'Facebook Profile',
-            location: 'Lima Office',
+            instagram: 'Instagram',
+            instagramText: 'Follow me on Instagram',
+            tiktok: 'TikTok',
+            tiktokText: 'Follow me on TikTok',
             shareCard: 'Share Card',
             shareQR: 'Share QR',
             contact: 'Contact',
@@ -780,8 +767,6 @@ function updatePageLanguage() {
     const labels = {
         'Teléfono': t.phone,
         'Phone': t.phone,
-        'Teléfono oficina': t.officePhone,
-        'Office Phone': t.officePhone,
         'WhatsApp': t.whatsapp,
         'Correo': t.email,
         'Email': t.email,
@@ -791,8 +776,8 @@ function updatePageLanguage() {
         'Website': t.website,
         'WeChat ID': t.wechat,
         'Facebook': t.facebook,
-        'Oficina Lima': t.location,
-        'Lima Office': t.location
+        'Instagram': t.instagram,
+        'TikTok': t.tiktok
     };
     
     document.querySelectorAll('.btn-label').forEach(label => {

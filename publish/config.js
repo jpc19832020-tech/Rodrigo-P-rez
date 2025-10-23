@@ -14,20 +14,20 @@ const personalInfo = {
 
 // Información de contacto
 const contactInfo = {
-    phone: "+51976330377",
-    officePhone: "(51-1) 616-7610 anexo 5483",
-    email: "m.marcani@costamarcorp.com",
-    whatsapp: "+51976330377",
-    facebook: "https://www.facebook.com/costamar/",
-    location: "Av. José Pardo 513, Miraflores",
-    mapsUrl: "https://www.google.com/maps/place/Costamar+Travel/@-12.1191404,-77.0338826,3a,75y,165.04h,91.95t/data=!3m7!1e1!3m5!1sFaccT-GejrHvApfGXzS6kA!2e0!6shttps:%2F%2Fstreetviewpixels-pa.googleapis.com%2Fv1%2Fthumbnail%3Fcb_client%3Dmaps_sv.tactile%26w%3D900%26h%3D600%26pitch%3D-1.945596443337152%26panoid%3DFaccT-GejrHvApfGXzS6kA%26yaw%3D165.04055948610977!7i16384!8i8192!4m16!1m9!3m8!1s0x9105c822ad3df4d5:0x25d372b55107b1dd!2sAv.+Jos%C3%A9+Pardo+513,+Miraflores+15074!3b1!8m2!3d-12.1192886!4d-77.033908!10e5!16s%2Fg%2F11xvlxhw28!3m5!1s0x9105c9fc0bf98143:0x57225abaae2576f0!8m2!3d-12.1192779!4d-77.0339071!16s%2Fg%2F11qn6v_1z0?entry=ttu&g_ep=EgoyMDI1MTAwMS4wIKXMDSoASAFQAw%3D%3D"
+    phone: "+51925475680",
+    email: "exo.digitalstudio@gmail.com",
+    whatsapp: "+51925475680",
+    facebook: "https://www.facebook.com/people/Exo-DigitalStudio/pfbid02VmWVzYQYBbfZBpnxF9qDHCajhkcay9eQ1v3ANrRWfikMM44uMHaLqS5TzVoDo26Hl/",
+    instagram: "https://www.instagram.com/exo_digitalstudio/",
+    tiktok: "https://www.tiktok.com/@exodigitalstudio",
+    website: "https://jpc19832020-tech.github.io/Rodrigo-Perez/"
 };
 
 // Información de la empresa
 const companyInfo = {
     name: "EXO Digital Studio",
     tagline: "",
-    logo: "assets/img/Foton-logo-01.png",
+    logo: "assets/img/EXO.png",
     description: "Costamar Corporate Travel es la división especializada en viajes de negocios y MICE del Grupo Costamar. Ofrecemos soluciones integrales para la gestión de viajes corporativos, reuniones, congresos, ferias y viajes de incentivo, asegurando eficiencia, ahorro y experiencias memorables para nuestros clientes empresariales."
 };
 
@@ -49,9 +49,9 @@ const seo = {
 // Recursos de imágenes
 const images = {
     profile: "assets/img/JP.1.png",
-    companyLogo: "assets/img/Foton-logo-01.png",
+    companyLogo: "assets/img/EXO.png",
     qrCode: "assets/img/QR_Costamar.png",
-    favicon: "assets/img/image.png",
+    favicon: "assets/img/EXO.png",
     footerLogo: "assets/img/EXO.png",
     ogImage: "assets/og/og-default.png"
 };
@@ -63,12 +63,16 @@ const uiTexts = {
     shareQRButton: "Compartir QR",
     footerCTA: "Haz de tu presentación una experiencia digital. Obtén tu SmartCard ahora.",
     phoneLabel: "Teléfono",
-    officePhoneLabel: "Teléfono oficina",
     whatsappLabel: "WhatsApp",
     emailLabel: "Correo",
     facebookLabel: "Facebook",
     facebookText: "Perfil de Facebook",
-    locationLabel: "Oficina Lima"
+    instagramLabel: "Instagram",
+    instagramText: "Sígueme en Instagram",
+    tiktokLabel: "TikTok",
+    tiktokText: "Sígueme en TikTok",
+    websiteLabel: "Sitio Web",
+    websiteText: "Visitar mi sitio web"
 };
 
 // Colores de marca
