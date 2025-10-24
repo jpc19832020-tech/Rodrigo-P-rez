@@ -28,7 +28,9 @@ const companyInfo = {
     name: "EXO Digital Studio",
     tagline: "",
     logo: "assets/img/EXO.png",
-    description: "Costamar Corporate Travel es la división especializada en viajes de negocios y MICE del Grupo Costamar. Ofrecemos soluciones integrales para la gestión de viajes corporativos, reuniones, congresos, ferias y viajes de incentivo, asegurando eficiencia, ahorro y experiencias memorables para nuestros clientes empresariales."
+    description: `EXO Digital Studio es una fusión entre tecnología, diseño y automatización.
+Creamos soluciones inteligentes que impulsan marcas, optimizan procesos y transformamos la presencia digital de emprendedores y empresas.
+Desde micrositios dinámicos, asistentes automatizados y workflows inteligentes, hasta experiencias visuales personalizadas, EXO combina estética futurista con funcionalidad real.`
 };
 
 // URLs y enlaces
