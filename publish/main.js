@@ -1058,7 +1058,7 @@ class CarouselGallery {
         // Clear transitioning flag after animation
         setTimeout(() => {
             this.isTransitioning = false;
-        }, 300);
+        }, 500);
     }
 
     /**
