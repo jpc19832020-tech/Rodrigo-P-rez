@@ -1429,7 +1429,7 @@ body {
 .carousel-viewport {
   position: relative;
   width: 100%;
-  height: 280px;
+  height: 220px;
   overflow: hidden;
   border-radius: var(--radius-lg);
   background: var(--gray-100);
