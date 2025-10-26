@@ -1211,9 +1211,10 @@ body {
     height: 112px;
   }
   
-  .carousel-viewport {
+  .gallery-carousel {
     max-width: 500px;
-    margin: 0 auto;
+    margin-left: auto;
+    margin-right: auto;
   }
 }
 
@@ -1405,6 +1406,9 @@ body {
   box-shadow: var(--shadow-md);
   transition: transform var(--transition-base), box-shadow var(--transition-base);
   margin-bottom: var(--spacing-lg);
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .gallery-carousel:hover {
@@ -1438,7 +1442,6 @@ body {
   overflow: hidden;
   border-radius: var(--radius-lg);
   background: var(--gray-100);
-  max-width: 100%;
 }
 
 .carousel-track {
