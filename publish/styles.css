@@ -1460,7 +1460,7 @@ body {
   object-fit: cover;
   border-radius: var(--radius-lg);
   transition: transform var(--transition-base);
-  max-height: 160px;
+  max-height: 180px;
 }
 
 .carousel-slide:hover .carousel-image {
