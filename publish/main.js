@@ -1058,7 +1058,7 @@ class CarouselGallery {
         // Clear transitioning flag after animation
         setTimeout(() => {
             this.isTransitioning = false;
-        }, 500);
+        }, 800);
     }
 
     /**
@@ -1083,7 +1083,7 @@ class CarouselGallery {
         if (track) {
             const offset = -this.currentIndex * 100;
             track.style.transform = `translateX(${offset}%)`;
-            track.style.transition = 'transform 0.5s ease-in-out';
+            track.style.transition = 'transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
         }
     }
 
