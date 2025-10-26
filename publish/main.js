@@ -1083,6 +1083,7 @@ class CarouselGallery {
         if (track) {
             const offset = -this.currentIndex * 100;
             track.style.transform = `translateX(${offset}%)`;
+            track.style.transition = 'transform 0.5s ease-in-out';
         }
     }
 
