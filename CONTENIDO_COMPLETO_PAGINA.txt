@@ -1,0 +1,205 @@
+===========================================
+CONTENIDO COMPLETO DE LA PÁGINA WEB - RODRIGO PÉREZ
+===========================================
+
+ORDEN VISUAL DE ARRIBA HACIA ABAJO
+===========================================
+
+1. BOTÓN DE CAMBIO DE IDIOMA
+   - Posición: Esquina superior derecha, flotante
+   - Estilo: Circular, gradiente azul
+   - Texto: "EN" (cambia a "ES")
+   - Función: Cambia entre español e inglés
+
+2. TARJETA DE PERFIL (HEADER)
+   - Foto de perfil circular de Rodrigo Pérez
+   - Anillo azul animado alrededor de la foto
+   - Nombre: "Rodrigo Pérez"
+   - Título: "CEO | EXO Digital Studio"
+   - Función: Click en foto abre lightbox
+
+3. SECCIÓN DE TÍTULO
+   - Título grande: "CEO | EXO Digital Studio"
+   - Subtítulo: "Creador de nuestras herramientas y productos digitales."
+   - Color azul para el título
+
+4. SECCIÓN DE CONTACTO
+   - Título: "Contacto"
+   - 7 botones de contacto:
+
+   a) BOTÓN SITIO WEB
+      - Icono: Logo EXO
+      - Etiqueta: "Sitio Web"
+      - Texto: "Visitar mi sitio web"
+      - Enlace: https://jpc19832020-tech.github.io/Rodrigo-Perez/
+
+   b) BOTÓN WHATSAPP
+      - Icono: WhatsApp verde
+      - Etiqueta: "WhatsApp"
+      - Texto: "Escríbeme por WhatsApp"
+      - Enlace: https://wa.me/51925475680
+
+   c) BOTÓN INSTAGRAM
+      - Icono: Instagram
+      - Etiqueta: "Instagram"
+      - Texto: "Sígueme en Instagram"
+      - Enlace: https://www.instagram.com/exo_digitalstudio/
+
+   d) BOTÓN TIKTOK
+      - Icono: TikTok
+      - Etiqueta: "TikTok"
+      - Texto: "Sígueme en TikTok"
+      - Enlace: https://www.tiktok.com/@exodigitalstudio
+
+   e) BOTÓN FACEBOOK
+      - Icono: Facebook
+      - Etiqueta: "Facebook"
+      - Texto: "Perfil de Facebook"
+      - Enlace: https://www.facebook.com/people/Exo-DigitalStudio/pfbid02VmWVzYQYBbfZBpnxF9qDHCajhkcay9eQ1v3ANrRWfikMM44uMHaLqS5TzVoDo26Hl/
+
+   f) BOTÓN CORREO
+      - Icono: Sobre
+      - Etiqueta: "Correo"
+      - Texto: "exo.digitalstudio@gmail.com"
+      - Enlace: mailto:exo.digitalstudio@gmail.com
+
+   g) BOTÓN TELÉFONO
+      - Icono: Teléfono
+      - Etiqueta: "Teléfono"
+      - Texto: "+51925475680"
+      - Función: Copia número al portapapeles
+
+5. BOTONES DE COMPARTIR
+
+   a) BOTÓN "COMPARTIR TARJETA"
+      - Icono: Compartir
+      - Texto: "Compartir tarjeta"
+      - Función: Abre modal para compartir
+
+   b) BOTÓN "COMPARTIR QR"
+      - Icono: Código QR
+      - Texto: "Compartir QR"
+      - Función: Abre modal con QR para escanear
+
+6. TARJETA DE INFORMACIÓN DE LA EMPRESA
+   - Logo: EXO Digital Studio
+   - Nombre: "EXO Digital Studio"
+   - Descripción: "EXO Digital Studio es una fusión entre tecnología, diseño y automatización. Creamos soluciones inteligentes que impulsan marcas, optimizan procesos y transformamos la presencia digital de emprendedores y empresas. Desde micrositios dinámicos, asistentes automatizados y workflows inteligentes, hasta experiencias visuales personalizadas, EXO combina estética futurista con funcionalidad real."
+
+7. FOOTER
+
+   a) SECCIÓN COPYRIGHT
+      - Texto: "© 2024 EXO Digital Studio"
+
+   b) SECCIÓN CALL TO ACTION
+      - Fondo azul con gradiente
+      - Texto: "Haz de tu presentación una experiencia digital. Obtén tu SmartCard ahora."
+      - Logo EXO circular
+      - Botón WhatsApp: "+51 925 475 680"
+      - Enlace: https://wa.me/51925475680
+
+===========================================
+FUNCIONALIDADES INTERACTIVAS
+===========================================
+
+1. LIGHTBOX DE IMAGEN
+   - Se abre al hacer clic en la foto de perfil
+   - Muestra la imagen ampliada
+   - Botón para cerrar
+
+2. MODAL DE COMPARTIR QR
+   - Muestra código QR predefinido
+   - Opción de descargar QR
+   - Opción de copiar enlace
+
+3. MODAL DE COMPARTIR TARJETA
+   - Genera QR dinámicamente
+   - Campo con enlace para copiar
+   - Botón de copiar enlace
+
+4. NOTIFICACIONES TOAST
+   - Aparecen al copiar teléfono/enlace
+   - Aparecen al cambiar idioma
+   - Duración: 3 segundos
+
+5. CAMBIO DE IDIOMA
+   - Español por defecto
+   - Traducción completa al inglés
+   - Mantiene preferencia en localStorage
+
+===========================================
+ELEMENTOS TÉCNICOS
+===========================================
+
+1. METADATOS SEO
+   - Title: "Rodrigo Pérez — CEO | EXO Digital Studio"
+   - Description: "Contacto oficial de Rodrigo Pérez — CEO | EXO Digital Studio"
+   - Open Graph para redes sociales
+   - Twitter Cards
+
+2. FAVICON
+   - Archivo: assets/img/EXO.favicon
+   - Apple touch icon configurado
+
+3. ESTILOS
+   - CSS personalizado con variables
+   - Tailwind CSS vía CDN
+   - Diseño responsive
+   - Animaciones CSS
+
+4. JAVASCRIPT
+   - Funcionalidades interactivas
+   - Sistema de configuración
+   - Manejo de eventos
+   - API Web Share
+
+===========================================
+ARCHIVOS DEL PROYECTO
+===========================================
+
+1. ARCHIVOS PRINCIPALES
+   - index.html (323 líneas)
+   - main.js (941 líneas)
+   - styles.css (1391 líneas)
+   - config.js (121 líneas)
+
+2. ARCHIVOS DE DOCUMENTACIÓN
+   - README.md (174 líneas)
+   - ANALISIS_DETALLADO_PROYECTO.txt
+   - DESCRIPCION_VISUAL_PAGINA_WEB.txt
+
+3. RECURSOS VISUALES
+   - assets/img/EXO.favicon
+   - assets/img/EXO.png
+   - assets/img/JP.1.png (foto de perfil)
+   - assets/img/QR_Costamar.png
+   - assets/og/og-default.png
+
+===========================================
+CONFIGURACIÓN PERSONALIZABLE
+===========================================
+
+1. INFORMACIÓN PERSONAL
+   - Nombre: Rodrigo Pérez
+   - Título: CEO | EXO Digital Studio
+   - Subtítulo: Creador de herramientas digitales
+
+2. CONTACTO
+   - Teléfono: +51925475680
+   - Email: exo.digitalstudio@gmail.com
+   - WhatsApp: +51925475680
+   - Redes sociales: Facebook, Instagram, TikTok
+
+3. EMPRESA
+   - Nombre: EXO Digital Studio
+   - Logo: assets/img/EXO.png
+   - Descripción completa
+
+4. DISEÑO
+   - Color principal: #0D58A3
+   - Gradientes y sombras
+   - Tipografía system fonts
+
+===========================================
+FIN DEL CONTENIDO
+===========================================

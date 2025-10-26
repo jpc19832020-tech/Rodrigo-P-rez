@@ -939,3 +939,331 @@ if (document.readyState === 'loading') {
 } else {
     initLanguage();
 }
+// ============================================
+// GALLERY CAROUSEL FUNCTIONALITY
+// ============================================
+
+/**
+ * Carousel Gallery Manager - Optimized for performance
+ */
+class CarouselGallery {
+    constructor() {
+        this.currentIndex = 0;
+        this.slides = [];
+        this.indicators = [];
+        this.autoPlayInterval = null;
+        this.isPaused = false;
+        this.isTransitioning = false;
+        this.images = [
+            'assets/img/F1.jpeg',
+            'assets/img/F2.jpg',
+            'assets/img/F3.jpg',
+            'assets/img/image.png',
+            'assets/img/JP.1.png'
+        ];
+        
+        // Preload images for better performance
+        this.preloadImages();
+        
+        this.init();
+    }
+
+    /**
+     * Preload images for smooth transitions
+     */
+    preloadImages() {
+        this.images.forEach(src => {
+            const img = new Image();
+            img.src = src;
+        });
+    }
+
+    /**
+     * Initialize carousel
+     */
+    init() {
+        // Wait for DOM to be ready
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', () => this.setupCarousel());
+        } else {
+            this.setupCarousel();
+        }
+    }
+
+    /**
+     * Setup carousel elements and event listeners
+     */
+    setupCarousel() {
+        this.slides = document.querySelectorAll('.carousel-slide');
+        this.indicators = document.querySelectorAll('.indicator');
+        
+        if (this.slides.length === 0) return;
+        
+        // Add click listeners to slides for lightbox
+        this.slides.forEach((slide, index) => {
+            slide.addEventListener('click', () => this.openLightbox(index));
+        });
+        
+        // Add hover listeners to pause auto-play
+        this.slides.forEach((slide) => {
+            slide.addEventListener('mouseenter', () => this.pauseAutoPlay());
+            slide.addEventListener('mouseleave', () => this.resumeAutoPlay());
+        });
+
+        // Add hover listeners to carousel container
+        const carouselContainer = document.querySelector('.carousel-container');
+        if (carouselContainer) {
+            carouselContainer.addEventListener('mouseenter', () => this.pauseAutoPlay());
+            carouselContainer.addEventListener('mouseleave', () => this.resumeAutoPlay());
+        }
+
+        // Start auto-play
+        this.startAutoPlay();
+        
+        // Add keyboard navigation
+        this.setupKeyboardNavigation();
+        
+        // Add touch/swipe support for mobile
+        this.setupTouchNavigation();
+        
+        console.log('🎠 Galería carrusel inicializada');
+    }
+
+    /**
+     * Go to specific slide with performance optimization
+     */
+    goToSlide(index) {
+        // Prevent rapid clicking during transition
+        if (this.isTransitioning) return;
+        
+        if (index < 0) index = this.slides.length - 1;
+        if (index >= this.slides.length) index = 0;
+        
+        // Set transitioning flag
+        this.isTransitioning = true;
+        
+        // Remove active class from current slide and indicator
+        this.slides[this.currentIndex].classList.remove('active');
+        this.indicators[this.currentIndex].classList.remove('active');
+        
+        // Add active class to new slide and indicator
+        this.currentIndex = index;
+        this.slides[this.currentIndex].classList.add('active');
+        this.indicators[this.currentIndex].classList.add('active');
+        
+        // Update track position for smooth transition
+        this.updateTrackPosition();
+        
+        // Clear transitioning flag after animation
+        setTimeout(() => {
+            this.isTransitioning = false;
+        }, 300);
+    }
+
+    /**
+     * Go to next slide
+     */
+    nextSlide() {
+        this.goToSlide(this.currentIndex + 1);
+    }
+
+    /**
+     * Go to previous slide
+     */
+    prevSlide() {
+        this.goToSlide(this.currentIndex - 1);
+    }
+
+    /**
+     * Update track position for smooth transitions
+     */
+    updateTrackPosition() {
+        const track = document.querySelector('.carousel-track');
+        if (track) {
+            const offset = -this.currentIndex * 100;
+            track.style.transform = `translateX(${offset}%)`;
+        }
+    }
+
+    /**
+     * Start auto-play functionality with performance optimization
+     */
+    startAutoPlay() {
+        if (this.autoPlayInterval) return;
+        
+        // Clear any existing interval
+        this.stopAutoPlay();
+        
+        this.autoPlayInterval = setInterval(() => {
+            if (!this.isPaused && !this.isTransitioning) {
+                this.nextSlide();
+            }
+        }, 3000); // Change every 3 seconds
+    }
+
+    /**
+     * Stop auto-play functionality
+     */
+    stopAutoPlay() {
+        if (this.autoPlayInterval) {
+            clearInterval(this.autoPlayInterval);
+            this.autoPlayInterval = null;
+        }
+    }
+
+    /**
+     * Pause auto-play
+     */
+    pauseAutoPlay() {
+        this.isPaused = true;
+    }
+
+    /**
+     * Resume auto-play
+     */
+    resumeAutoPlay() {
+        this.isPaused = false;
+    }
+
+    /**
+     * Setup keyboard navigation
+     */
+    setupKeyboardNavigation() {
+        document.addEventListener('keydown', (e) => {
+            const carousel = document.querySelector('.gallery-carousel');
+            if (!carousel) return;
+            
+            // Check if carousel is in viewport
+            const rect = carousel.getBoundingClientRect();
+            const isInViewport = rect.top < window.innerHeight && rect.bottom > 0;
+            
+            if (!isInViewport) return;
+            
+            switch(e.key) {
+                case 'ArrowLeft':
+                    e.preventDefault();
+                    this.prevSlide();
+                    break;
+                case 'ArrowRight':
+                    e.preventDefault();
+                    this.nextSlide();
+                    break;
+                case 'Escape':
+                    e.preventDefault();
+                    this.closeLightbox();
+                    break;
+            }
+        });
+    }
+
+    /**
+     * Setup touch/swipe navigation for mobile
+     */
+    setupTouchNavigation() {
+        const viewport = document.querySelector('.carousel-viewport');
+        if (!viewport) return;
+        
+        let touchStartX = 0;
+        let touchEndX = 0;
+        
+        viewport.addEventListener('touchstart', (e) => {
+            touchStartX = e.changedTouches[0].screenX;
+        }, { passive: true });
+        
+        viewport.addEventListener('touchend', (e) => {
+            touchEndX = e.changedTouches[0].screenX;
+            this.handleSwipe(touchStartX, touchEndX);
+        }, { passive: true });
+    }
+
+    /**
+     * Handle swipe gestures
+     */
+    handleSwipe(startX, endX) {
+        const swipeThreshold = 50;
+        const diff = startX - endX;
+        
+        if (Math.abs(diff) > swipeThreshold) {
+            if (diff > 0) {
+                this.nextSlide(); // Swipe left, go next
+            } else {
+                this.prevSlide(); // Swipe right, go prev
+            }
+        }
+    }
+
+    /**
+     * Open lightbox with specific image
+     */
+    openLightbox(index) {
+        // Remove existing lightbox
+        this.closeLightbox();
+        
+        // Create lightbox
+        const lightbox = document.createElement('div');
+        lightbox.className = 'carousel-lightbox';
+        lightbox.innerHTML = `
+            <div class="carousel-lightbox-content">
+                <img src="${this.images[index]}" alt="Imagen ${index + 1}" class="carousel-lightbox-image">
+                <button class="carousel-lightbox-close" aria-label="Cerrar">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                    </svg>
+                </button>
+            </div>
+        `;
+        
+        document.body.appendChild(lightbox);
+        
+        // Trigger animation
+        requestAnimationFrame(() => {
+            requestAnimationFrame(() => {
+                lightbox.classList.add('active');
+            });
+        });
+        
+        // Prevent body scroll
+        document.body.style.overflow = 'hidden';
+        
+        // Add event listeners
+        const closeBtn = lightbox.querySelector('.carousel-lightbox-close');
+        closeBtn.addEventListener('click', () => this.closeLightbox());
+        
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox) {
+                this.closeLightbox();
+            }
+        });
+        
+        // Close on ESC key
+        const handleEsc = (e) => {
+            if (e.key === 'Escape') {
+                this.closeLightbox();
+                document.removeEventListener('keydown', handleEsc);
+            }
+        };
+        document.addEventListener('keydown', handleEsc);
+    }
+
+    /**
+     * Close lightbox
+     */
+    closeLightbox() {
+        const lightbox = document.querySelector('.carousel-lightbox');
+        if (lightbox) {
+            lightbox.classList.remove('active');
+            setTimeout(() => {
+                if (lightbox.parentNode) {
+                    lightbox.parentNode.removeChild(lightbox);
+                }
+                document.body.style.overflow = '';
+            }, 300);
+        }
+    }
+}
+
+// Initialize carousel when DOM is ready
+const carousel = new CarouselGallery();
+
+// Make carousel methods available globally for inline handlers
+window.carousel = carousel;

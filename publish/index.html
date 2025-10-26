@@ -161,6 +161,88 @@
                 Compartir QR
             </button>
 
+            <!-- Image Gallery Carousel -->
+            <section class="gallery-carousel fade-in" style="animation-delay: 0.5s">
+                <div class="carousel-container">
+                    <div class="carousel-header">
+                        <h3 class="carousel-title">Galería de Imágenes</h3>
+                    </div>
+                    
+                    <div class="carousel-viewport">
+                        <div class="carousel-track">
+                            <div class="carousel-slide active" data-index="0">
+                                <img src="assets/img/F1.jpeg" alt="Imagen 1" class="carousel-image">
+                                <div class="slide-overlay">
+                                    <div class="slide-content">
+                                        <img src="assets/img/EXO.png" alt="EXO Logo" class="slide-logo">
+                                        <h4>EXO Digital Studio</h4>
+                                        <p>Innovación y creatividad</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="carousel-slide" data-index="1">
+                                <img src="assets/img/F2.jpg" alt="Imagen 2" class="carousel-image">
+                                <div class="slide-overlay">
+                                    <div class="slide-content">
+                                        <h4>Diseño Profesional</h4>
+                                        <p>Soluciones visuales impactantes</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="carousel-slide" data-index="2">
+                                <img src="assets/img/F3.jpg" alt="Imagen 3" class="carousel-image">
+                                <div class="slide-overlay">
+                                    <div class="slide-content">
+                                        <img src="assets/img/EXO.png" alt="EXO Logo" class="slide-logo">
+                                        <h4>EXO Digital Studio</h4>
+                                        <p>Tecnología de vanguardia</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="carousel-slide" data-index="3">
+                                <img src="assets/img/image.png" alt="Imagen 4" class="carousel-image">
+                                <div class="slide-overlay">
+                                    <div class="slide-content">
+                                        <h4>Experiencia Digital</h4>
+                                        <p>Transformando ideas en realidad</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="carousel-slide" data-index="4">
+                                <img src="assets/img/JP.1.png" alt="Imagen 5" class="carousel-image">
+                                <div class="slide-overlay">
+                                    <div class="slide-content">
+                                        <h4>Identidad de Marca</h4>
+                                        <p>Presencia digital única</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Navigation Buttons -->
+                    <button class="carousel-btn carousel-btn-prev" onclick="carousel.prevSlide()" aria-label="Imagen anterior">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+                        </svg>
+                    </button>
+                    <button class="carousel-btn carousel-btn-next" onclick="carousel.nextSlide()" aria-label="Siguiente imagen">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                        </svg>
+                    </button>
+                    
+                    <!-- Indicators -->
+                    <div class="carousel-indicators">
+                        <button class="indicator active" onclick="carousel.goToSlide(0)" aria-label="Ir a imagen 1"></button>
+                        <button class="indicator" onclick="carousel.goToSlide(1)" aria-label="Ir a imagen 2"></button>
+                        <button class="indicator" onclick="carousel.goToSlide(2)" aria-label="Ir a imagen 3"></button>
+                        <button class="indicator" onclick="carousel.goToSlide(3)" aria-label="Ir a imagen 4"></button>
+                        <button class="indicator" onclick="carousel.goToSlide(4)" aria-label="Ir a imagen 5"></button>
+                    </div>
+                </div>
+            </section>
+
             <!-- Company Card -->
             <section class="company-card fade-in" style="animation-delay: 0.5s">
                 <div class="company-header">

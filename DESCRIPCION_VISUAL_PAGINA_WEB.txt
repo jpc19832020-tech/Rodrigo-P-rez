@@ -1,0 +1,297 @@
+===========================================
+DESCRIPCIÓN VISUAL DETALLADA - PÁGINA WEB DE RODRIGO PÉREZ
+===========================================
+
+FECHA DE ANÁLISIS: 24 de octubre de 2024
+URL: https://jpc19832020-tech.github.io/Rodrigo-Perez/
+
+===========================================
+1. APARIENCIA GENERAL DE LA PÁGINA
+===========================================
+
+La página web presenta un diseño moderno, limpio y profesional con un fondo degradado sutil que va de gris claro a gris más oscuro. Todo el contenido está centrado en una columna vertical con un ancho máximo de 480px en móviles y hasta 720px en tablets, creando una experiencia íntima y enfocada.
+
+El diseño utiliza predominantemente el color azul corporativo (#0D58A3) como color principal, combinado con blancos y grises para crear un contraste elegante y profesional.
+
+===========================================
+2. ELEMENTOS VISUALES PRINCIPALES (DE ARRIBA HACIA ABAJO)
+===========================================
+
+2.1. BOTÓN DE CAMBIO DE IDIOMA
+-----------------------------------
+En la esquina superior derecha de la pantalla, flotando sobre el contenido, se encuentra un botón circular de 56px de diámetro con:
+- Fondo degradado azul (del azul principal al azul claro)
+- Texto "EN" en blanco y negrita
+- Efecto hover: elevación ligera y cambio de gradiente
+- Sombra suave que se intensifica al pasar el cursor
+
+2.2. TARJETA DE PERFIL (HEADER)
+---------------------------------
+Primera tarjeta blanca con bordes redondeados y sombra suave:
+
+CONTENIDO IZQUIERDO:
+- Foto de perfil circular de 96px de Rodrigo Pérez
+- Borde blanco de 4px alrededor de la foto
+- Anillo azul animado con efecto de pulso alrededor de la foto
+- Al hacer clic, se abre un lightbox con la imagen ampliada
+
+CONTENIDO DERECHO:
+- Nombre: "Rodrigo Pérez" en negrita, color gris oscuro
+- Título: "CEO | EXO Digital Studio" en gris más claro y tamaño más pequeño
+
+2.3. SECCIÓN DE TÍTULO PRINCIPAL
+----------------------------------
+Segunda tarjeta blanca centrada con:
+
+TÍTULO GRANDE:
+- Texto: "CEO | EXO Digital Studio"
+- Color azul corporativo
+- Tamaño grande y negrita muy gruesa
+- Centrado y con espaciado amplio
+
+SUBTÍTULO:
+- Texto: "Creador de nuestras herramientas y productos digitales."
+- Color gris medio
+- Tamaño normal y peso seminegrita
+- Centrado debajo del título principal
+
+2.4. SECCIÓN DE CONTACTO
+-------------------------
+Tercera tarjeta blanca con el título "Contacto" en negrita y color gris oscuro.
+
+REJILLA DE BOTONES DE CONTACTO (6 botones en total):
+
+BOTÓN 1 - SITIO WEB:
+- Icono: Logo EXO (círculo con imagen)
+- Etiqueta: "Sitio Web" (texto pequeño en mayúsculas)
+- Texto: "Visitar mi sitio web"
+- Fondo: Gradiente morado-azul
+- Hover: Elevación y brillo sutil
+
+BOTÓN 2 - WHATSAPP:
+- Icono: SVG de WhatsApp verde
+- Etiqueta: "WhatsApp"
+- Texto: "Escríbeme por WhatsApp"
+- Fondo: Gradiente verde WhatsApp
+- Hover: Elevación y efecto de brillo
+
+BOTÓN 3 - INSTAGRAM:
+- Icono: SVG de Instagram
+- Etiqueta: "Instagram"
+- Texto: "Sígueme en Instagram"
+- Fondo: Gradiente rosa-naranja-morado
+- Hover: Elevación suave
+
+BOTÓN 4 - TIKTOK:
+- Icono: SVG de TikTok
+- Etiqueta: "TikTok"
+- Texto: "Sígueme en TikTok"
+- Fondo: Gradiente negro-rojo
+- Hover: Elevación ligera
+
+BOTÓN 5 - FACEBOOK:
+- Icono: SVG de Facebook azul
+- Etiqueta: "Facebook"
+- Texto: "Perfil de Facebook"
+- Fondo: Gradiente azul Facebook
+- Hover: Elevación suave
+
+BOTÓN 6 - CORREO ELECTRÓNICO:
+- Icono: SVG de sobre rojo
+- Etiqueta: "Correo"
+- Texto: "exo.digitalstudio@gmail.com"
+- Fondo: Gradiente rojo
+- Hover: Elevación y cambio de tono
+
+BOTÓN 7 - TELÉFONO:
+- Icono: SVG de teléfono azul
+- Etiqueta: "Teléfono"
+- Texto: "+51925475680"
+- Fondo: Gradiente azul corporativo
+- Función: Al hacer clic, copia el número al portapapeles
+- Efecto visual: Reducción momentánea de tamaño al copiar
+
+2.5. BOTONES DE COMPARTIR
+--------------------------
+
+BOTÓN "COMPARTIR TARJETA":
+- Ancho completo
+- Fondo negro con gradiente gris
+- Icono de compartir en blanco
+- Texto: "Compartir tarjeta"
+- Hover: Elevación y sombra intensificada
+
+BOTÓN "COMPARTIR QR":
+- Ancho completo
+- Mismo estilo que el anterior
+- Icono de código QR
+- Texto: "Compartir QR"
+- Función: Abre modal con QR para escanear
+
+2.6. TARJETA DE INFORMACIÓN DE LA EMPRESA
+-----------------------------------------
+Cuarta tarjeta blanca con:
+
+ENCABEZADO:
+- Logo de EXO Digital Studio (110px x 110px)
+- Nombre: "EXO Digital Studio" en negrita
+- Sin eslogan (tagline vacío)
+
+DESCRIPCIÓN:
+- Caja con fondo gris muy claro
+- Texto justificado describiendo la empresa:
+  "EXO Digital Studio es una fusión entre tecnología, diseño y automatización. Creamos soluciones inteligentes que impulsan marcas, optimizan procesos y transformamos la presencia digital de emprendedores y empresas. Desde micrositios dinámicos, asistentes automatizados y workflows inteligentes, hasta experiencias visuales personalizadas, EXO combina estética futurista con funcionalidad real."
+- Hover: Fondo ligeramente más oscuro y elevación
+
+2.7. FOOTER CON LLAMADA A LA ACCIÓN
+-----------------------------------
+Sección final con dos partes:
+
+PARTE SUPERIOR - COPYRIGHT:
+- Texto centrado: "© 2024 EXO Digital Studio"
+- Color gris medio
+- Peso seminegrita
+
+PARTE INFERIOR - CALL TO ACTION:
+- Fondo con gradiente azul intenso
+- Patrón decorativo sutil con puntos
+- Borde redondeado grande
+- Sombra pronunciada
+- Hover: Elevación significativa
+
+CONTENIDO DEL CALL TO ACTION:
+- Texto principal: "Haz de tu presentación una experiencia digital. Obtén tu SmartCard ahora."
+- Color blanco con sombra
+- Contenedor con logo EXO y botón de WhatsApp
+
+LOGO EXO:
+- Circular, 65px de diámetro
+- Fondo blanco con sombra
+- Hover: Rotación de 5 grados y aumento de tamaño
+- Efecto de brillo en el borde
+
+BOTÓN WHATSAPP:
+- Fondo blanco con texto verde
+- Icono de WhatsApp verde
+- Texto: "+51 925 475 680"
+- Hover: Fondo verde con texto blanco
+- Animación de pulso constante
+- Efecto de elevación al hover
+
+===========================================
+3. INTERACCIONES Y ANIMACIONES
+===========================================
+
+3.1. ANIMACIONES DE ENTRADA:
+- Todas las tarjetas aparecen con animación fade-in desde abajo
+- Secuencia escalonada con retrasos progresivos (0.1s, 0.3s, 0.5s, 0.6s)
+
+3.2. EFECTOS HOVER:
+- Tarjetas: Elevación de 2px con sombra intensificada
+- Botones: Elevación de 3px con efectos de brillo
+- Botón de teléfono: Reducción momentánea al hacer clic
+- Logo del footer: Rotación y aumento de tamaño
+
+3.3. ANIMACIONES CONTINUAS:
+- Anillo alrededor de la foto de perfil: Efecto de pulso constante
+- Botón WhatsApp del footer: Animación de pulso en la sombra
+
+3.4. TRANSICIONES:
+- Todas las interacciones tienen transiciones suaves de 250ms
+- Uso de cubic-bezier para movimientos naturales
+
+===========================================
+4. MODALES Y VENTANAS EMERGENTES
+===========================================
+
+4.1. LIGHTBOX DE IMAGEN:
+- Fondo negro oscuro con 95% de opacidad
+- Imagen centrada con tamaño máximo del 90% de la pantalla
+- Botón de cerrar circular en la esquina superior derecha
+- Efecto de aparición suave
+- Se cierra al hacer clic fuera o en la X
+
+4.2. MODAL DE COMPARTIR QR:
+- Fondo oscuro semitransparente
+- Contenedor blanco centrado con bordes redondeados
+- Imagen QR de 240px x 240px
+- Texto explicativo: "Escanea este código QR para obtener más información"
+- Dos botones: "Descargar QR" y "Copiar enlace"
+- Botón de cerrar en la esquina superior derecha
+
+4.3. MODAL DE COMPARTIR TARJETA:
+- Similar al modal QR pero con:
+- Código QR generado dinámicamente
+- Campo de texto con enlace para copiar
+- Botón "Copiar enlace" que cambia temporalmente a "✓ Copiado"
+
+===========================================
+5. NOTIFICACIONES TOAST
+===========================================
+
+- Aparecen en la parte inferior central de la pantalla
+- Fondo gris oscuro con texto blanco
+- Forma de píldora redondeada
+- Animación de aparición desde abajo
+- Duración de 3 segundos
+- Ejemplos: "📱 Teléfono copiado", "🔗 Enlace copiado", "🌐 Idioma: Español"
+
+===========================================
+6. DISEÑO RESPONSIVE
+===========================================
+
+6.1. MÓVIL (hasta 480px):
+- Ancho completo del contenido
+- Botón de idioma de 44px
+- Foto de perfil de 80px
+- Un solo botón por fila
+- Espaciado reducido
+
+6.2. TABLET (480px - 768px):
+- Foto de perfil de 96px
+- Botones de contacto en dos columnas
+- Espaciado medio
+- Botón de idioma de 48px
+
+6.3. DESKTOP (más de 768px):
+- Foto de perfil de 112px
+- Botones en dos columnas
+- Espaciado amplio
+- Ancho máximo de 720px
+
+===========================================
+7. DETALLES VISUALES NOTABLES
+===========================================
+
+7.1. GRADIENTES:
+- Botones: Gradientes lineales a 135 grados
+- Footer: Gradiente azul en tres tonos
+- Fondos: Gradientes sutiles en elementos interactivos
+
+7.2. SOMBRAS:
+- Sistema de sombras múltiples para profundidad
+- Sombras coloreadas para elementos de marca
+- Sombras intensificadas en estados hover
+
+7.3. BORDES Y REDONDEZ:
+- Bordes redondeados consistentes (8px, 12px, 16px, 24px)
+- Bordes completamente redondeados para elementos circulares
+- Bordes sutiles para separación visual
+
+7.4. TIPOGRAFÍA:
+- Jerarquía clara con 6 niveles de tamaño
+- Peso de fuente variado (400, 500, 600, 700, 800)
+- Espaciado óptimo para legibilidad
+- Texto siempre legible con buen contraste
+
+===========================================
+8. EXPERIENCIA DE USUARIO GENERAL
+===========================================
+
+La página transmite profesionalismo, modernidad y confianza. El flujo visual es natural y guía al usuario desde la información personal hasta las acciones de contacto. Los colores corporativos refuerzan la identidad de marca EXO Digital Studio, mientras que las animaciones sutiles añaden vida sin distraer.
+
+La experiencia es intuitiva, con todos los elementos interactivos claramente identificables y respuestas visuales inmediatas a las acciones del usuario. El diseño mobile-first asegura una experiencia óptima en cualquier dispositivo.
+
+===========================================
+FIN DE LA DESCRIPCIÓN VISUAL
+===========================================
