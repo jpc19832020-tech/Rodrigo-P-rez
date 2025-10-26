@@ -1702,6 +1702,48 @@ body {
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-xl);
   animation: slideIn 0.3s ease-out;
+  transition: opacity var(--transition-base);
+}
+
+.carousel-lightbox-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 56px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: var(--radius-full);
+  color: var(--white);
+  cursor: pointer;
+  transition: all var(--transition-base);
+  z-index: 3001;
+}
+
+.carousel-lightbox-nav:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-50%) scale(1.1);
+}
+
+.carousel-lightbox-nav:active {
+  transform: translateY(-50%) scale(0.95);
+}
+
+.carousel-lightbox-nav svg {
+  width: 24px;
+  height: 24px;
+}
+
+.carousel-lightbox-prev {
+  left: var(--spacing-lg);
+}
+
+.carousel-lightbox-next {
+  right: var(--spacing-lg);
 }
 
 .carousel-lightbox-close {
@@ -1734,6 +1776,24 @@ body {
 }
 
 @media (max-width: 768px) {
+  .carousel-lightbox-nav {
+    width: 48px;
+    height: 48px;
+  }
+  
+  .carousel-lightbox-nav svg {
+    width: 20px;
+    height: 20px;
+  }
+  
+  .carousel-lightbox-prev {
+    left: var(--spacing-md);
+  }
+  
+  .carousel-lightbox-next {
+    right: var(--spacing-md);
+  }
+  
   .carousel-lightbox-close {
     top: var(--spacing-md);
     right: var(--spacing-md);

@@ -954,6 +954,7 @@ class CarouselGallery {
         this.autoPlayInterval = null;
         this.isPaused = false;
         this.isTransitioning = false;
+        this.lightboxIndex = null;
         this.images = [
             'assets/img/F1.jpeg',
             'assets/img/F2.jpg',
@@ -1199,12 +1200,25 @@ class CarouselGallery {
         // Remove existing lightbox
         this.closeLightbox();
         
+        // Store current index for navigation
+        this.lightboxIndex = index;
+        
         // Create lightbox
         const lightbox = document.createElement('div');
         lightbox.className = 'carousel-lightbox';
         lightbox.innerHTML = `
             <div class="carousel-lightbox-content">
+                <button class="carousel-lightbox-nav carousel-lightbox-prev" aria-label="Imagen anterior">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+                    </svg>
+                </button>
                 <img src="${this.images[index]}" alt="Imagen ${index + 1}" class="carousel-lightbox-image">
+                <button class="carousel-lightbox-nav carousel-lightbox-next" aria-label="Siguiente imagen">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                    </svg>
+                </button>
                 <button class="carousel-lightbox-close" aria-label="Cerrar">
                     <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
@@ -1227,7 +1241,12 @@ class CarouselGallery {
         
         // Add event listeners
         const closeBtn = lightbox.querySelector('.carousel-lightbox-close');
+        const prevBtn = lightbox.querySelector('.carousel-lightbox-prev');
+        const nextBtn = lightbox.querySelector('.carousel-lightbox-next');
+        
         closeBtn.addEventListener('click', () => this.closeLightbox());
+        prevBtn.addEventListener('click', () => this.lightboxPrev());
+        nextBtn.addEventListener('click', () => this.lightboxNext());
         
         lightbox.addEventListener('click', (e) => {
             if (e.target === lightbox) {
@@ -1240,6 +1259,10 @@ class CarouselGallery {
             if (e.key === 'Escape') {
                 this.closeLightbox();
                 document.removeEventListener('keydown', handleEsc);
+            } else if (e.key === 'ArrowLeft') {
+                this.lightboxPrev();
+            } else if (e.key === 'ArrowRight') {
+                this.lightboxNext();
             }
         };
         document.addEventListener('keydown', handleEsc);
@@ -1258,6 +1281,47 @@ class CarouselGallery {
                 }
                 document.body.style.overflow = '';
             }, 300);
+        }
+        this.lightboxIndex = null;
+    }
+
+    /**
+     * Navigate to previous image in lightbox
+     */
+    lightboxPrev() {
+        if (this.lightboxIndex === null) return;
+        this.lightboxIndex = this.lightboxIndex - 1;
+        if (this.lightboxIndex < 0) {
+            this.lightboxIndex = this.images.length - 1;
+        }
+        this.updateLightboxImage();
+    }
+
+    /**
+     * Navigate to next image in lightbox
+     */
+    lightboxNext() {
+        if (this.lightboxIndex === null) return;
+        this.lightboxIndex = this.lightboxIndex + 1;
+        if (this.lightboxIndex >= this.images.length) {
+            this.lightboxIndex = 0;
+        }
+        this.updateLightboxImage();
+    }
+
+    /**
+     * Update lightbox image with fade effect
+     */
+    updateLightboxImage() {
+        const lightboxImg = document.querySelector('.carousel-lightbox-image');
+        if (lightboxImg && this.lightboxIndex !== null) {
+            // Add fade effect
+            lightboxImg.style.opacity = '0';
+            setTimeout(() => {
+                lightboxImg.src = this.images[this.lightboxIndex];
+                lightboxImg.alt = `Imagen ${this.lightboxIndex + 1}`;
+                lightboxImg.style.opacity = '1';
+            }, 150);
         }
     }
 }
