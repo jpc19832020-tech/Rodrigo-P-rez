@@ -1210,6 +1210,11 @@ body {
     width: 112px;
     height: 112px;
   }
+  
+  .carousel-viewport {
+    max-width: 500px;
+    margin: 0 auto;
+  }
 }
 
 @media (min-width: 768px) {
@@ -1433,6 +1438,7 @@ body {
   overflow: hidden;
   border-radius: var(--radius-lg);
   background: var(--gray-100);
+  max-width: 100%;
 }
 
 .carousel-track {
@@ -1460,7 +1466,7 @@ body {
 .carousel-image {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
   border-radius: var(--radius-lg);
   transition: transform var(--transition-base);
   max-height: 300px;
