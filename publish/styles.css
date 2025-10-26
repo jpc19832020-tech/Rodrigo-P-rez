@@ -1212,7 +1212,8 @@ body {
   }
   
   .gallery-carousel {
-    max-width: 600px;
+    width: 90%;
+    max-width: 650px;
     margin-left: auto;
     margin-right: auto;
   }
@@ -1235,6 +1236,11 @@ body {
   .info-card,
   .company-card {
     padding: var(--spacing-xl);
+  }
+  
+  .gallery-carousel {
+    width: 85%;
+    max-width: 700px;
   }
 }
 
