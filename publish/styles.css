@@ -1210,13 +1210,6 @@ body {
     width: 112px;
     height: 112px;
   }
-  
-  .gallery-carousel {
-    width: 90%;
-    max-width: 650px;
-    margin-left: auto;
-    margin-right: auto;
-  }
 }
 
 @media (min-width: 768px) {
@@ -1236,11 +1229,6 @@ body {
   .info-card,
   .company-card {
     padding: var(--spacing-xl);
-  }
-  
-  .gallery-carousel {
-    width: 85%;
-    max-width: 700px;
   }
 }
 
@@ -1412,9 +1400,8 @@ body {
   box-shadow: var(--shadow-md);
   transition: transform var(--transition-base), box-shadow var(--transition-base);
   margin-bottom: var(--spacing-lg);
-  max-width: 600px;
-  margin-left: auto;
-  margin-right: auto;
+  width: 100%;
+  max-width: 100%;
 }
 
 .gallery-carousel:hover {
