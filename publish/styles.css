@@ -1439,15 +1439,18 @@ body {
   display: flex;
   transition: transform var(--transition-slow);
   height: 100%;
+  width: 100%;
 }
 
 .carousel-slide {
   min-width: 100%;
+  max-width: 100%;
   height: 100%;
   position: relative;
   opacity: 0;
   transition: opacity var(--transition-base);
   cursor: pointer;
+  flex-shrink: 0;
 }
 
 .carousel-slide.active {
@@ -1461,6 +1464,7 @@ body {
   border-radius: var(--radius-lg);
   transition: transform var(--transition-base);
   max-height: 300px;
+  display: block;
 }
 
 .carousel-slide:hover .carousel-image {
