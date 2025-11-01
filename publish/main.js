@@ -1100,7 +1100,7 @@ class CarouselGallery {
             if (!this.isPaused && !this.isTransitioning) {
                 this.nextSlide();
             }
-        }, 3000); // Change every 3 seconds
+        }, 2000); // Change every 2 seconds
     }
 
     /**
