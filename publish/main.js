@@ -960,7 +960,7 @@ class CarouselGallery {
             'assets/img/F2.jpg',
             'assets/img/F3.jpg',
             'assets/img/image.png',
-            'assets/img/JP.1.png'
+            'assets/img/JP.1.jpeg'
         ];
         
         // Preload images for better performance
