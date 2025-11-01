@@ -1091,16 +1091,8 @@ class CarouselGallery {
      * Start auto-play functionality with performance optimization
      */
     startAutoPlay() {
-        if (this.autoPlayInterval) return;
-        
-        // Clear any existing interval
-        this.stopAutoPlay();
-        
-        this.autoPlayInterval = setInterval(() => {
-            if (!this.isPaused && !this.isTransitioning) {
-                this.nextSlide();
-            }
-        }, 2000); // Change every 2 seconds
+        // Don't start auto-play - let user control manually
+        return;
     }
 
     /**

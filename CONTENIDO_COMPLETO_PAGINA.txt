@@ -171,7 +171,7 @@ ARCHIVOS DEL PROYECTO
 3. RECURSOS VISUALES
    - assets/img/EXO.favicon
    - assets/img/EXO.png
-   - assets/img/JP.1.png (foto de perfil)
+   - assets/img/JP.1.jpeg (foto de perfil)
    - assets/img/QR_Costamar.png
    - assets/og/og-default.png
 

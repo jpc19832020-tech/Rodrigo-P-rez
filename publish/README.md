@@ -41,7 +41,7 @@ const personalInfo = {
     name: "Miexy Marcani Benites",
     title: "Supervisora de Viajes MICE | División Corporativo & MICE",
     subtitle: "Experta profesional en eventos...",
-    profileImage: "assets/img/JP.1.png"
+    profileImage: "assets/img/JP.1.jpeg"
 };
 ```
 

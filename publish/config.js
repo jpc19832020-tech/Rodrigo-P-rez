@@ -9,7 +9,7 @@ const personalInfo = {
     name: "Rodrigo Pérez",
     title: "CEO | EXO Digital Studio",
     subtitle: "Creador de nuestras herramientas y productos digitales.",
-    profileImage: "assets/img/JP.1.png"
+    profileImage: "assets/img/JP.1.jpeg"
 };
 
 // Información de contacto
@@ -50,7 +50,7 @@ const seo = {
 
 // Recursos de imágenes
 const images = {
-    profile: "assets/img/JP.1.png",
+    profile: "assets/img/JP.1.jpeg",
     companyLogo: "assets/img/EXO.favicon",
     qrCode: "assets/img/QR_Costamar.png",
     favicon: "assets/img/EXO.favicon",

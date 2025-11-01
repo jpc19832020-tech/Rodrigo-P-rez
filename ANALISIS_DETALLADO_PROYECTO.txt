@@ -30,7 +30,7 @@ La estructura del proyecto está organizada de la siguiente manera:
 │       ├── img/                     # Imágenes del proyecto
 │       │   ├── EXO.favicon          # Favicon del sitio
 │       │   ├── EXO.png              # Logo de EXO Digital Studio
-│       │   ├── JP.1.png             # Foto de perfil de Rodrigo Pérez
+│       │   ├── JP.1.jpeg             # Foto de perfil de Rodrigo Pérez
 │       │   ├── QR_Costamar.png      # Código QR para compartir
 │       │   ├── F1.jpeg, F2.jpg, F3.jpg  # Imágenes adicionales
 │       │   └── image.png            # Imagen genérica
